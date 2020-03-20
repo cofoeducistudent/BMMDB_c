@@ -1,0 +1,68 @@
+{% extends 'default.html' %}
+{%block body%}
+<div class="container">
+    {{super()}}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body pcolor">
+
+                    <img class="img-fluid inset-large-images"
+                        src="{{url_for('static', filename='images/cinema-curtain.jpg')}}" alt="cinema curtain.jpg">
+                    <p>
+                        <h6>Photo free - pixabay</h6>
+                    </p>
+                    <p><span class="first-letter">W</span>ho are we?</p>
+                    <p>We are a group of film fanatics who enjoy watching all types of films, from the hollywood
+                        blockbusters, world cinema to the plethora of independent productions the world over. We enjoy
+                        films
+                        big budget and small.</p>
+                    <p>So, when we see the modern trope of slander to films in cinemas and on streaming site, we
+                        wondered
+                        what we had missed. On closer examination we found a disturbing trend of predetermined agenda on
+                        the
+                        social media. Many people leaving unfair remarks to many for reasons varying from receiving
+                        clicks
+                        on you-tube, group affiliations, to joining in for fun. However, many of the comments seemed to
+                        be
+                        by people who really did not critique the film, backed up by any real examples. They were simply
+                        projecting opinions.</p>
+                    <p>To us, this is a travesty and undermines the work and effort done by many people. Some young
+                        starters in the long-standing industry professional. Many films are made on tiny budgets, and
+                        some
+                        made on large budgets. Indeed, some films made with access to intrinsic capital assets, not
+                        explicitly stated as cash, and of course those made with virtually none of either.</p>
+                    <p>The fact is, films should be judged on an even playing field. We have found this has not been the
+                        case, especially by many of the younger generation, many of who lack an appreciation of what it
+                        takes to create a
+                        production, frequently comparing two-hundred million-dollar films with the hundred-thousand
+                        pound
+                        and less production. We were dismayed, and thought this must stop, forth-with!</p>
+                    <p>Our reviewers are people who watch entire films, carry-out some research on the production, to
+                        come
+                        to their decision and reviews. This ensures that we just do not place comments like “rubbish” or
+                        “acting terrible”. Because these soundbites are meaningless without regards to a comparator.</p>
+                    <p>If one
+                        compares a five-thousand-pound production’s talent to one on a Marvel tent-pole production, the
+                        quality is not going to be the same. One should look to evaluate elements based on the
+                        equivalent
+                        criteria. After all one would not compare a school play to a west end theatre production, would
+                        they?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Footer -->
+            <div class="row">
+                <div class="col-md-12 text-center  w-100">
+                    <div class="footer">
+                        <h2>{{fm}}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body%}

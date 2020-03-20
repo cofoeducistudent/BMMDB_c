@@ -1,0 +1,84 @@
+{% extends 'default.html' %}
+{%block body%}
+<div class="container">
+    {{super()}}
+
+    <!-- Image -->
+    <div class="row">
+        <div class="col-sm-12">
+            <img class="img-fluid inset-images" src="{{url_for('static', filename='images/fingerprint.png')}}"
+                alt="finger-print-image">
+        </div>
+    </div>
+    <h6>Photo Gordon Johnson Pixabay License </h6>
+
+    <div class="row">
+        <div class="col-sm-12 text-justify">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p>To become one of our valued movie reviewers, please complete the form on this page.</p>
+                    <p>If approved, you will be granted administrator privileges, allowing you to post film reviews at
+                        will</p>
+                    <p>We have a strict no-nonsense policy that you adhere to our rules. If you become a frequent and
+                        consistant submitter, you will be rewarded with a passthrough affiliate link privilege on every
+                        purchase made through your review!</p>
+                    <p>Allow (24-48) hours for our decision</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <hr>
+    <!-- Registration Form -->
+    <form action="#" method="POST">
+        <!-- info Detail -->
+        <div class="form-group">
+            <label for="info">Why I wish to become a member:</label>
+            <textarea type="text" name="info" class="form-control" cols="80" rows="10" id="info"
+                required="true"></textarea>
+        </div>
+        <!-- Username -->
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" name="username" class="form-control" id="username" required="true">
+        </div>
+        <!-- First Name -->
+        <div class="form-group">
+            <label for="f-name">First Name:</label>
+            <input type="text" name="f-name" class="form-control" id="f-name">
+        </div>
+        <!-- Last Name -->
+        <div class="form-group">
+            <label for="l-name">Last Name:</label>
+            <input type="text" name="l-name" class="form-control" id="l-name">
+        </div>
+        <!-- Email -->
+        <div class="form-group">
+            <label for="e-mail">Email address:</label>
+            <input type="e-mail" name="e-mail" class="form-control" id="e-mail" required="true">
+        </div>
+        <!-- Pasword -->
+        <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" name="password" class="form-control" id="pwd" required="true">
+        </div>
+        <!-- Buttons -->
+        <button name="submit" type="submit" class="btn btn-primary" value="register">Submit</button>
+    </form>
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- Footer -->
+            <div class="row">
+                <div class="col-sm-12 text-center  w-100">
+                    <div class="footer">
+                        <h2>{{fm}}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body%}

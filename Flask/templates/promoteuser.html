@@ -1,0 +1,56 @@
+{% extends 'default.html' %}
+<body>
+    <!-- ERROR PAGE -->
+    {% block body %}
+    <div class="container">
+        {{super()}}
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Panel -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <p>WARNING!</p>
+                                <p>Grant 'Admin Privilege' to Standard User!</p>
+                                <p>This page is for the system administrator or site owner to convert a standard user
+                                    into a poster, with administrative-rights to 'post' and 'delete' their posts
+                                    In production, this page should only be accessible to site owners or adminstrators!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Main Entry -->
+                <form action="#" method="POST">
+                    <label for"e-mail">Enter email of user</label><br>
+                    <input type="text" id="e-mail" name="e-mail" class="form-group" required="True"></input>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label for"aff-state">Affiliate state</label><br>
+                            <select id="aff-state" name="a-state">
+                                <option name="-">-</option>
+                                <option name="Yes">Yes</option>
+                            </select>
+                            <hr>    
+                        </div>
+                         <!-- Submit Button -->
+                        <div class="col-sm-12">
+                            <button type="submit" class="btn btn-danger form-group">Submit</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- Footer -->
+                <div class="row">
+                    <div class="col-md-12 text-center  w-100">
+                        <div class="footer">
+                            <h2>{{fm}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock body %}
+</body>
+</html>

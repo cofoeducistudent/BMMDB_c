@@ -1,0 +1,40 @@
+{% extends 'default.html' %}
+
+<body>
+    <!-- ERROR PAGE -->
+    {% block body %}
+    <div class="container">
+        {{super()}}
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Panel -->
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <p>SUCCESS!</p>
+                                <p>You have successfully granted - review posting ability!</p>
+                                <p>Or You have successfully granted affiliate sale 'pass-Through' rights!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Footer -->
+                <div class="row">
+                    <div class="col-md-12 text-center  w-100">
+                        <div class="footer">
+                            <h2>{{fm}}</h2>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endblock body %}
+</body>
+
+</html>

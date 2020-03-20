@@ -1,0 +1,100 @@
+{% extends 'default.html' %}
+{% block body %}
+<div class="container">
+    {{super()}}
+
+    <!-- Image -->
+    <div class="row">
+        <div class="col-sm-12">
+            <img class="img-fluid inset-images" src="{{url_for('static', filename='images/man-1351317_1280.png')}}"
+                alt="man-typing image">
+        </div>
+    </div>
+    <p>
+        <h6>Photo Pixabay License </h6>
+    </p>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p>Authorized movie reviewer, Admin Page.</p>
+                    <p>If you are an <span><a href="{{url_for('register')}}" class="highlight-text">authorized
+                                reviewer</a></span> you can create a review for a movie here. </p>
+                    <p>Please place meaningful information on the page. Complete all fields and abide by our posting
+                        rules, which we sent with your 'welcome email'</p>
+                    <p>Finally remember to enter your access-credentials on submission, as posting is blocked without
+                        auto verification.... and keep it hidden, keep it safe!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <br>
+    <!-- Search Button & Form -->
+    <div class="row">
+        <div class="col-md-12">
+
+            <form action="#" method="POST" class="form-group">
+                <!-- Username -->
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" class="form-control" id="username" required="true">
+                </div>
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="e-mail">Email address:</label>
+                    <input type="e-mail" name="e-mail" class="form-control" id="e-mail" required="true">
+                </div>
+                <!-- Pasword -->
+                <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password" name="password" class="form-control" id="pwd" required="true">
+                </div>
+                <hr>
+                <!-- Grab Button -->
+                <button type="submit" class="btn btn-primary">Get My Review(s)</button>
+                <hr>
+            </form>
+
+            <!-- // -->
+
+            <form action="" method="GET" class="form-group">
+                
+                <!-- <div class="row">
+                    <div class="col-sm-12">
+
+                        <label for="review-item">Movie Review:</label>
+                        <select name="movie-list" id="review-item" class="form-control">
+
+                            {% for m in rev_bag %}
+
+                            <option value="{{ m['_id'] }}"> {{m['m-title'] }} : {{ m['_id'] }} </option>
+
+                            {%endfor%}
+
+                        </select>
+
+                    </div>
+                </div>
+
+                <hr> -->
+
+                <!-- Submit Button -->
+                <button href="#" class="btn btn-danger">Delete Review</button>
+            </form>
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class="row">
+        <div class="col-md-12 text-center  w-100">
+            <div class="footer">
+                <h2>{{fm}}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

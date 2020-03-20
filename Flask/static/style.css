@@ -1,0 +1,200 @@
+/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
+body {
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    --main-body-color: #eff0f0;
+    --main-background-color: #1F1F1F;
+    background: var(--main-body-color);
+    --search-title-color: #e4e5e2;
+    --text-entry-color: rgb(250, 243, 234);
+    --text-update-color: rgb(228, 242, 247);
+    font-family: 'Montserrat', sans-serif;
+    --highlight-text-color: #DAB688;
+    --social-icons-color: rgb(223, 190, 147);
+    --social-icons-highlight: #2D6FAE;
+    --main-page-text-color: rgb(17, 19, 20);
+    --picture-shadow-color: #DAB688;
+    color: var(--main-page-text-color);
+    --backplate-background-color: rgb(219, 216, 216);
+}
+/* Main Navigation  Bar  */
+.nav-block, li {
+    font-size: 2rem;
+}
+.jumbotron {
+    margin-top: 10px;
+}
+.footer>h2 {
+    padding-top: 10px;
+    font-size: 1.5rem;
+    width: 100%;
+    height: 40px;
+    background-color: var(--main-background-color);
+    color: var(--main-body-color);
+}
+.jumbotron h1 {
+    font-size: 1.25 rem;
+}
+.cinema-image {
+    border-radius: 10px;
+    width: 66%;
+    -webkit-box-shadow: 1px 1px grey;
+    box-shadow: 1px 1px grey;
+}
+.back-page-fmt {
+    color: var(--main-page-text-color);
+}
+.message-box {
+    height: 200px;
+    width: 100%px;
+}
+.search-box-fmt {
+    margin-top: 5px;
+    width: 100%;
+}
+.input-line {
+    width: 100%;
+}
+.entry-box {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.select-box {
+    font-size: 1.5rem;
+}
+.entry-box {
+    margin-top: 5px;
+    width: 40%;
+}
+.t-entry-box {
+    margin-top: 5px;
+    background-color: var(--text-entry-color);
+}
+.t-update-box {
+    margin-top: 5px;
+    background-color: var(--text-update-color);
+}
+.first-letter {
+    font-size: 2rem;
+    font-style: bold;
+}
+.res-image-size {
+    border-radius: 5%;
+    height: auto;
+    width: 33%;
+    border: solid;
+    -webkit-box-shadow: 3px 3px rgb(187, 187, 187);
+    box-shadow: 3px 3px rgb(187, 187, 187);
+    margin-bottom: 10px;
+}
+.sep-line {
+    background-color: black;
+}
+.highlight-title {
+    background-color: var(--search-title-color);
+    text-shadow: 2px 2px rgb(201, 199, 199);
+    padding-left: 10PX;
+    padding-right: 10px;
+    margin-bottom: 5px;
+}
+.highlight-sub-sections {
+    text-shadow: 1px 1px grey;
+    background-color: var(--search-title-color);
+    padding-left: 5px;
+    padding-right: 5px;
+    text-decoration: none;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+.highlight-text {
+    color: var(--highlight-text-color);
+}
+.del-sel {
+    -webkit-box-shadow: 1px 1px grey;
+    box-shadow: 1px 1px grey;
+    background-color: pink;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+.input-tbx {
+    margin-bottom: 5px;
+}
+.next-process {
+    margin-bottom: 10px;
+}
+.rev-item {
+    /* border-radius:10px; */
+    background-color: rgb(243, 236, 221);
+    margin-bottom: 10px;
+}
+.line-color {
+    color: black;
+}
+.man-typing-image {
+    border-radius: 10px;
+    height: auto;
+    width: 33%;
+    -webkit-box-shadow: 1px 1px grey;
+    box-shadow: 1px 1px grey;
+}
+.sm-icons {
+    font-size: 4rem;
+    color: var(--social-icons-color);
+}
+.page-title-fmt {
+    text-shadow: 2px 2px #DAB688;
+}
+.inset-images {
+    height: auto;
+    width: 33%;
+    border-radius: 10px;
+}
+.inset-large-images {
+    height: auto;
+    width: 66%;
+    border: 4px double;
+    border-radius: 10px;
+    -webkit-box-shadow: 2px 2px var(--picture-shadow-color);
+    box-shadow: 2px 2px var(--picture-shadow-color);
+}
+.page-titles {
+    color: var(--main-page-text-color);
+    text-shadow: 2px 2px var(--picture-shadow-color);
+}
+.pcolor {
+    background-color: #EBEBEB;
+    border-radius: 10px;
+}
+.movie-image {
+    border-radius: 5%;
+    background-color: var(--backplate-movie-image-background-color);
+    width: 33%;
+    height: 33%;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 2px 2px var(--picture-shadow-color);
+}
+.jumbotron p {
+    background-color: var(--backplate-background-color);
+    font-size: 1.25rem;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+/* Code from Stackoverflow - Philip Feldmann */
+/* Keep text from overspilling out of columns */
+.keep-insideBSol
+{
+    -moz-hyphens:auto;
+    -ms-hyphens:auto;
+    -webkit-hyphens:auto;
+    hyphens:auto;
+    word-wrap:break-word;
+ }
+ .movie-item-selector{
+    font-size: 1.5rem;
+    background-color: var(--backplate-background-color);
+ }

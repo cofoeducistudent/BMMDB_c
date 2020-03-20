@@ -1,0 +1,93 @@
+{% extends 'bootstrap/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Home-Page</title>
+  {% block styles %}
+  {{super()}}
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!-- Fontawesome -->
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <!-- #Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu&display=swap" rel="stylesheet">
+  <!-- Jquery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+  {% endblock styles %}
+  {% block scripts %}
+  {{super()}}
+  <script type="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="javascript" src="{{url_for('static', filename='main.js')}}"></script>
+  {% endblock scripts %}
+</head>
+<body>
+  Navbar Main
+  {% block body %}
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+       <a class="navbar-brand" href="{{url_for('index')}}">Real Movie Reviews Database</a>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <!-- Navigation -->
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li class="active"><a href="{{url_for('index')}}"> <span class="fa fa-home" aria-hidden="true"></span>
+                  Home</a></li>
+              <li><a href="{{url_for('about')}}"> <span class="fa fa-info-circle" aria-hidden="true"></span> About</a>
+              </li>
+              <li><a href="{{url_for('search')}}"> <span class="fa fa-search" aria-hidden="true"></span> Search</a></li>
+              <li><a href="{{url_for('contribute')}}"> <span class="fa fa-lightbulb-o" aria-hidden="true"></span>
+                  Contribute</a></li>
+              <li><a href="{{url_for('contact')}}"> <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                  Contact</a></li>
+              <li><a href="{{url_for('register')}}"> <span class="fa fa-users" aria-hidden="true"></span> Register</a>
+              </li>
+
+              <li><a href="{{url_for('member')}}"> <span class="fa fa-pencil-square-o" aria-hidden="true"></span>Member - Add Review</a></li>
+              <li><a href="{{url_for('memberOptions')}}"> <span class="fa fa-pencil-square-o" aria-hidden="true"></span>Member - Options</a></li>
+
+              <!-- <li><a href="{{url_for('member_u')}}"> <span class="fa fa-pencil-square-o" aria-hidden="true"></span>Member -Review Update</a></li>
+              <li><a href="{{url_for('member_d')}}"> <span class="fa fa-pencil-square-o" aria-hidden="true"></span>Member -Review Delete</a></li> -->
+            </ul>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Social Media Icons -->
+  <div class="row">
+      <div class="col-sm-12 text-left">
+        <a href="https://www.youtube.com" class="sm-icons"><span  class="fa fa-youtube-square" aria-hidden="true"></span></a>
+        <a href="https://www.facebook.com" class="sm-icons"><span  class="fa fa-facebook-square  " aria-hidden="true"></span></a>
+        <a href="https://www.instagram.com/?hl=en" class="sm-icons"><span  class="fa fa-instagram  " aria-hidden="true"></span></a>
+        <a href="https://www.linkedin.com" class="sm-icons"><span  class="fa fa-linkedin-square  " aria-hidden="true"></span></a>
+        <!-- <hr> -->
+      </div>
+    </div>
+
+   
+      <div class="col-sm-12 text-right "> 
+          <a href="{{url_for('search')}}"><h2><span class="fa fa-search sm-icons" aria-hidden="true"></span></h2></a>
+      </div>
+     
+
+
+    <!--Page Titles-  -->
+  <h1 class="page-titles">{{page}}</h1>
+  {% endblock body %}
+</body>
+</html>

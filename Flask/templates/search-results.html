@@ -1,0 +1,87 @@
+{% extends 'default.html' %}
+<body>
+    <!-- ERROR PAGE -->
+    {% block body %}
+    <div class="container">
+        {{super()}}
+        <div class="row">
+            <div class="col-sm-12 text-justify">
+                <div class="panel panel-warning">
+                    <div class="panel-body">
+                        <p>
+                            The results of your search are listed below..
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Create Results -->
+        <!-- {{rev_results[0]}} -->
+        {% for chunk in rev_results %}
+        <div class="container">
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col-sm-12 ">
+                        <h4>{{'Movie Title:'}}</h4>
+                        <h1><b>{{ chunk['m-title'] }}</b></h1>
+                        <h4>{{'Movie Subtitle:'}}</h4>
+                        <p>{{ chunk['m-sub-title'] }}</p>
+                        <a href="{{chunk['m-affiliate-link']}}">
+                            <img src="{{ chunk['m-image-link']}}" class="movie-image" />
+                        </a>
+                        <hr>
+                        <p>
+                            <h5>All images subject to copyright of their respective owners</h5>
+                        </p>
+                        <!-- Info -->
+                        <h4>{{'Genre:'}}</h4>
+                        <p>{{chunk['m-genre']}}</p>
+                        <h4>{{'Reviewer:'}}</h4>
+                        <p>{{chunk['m-reviewer-name']}}</p>
+                        <h4>{{'Review Date:'}}</h4>
+                        <p>{{chunk['m-review-date']}}</p>
+                        <h4>{{'Stars:'}}</h4>
+                        <p>{{chunk['m-stars']}}</p>
+                        <h4>{{'Synopsis:'}}</h4>
+                        <p>{{chunk['m-synopsis']}}</p>
+                        <h4>{{'Script Review & Citation:'}}</h4>
+                        <p>{{chunk['m-sc-review']}}</p>
+                        <p>{{chunk['m-sc-example']}}</p>
+                        <h4>{{'Acting Review & Citation:'}}</h4>
+                        <p>{{chunk['m-ac-review' ]}}</p>
+                        <p>{{chunk['m-ac-example' ]}}</p>
+                        <h4>{{'Technical Review & Citation:'}}</h4>
+                        <p>{{chunk['m-te-review' ]}}</p>
+                        <p>{{chunk['m-te-example' ]}}</p>
+                        <h4>{{'Sound Review & Citation:'}}</h4>
+                        <p>{{chunk['m-so-review' ]}}</p>
+                        <p>{{chunk['m-so-example' ]}}</p>
+                        <h4>{{'Summary:'}}</h4>
+                        <p>{{chunk['m-summary' ]}}</p>
+                    </div>
+                </div>
+        <div class="row">
+            <div class="col-sm-12 text-center ">
+                <a href="{{url_for('search')}}">
+                    <h2><span class="fa fa-arrow-circle-left sm-icons" aria-hidden="true"></span></h2>
+                </a>
+            </div>
+        </div>
+            </div>
+        </div>
+        {% endfor %}
+        <!-- Footer -->
+        <div class="row">
+            <div class="col-md-12 text-center  w-100">
+                <div class="footer">
+                    <h2>{{fm}}</h2>
+                </div>
+            </div>
+        </div>
+        <!-- // -->
+    </div>
+    </div>
+    </div>
+    {% endblock body %}
+</body>
+</html>

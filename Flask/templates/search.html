@@ -1,0 +1,110 @@
+{% extends 'default.html' %}
+{%block body%}
+<div class="container">
+    {{super()}}
+
+    <!-- Image -->
+    <div class="row">
+        <div class="col-sm-12">
+            <img class="img-fluid inset-images"
+                src="{{url_for('static', filename='images/magnifying-glass1.jpg')}}" alt="magnifying glass image">
+        </div>
+    </div>
+<h6>Image by Peggy und Marco Lachmann-Anke from Pixabay </h6>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p>You can browse or search our database here. Search by Title, Genre or any other elements you
+                        choose.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <hr>
+
+    <!-- Search Inputs -->
+    <form action="#" method="POST" class="form-group">
+  
+        <div class="row">
+            <div class="col-md-12">
+
+                <!-- Search Title -->
+                <div class="col-md-12">
+                    <label for="s-title">Search title:</label><br>
+                    <input name="s-title" id="s-title" type="text"  class="form-group" placeholder="">
+                    <hr>
+                </div>
+
+                <!-- Search Sub-Title -->
+                <div class="col-md-12">
+                    <label for="s-sub-title">Search Sub title:</label><br>
+                    <input name="s-sub-title" id="s-sub-title" type="text" placeholder="">
+                    <hr>
+                </div>
+
+                <!-- Reviewer Name-->
+                <div class="col-md-12">
+                    <label for="s-reviewer">Search Reviewer:</label><br>
+                    <input name="s-reviewer-name" id="s-reviewer" type="text" class="form-group"  placeholder="">
+                    <hr>
+                </div>
+
+                <!-- Genre -->
+                <div class="col-md-12">
+                    <label for="s-genre">Search Genre:</label><br>
+                    <select name="s-genre" id="s-genre" class="form-group" >
+                        <option value=""></option>
+                        <option value="Drama">Drama</option>
+                        <option value="Action">Action/Adventure</option>
+                        <option value="Horror">Horror</option>
+                        <option value="SciFi">SciFi</option>
+                        <option value="RomCom">RomCom</option>
+                        <option value="Mystery">Mystery</option>
+                    </select>
+                    <hr>
+                </div>
+
+                <!-- Stars-->
+                <div class="col-md-12">
+                    <label for="s-stars">Search Stars:</label><br>
+                    <select name="s-stars" id="s-stars" class="form-group" >
+                        <option value=""></option>
+                        <option value=0>0</option>
+                        <option value=1>1</option>
+                        <option value=2>2</option>
+                        <option value=3>3</option>
+                        <option value=4>4</option>
+                        <option value=5>5</option>
+                    </select>
+                    <hr>
+                </div>
+
+                <!-- Search synopsis -->
+                <div class="col-md-12">
+                    <label for="s-synopsis">Search Synopsis:</label><br>
+                    <textarea class="form-control" name="s-synopsis" id="s-synopsis" type="text" rows="10" cols="90%"
+                        placeholder=""></textarea>
+                    <hr>
+                </div>
+
+                <!-- Search Button -->
+                <dv class="col-md-12">
+                    <button type="submit" class="form-group btn btn-primary">Search / Browse Reviews</button>
+                </dv>
+
+            </div>
+        </div>
+    </form>
+    <!-- Footer -->
+    <div class="row">
+        <div class="col-md-12 text-center  w-100">
+            <div class="footer">
+                <h2>{{fm}}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body%}

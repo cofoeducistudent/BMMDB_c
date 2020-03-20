@@ -1,0 +1,35 @@
+ {% extends 'default.html' %}
+ <body>
+     {% block body %}
+     <div class="container">
+         {{super()}}
+         <div class="row">
+             <div class="col-md-12">
+                 <!-- Jumbotron -->
+                 <div class="jumbotron">
+                     <img class="img-fluid inset-large-images" src="{{url_for('static', filename='images/cinema5.jpg')}}"
+                         alt="cinema5.jpg">
+                     <p></p>
+                         <h6>Photo by Clem Onojenghuo from pexels</h6>
+                     </p>
+                     <h1>REAL MOVIE REVIEWS DATABASE</h1>
+                     <p>We pride ourselves on members providing fair reviews for movies big or small. In a
+                         fair,
+                         non-'click-bait' fashion! 
+                    We don't have a dog in the fight. Therefore, if you want common-sense, balanced reviews, rather than
+                         sensationalist internet noise, take a peek! </p>
+                 </div>
+                 <!-- Footer -->
+                 <div class="row">
+                     <div class="col-md-12 text-center  w-100">
+                         <div class="footer">
+                             <h2>{{fm}}</h2>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+     {% endblock body %}
+ </body>
+ </html>

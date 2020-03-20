@@ -1,0 +1,24 @@
+{% extends 'default.html' %}
+{% block body %}
+<div class="container">
+    {{super()}}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p>Deleted Review Successfully!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <!-- Footer -->
+    <div class="row">
+        <div class="col-md-12 text-center  w-100">
+            <div class="footer">
+                <h2>{{fm}}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}
