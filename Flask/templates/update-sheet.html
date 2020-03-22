@@ -2,6 +2,7 @@
 {% block body %}
 <div class="container">
     {{super()}}
+
     <!-- Image -->
     <div class="row">
         <div class="col-sm-12">
@@ -9,14 +10,19 @@
                 alt="man-typing image">
         </div>
     </div>
+
     <p>
         <h6>Photo Pixabay License </h6>
     </p>
+
+
+ 
+
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <p>Authorized movie reviewer, Admin Page.</p>
+                    <p>Authorized movie reviewer, Update Sheet.</p>
                     <p>If you are an <span><a href="{{url_for('register')}}" class="highlight-text">authorized
                                 reviewer</a></span> you can create a review for a movie here. </p>
                     <p>Please place meaningful information on the page. Complete all fields and abide by our posting
@@ -27,6 +33,13 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>{{ [m_title] }} : {{ updaterev }}</h2>
+        </div>
+    </div>
+
     <br>
     <!-- Search Button & Form -->
     <div class="row">
@@ -47,36 +60,89 @@
                     <label for="pwd">Password:</label>
                     <input type="password" name="password" class="form-control" id="pwd" required="true">
                 </div>
-                <hr>
+                <!-- Delete Option -->
+                <!-- <radio class=form-group>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label for="admin-action">Process:</label><br>
+                            <select id="admin-action" name="admin-action" type="text">
+                                <option value="-">-</option>
+                                <option value="c">Create</option>
+                                <option value="u">Update</option>
+                                <option value="d">Delete</option>
+                            </select>
+                        </div>
+                    </div>
+                </radio>
+                <br> -->
+
+                <!-- Submit Button -->
+                <!-- <button type="submit" class="btn btn-danger">Change An Existing Review</button>
+                <hr> -->
+
+
+
                 <div class="row">
+
                     <div class="col-md-12">
                         <img src="" alt="">
                     </div>
                 </div>
+
+
+
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <div class="row">
                     <!-- Search Title -->
                     <div class="col-md-12 form-group">
                         <label for="m-title">Movie Title:</label><br>
                         <input id="m-title" class="form-control" name="m-title" type="text"
-                            placeholder="Movie-Title:"></input>
+                            value="{{  [m_title]  }}" placeholder="Movie-Title:"></input>
                     </div>
+
+
                     <!-- Search Subtitle -->
                     <div class="col-md-12">
                         <label for="m-sub-title">Movie Sub Title:</label><br>
                         <input id="m-sub-title" class="form-control" name="m-sub-title" type="text" class="entry-box"
-                            placeholder="Sub-Title:"></input>
+                            value="{{  [m_sub_title]  }} " placeholder="Sub-Title:"></input>
                     </div>
+
                     <!-- Image Link -->
                     <div class="col-md-12">
                         <label for="m-image-link">Image:</label><br>
                         <input id="m-image-link" class="form-control" name="m-image-link" type="text" class="entry-box"
-                            placeholder="Image-link:"></input>
+                            value="{{  crv['m_image_link']  }} " placeholder="Image-link:"></input>
                     </div>
                     <!-- Affiliate Link -->
                     <div class="col-md-12">
                         <label for="m-af-link">Affiliate Link:</label><br>
                         <input id="m-af-link" class="form-control" name="m-af-link" type="text" class="entry-box"
-                            placeholder="Affiliate-link:"></input>
+                            value="{{  crv['m_affiliate_link']  }} " placeholder="Affiliate-link:"></input>
                     </div>
                     <!-- Genre -->
                     <div class="col-md-12">
@@ -88,26 +154,30 @@
                             <option value="Sci-fi">SciFi</option>
                             <option value="Rom-Com">RomCom</option>
                             <option value="Mystery">Mystery</option>
+                            <!-- <option value="Any">Any</option> -->
                         </select>
                     </div>
+
                     <!-- Search Synopsis -->
                     <br>
                     <div class="col-md-12">
                         <label for="m-synopsis">Synopsis:</label><br>
                         <textarea id="m-synopsis" name="m-synopsis" type="textarea" class="form-control t-entry-box"
-                            rows="10" cols="100%" placeholder="Synopsis:"></textarea>
+                            rows="10" cols="100%" placeholder="Synopsis:">{{  crv['m_synopsis']  }}</textarea>
                     </div>
                     <!-- Reviewer Name -->
                     <br>
                     <div class="col-md-12">
                         <label for="r-name">Reviewer Name:</label><br>
                         <input id="r-name" name="r-name" type="text" class="form-control t-entry-box"
-                            placeholder="Reviewer Name:"></input>
+                            value="{{  crv['m_reviewer_name']  }}" placeholder="Reviewer Name:"></input>
+
+
                         <!-- Review Date -->
                         <br>
                         <label for="r-date">Review Date:</label><br>
                         <input id="r-date" name="r-date" type="date" class="form-control t-entry-box"
-                            placeholder="Review Date:"></input>
+                            value="{{  crv['m_review_date']  }}" placeholder="Review Date:"></input>
                     </div>
                     <!-- Stars -->
                     <div class="col-md-12">
@@ -127,43 +197,43 @@
                 <div class="form-group">
                     <label id="sc-review" for="m-title">Script-review & Citation:</label><br>
                     <textarea name="sc-review" class="form-control t-entry-box" rows="10" cols="100%" id="textarea"
-                        placeholder="Story/Script-Review"></textarea>
+                        placeholder="Story/Script-Review">{{  crv[m_sc_review]  }}</textarea>
                     <textarea name="sc-example" class="form-control t-entry-box" rows="10" cols="100%" id="textarea"
-                        placeholder="Story/Script-example"></textarea>
+                        placeholder="Story/Script-Example">{{  crv[m_sc_example]  }}</textarea>
                     <hr>
                 </div>
                 <!-- Acting Review -->
                 <div class="form-group">
                     <label for="m-title">Acting-review & Citation:</label><br>
                     <textarea id="ac-review" name="ac-review" class="form-control t-entry-box" rows="10" cols="100%"
-                        id="textarea" placeholder="Acting-Review"></textarea>
+                        id="textarea" placeholder="Acting-Review">{{  crv[m_ac_review]  }}</textarea>
                     <textarea name="ac-example" class="form-control t-entry-box" rows="10" cols="100%" id="textarea"
-                        placeholder="Acting-example"></textarea>
+                        placeholder="Acting-example">{{  crv[m_ac_example]  }}</textarea>
                     <hr>
                 </div>
                 <!-- Technical Review -->
                 <div class="form-group">
                     <label for="te-reviewer">Technical-review & Citation:</label><br>
                     <textarea id="te-review" name="te-review" class="form-control t-entry-box" rows="10" cols="100%"
-                        id="textarea" placeholder="Technical-Review"></textarea>
+                        id="textarea" placeholder="Technical-Review">{{  crv[m_te_review]  }}</textarea>
                     <textarea name="te-example" class="form-control t-entry-box" rows="10" cols="100%" id="textarea"
-                        placeholder="Technical-example"></textarea>
+                        placeholder="Technical-example">{{  crv[m_te_example]  }}</textarea>
                     <hr>
                 </div>
                 <!-- Sound/Audio Review -->
                 <div class="form-group">
                     <label for="so-review">Sound-review & Citation:</label><br>
                     <textarea id="so-review" name="so-review" class="form-control t-entry-box" rows="10" cols="100%"
-                        id="textarea" placeholder="Sound/Audio - Review"></textarea>
+                        id="textarea" placeholder="Sound/Audio - Review">{{  crv[m_so_review]  }}</textarea>
                     <textarea name="so-example" class="form-control t-entry-box" rows="10" cols="100%" id="textarea"
-                        placeholder="Sound/Audio - example"></textarea>
+                        placeholder="Sound/Audio - example">{{  crv[m_so_example]  }}</textarea>
                     <hr>
                 </div>
                 <!-- Summary Review -->
                 <div class="form-group">
                     <label for="su-review">Summary-review:</label><br>
                     <textarea id="su-review" name="su-review" class="form-control t-entry-box" rows="10" cols="100%"
-                        id="textarea" placeholder="Overall - Summary"></textarea>
+                        id="textarea" placeholder="Overall - Summary">{{  crv[m_summary]  }}</textarea>
                     <hr>
                 </div>
                 <!-- Submit Button -->

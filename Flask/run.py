@@ -57,10 +57,11 @@ crv_em = ""  # current reviewer email
 select = ""
 
  
-
+ 
 mt=""
 
 
+updaterev=""
  
 
 # //###############################################//==================
@@ -86,11 +87,6 @@ def checkDup(id):
 # //###############################################//==================
 
 
-
-
-
-
-
 @app.route('/')
 def index():
 
@@ -106,6 +102,15 @@ def about():
 
     return render_template('about.html', page='About Us', fm=siteText["footer-message"])
 # =====================================//=============================
+
+
+
+
+
+
+
+
+
 
 
 
@@ -168,6 +173,18 @@ def contributeS():
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 @app.route('/search', methods=["GET", "POST"])
 def search():
 
@@ -189,41 +206,63 @@ def search():
 
        ##########################//###############################
 
+        '''
+        #TITLE
+        '''
         if search_tit != "":
             print(search_tit)
             rev_results = coll_reviews.find(
                 {"$text": {"$search": search_tit}}).limit(10)
 
+        '''
+        #SUB-TITLE
+        '''
         if search_sub != "":
             print(search_sub)
             rev_results = coll_reviews.find(
                 {"$text": {"$search": search_sub}}).limit(10)
 
+        '''
+        #SEARCH REVIEWER
+        '''
         if search_rev != "":
             print(search_rev)
             rev_results = coll_reviews.find(
                 {"$text": {"$search": search_rev}}).limit(10)
 
+        '''
+        #SEARCH SYNOPSIS
+        '''
         if search_syn != "":
             print(search_syn)
             rev_results = coll_reviews.find(
                 {"$text": {"$search": search_syn}}).limit(10)
 
+        '''
+        #SEARCH GENRE
+        '''
         if search_gen != "":
             print(search_gen)
             rev_results = coll_reviews.find(
-                {"$text": {"$search": search_gen}}).limit(10)
+                {"$text": {"$search": search_gen }}).limit(10)
 
+        '''
+        #SEARCH STARS
+        '''
         if search_stars != "":
             print(search_stars)
             rev_results = coll_reviews.find(
                 {"$text": {"$search": search_stars}}).limit(10)
 
+
+        '''
+        #DEFAULT SEARCH ON BLANK PARAMS
+        '''
         if search_tit == "" and search_sub == "" and search_gen == "" and search_rev == "" and search_syn == "" and search_stars == "":
-            search_tit = "The Attachment"
+            search_rev = "Clement"
 
             rev_results = coll_reviews.find(
-                {"$text": {"$search": search_tit}}).limit(10)
+                {"$text": {"$search": search_rev}}).limit(10)
 
         return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..')
 
@@ -239,6 +278,16 @@ def searchResults():
 
     return render_template('search-results.html', page='Search Result(s) Page..', fm=siteText["footer-message"],  total_found=total_found, total_allowed=total_allowed)
 # =====================================//=============================
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -557,82 +606,10 @@ def member():
 
 @app.route('/member_d', methods=["GET", "POST"])
 def member_d():
-    '''
-    ** MEMBER REVIEW DELETE VIEW **
-
-    '''
-    rev_bag=[]
-    if request.method == "POST":
-
-
-        unlock = False
-        movies = coll_reviews.find()
-        rev_bag = []
-        documents = coll_users.find()
-
-        for u_cred in documents:
-            users = {
-                "u_my_info": u_cred["my-info"],
-                "u_username": u_cred['username'],
-                "u_f_name": u_cred['f-name'],
-                "u_l_name": u_cred['l-name'],
-                "u_email": u_cred['e-mail'],
-                "u_password": u_cred['password'],
-                "u_role": u_cred['role'],
-                "u_state": u_cred['a-state'],
-            }
-
-
-
-
-
-
-
-            crv_em = request.form['e-mail']
-            if users['u_email'] == request.form['e-mail'] and users['u_password'] == request.form['password'] and users['u_role'] == 'Admin':
-                unlock = True
-                crv_em = u_cred["e-mail"]
-
-                if unlock == True :#DELETE!!!
-                    coll_reviews.find()
-                    for mr in movies:
-                        if mr['m-email'] == crv_em:
-                            rev_bag.append(mr)
- 
-                    return redirect(url_for('deleteSelected'))
-                 
-                    select = request.form.get('revoption')
-
-                    coll_reviews.delete_one({"_id": ObjectId(select)})
-
-                    
-                    # return render_template('assemble-for-deletion.html', fm=siteText["footer-message"], crv_em=crv_em, rev_bag=rev_bag)
-
-
-                # return render_template('member.html', fm=siteText["footer-message"], crv_em=crv_em, rev_bag=rev_bag)
+   
 
     return render_template('member_d.html', page='Member - Delete Page', methods=["GET", "POST"], fm=siteText["footer-message"],rev_bag=rev_bag )
 # =====================================//=============================
-
-
-
-
-
-
-
-
-
-
-
-
-# @app.route('/delete-process', methods=["GET", "POST"])
-# def deleteProcess():
-#     '''
-#      #DELETE PAGE 
-#     '''
-
-#     return render_template('delete-process.html', page="Delete Review(s)", Methods=["GET", "POST"], fm=siteText["footer-message"])
-# # #####################################################################
 
 @app.route('/delete-selected', methods=["GET", "POST"])
 def deleteSelected():
@@ -668,50 +645,43 @@ def deleteSelected():
 
 
 
-@app.route('/member_u', methods=["GET", "POST"])
+@app.route('/member_u.html', methods=["GET", "POST"])
 def member_u():
     '''
     ** MEMBER REVIEW UPDATE  VIEW **
 
     '''
-    if request.method == "POST":
-        unlock = False
-        movies = coll_reviews.find()
-        rev_bag = []
-        documents = coll_users.find()
+    # if request.method == "POST":
+    #     unlock = False
+    #     movies = coll_reviews.find()
+    #     rev_bag = []
+    #     documents = coll_users.find()
 
-        for u_cred in documents:
-            users = {
-                "u_my_info": u_cred["my-info"],
-                "u_username": u_cred['username'],
-                "u_f_name": u_cred['f-name'],
-                "u_l_name": u_cred['l-name'],
-                "u_email": u_cred['e-mail'],
-                "u_password": u_cred['password'],
-                "u_role": u_cred['role'],
-                "u_state": u_cred['a-state'],
-            }
+    #     for u_cred in documents:
+    #         users = {
+    #             "u_my_info": u_cred["my-info"],
+    #             "u_username": u_cred['username'],
+    #             "u_f_name": u_cred['f-name'],
+    #             "u_l_name": u_cred['l-name'],
+    #             "u_email": u_cred['e-mail'],
+    #             "u_password": u_cred['password'],
+    #             "u_role": u_cred['role'],
+    #             "u_state": u_cred['a-state'],
+    #         }
 
-            crv_em = request.form['e-mail']
-            if users['u_email'] == request.form['e-mail'] and users['u_password'] == request.form['password'] and users['u_role'] == 'Admin':
-                unlock = True
-                crv_em = u_cred["e-mail"]
+    #         crv_em = request.form['e-mail']
+    #         if users['u_email'] == request.form['e-mail'] and users['u_password'] == request.form['password'] and users['u_role'] == 'Admin':
+    #             unlock = True
+    #             crv_em = u_cred["e-mail"]
 
-                if unlock == True and request.form['admin-action'] == "d":#DELETE!!!
-                    coll_reviews.find()
-                    for mr in movies:
-                        if mr['m-email'] == crv_em:
-                            rev_bag.append(mr)
-
-                    select = request.form.get('revoption')
-                    # coll_reviews.delete_one({"_id": ObjectId(select)})
-
-                    
-                    return render_template('assemble-for-deletion.html', fm=siteText["footer-message"], crv_em=crv_em, rev_bag=rev_bag)
-
-
-                # return render_template('member.html', fm=siteText["footer-message"], crv_em=crv_em, rev_bag=rev_bag)
-
+    #             if unlock == True and request.form['admin-action'] == "d":#DELETE!!!
+    #                 coll_reviews.find()
+    #                 for mr in movies:
+    #                     if mr['m-email'] == crv_em:
+    #                         rev_bag.append(mr)
+ 
+    #                 return render_template('assemble-for-deletion.html', fm=siteText["footer-message"], crv_em=crv_em, rev_bag=rev_bag)
+ 
     return render_template('member_u.html', page='Member - Update / Delete Page', methods=["GET", "POST"], fm=siteText["footer-message"])
 # =====================================//=============================
 
@@ -737,83 +707,6 @@ def member_u():
 
 
 
-#//
-            
-            # crv_em = request.form['e-mail']
-            # if users['u_email'] == request.form['e-mail'] and users['u_password'] == request.form['password'] and users['u_role'] == 'Admin':
-            #     unlock = True
-            #     crv_em = u_cred["e-mail"]
-                 
-            #     if unlock == True and request.form['admin-action'] == "u": #UPDATE!!!!!
-                    
-            #         coll_reviews.find()
-            #         for mr in movies:
-            #             if mr['m-email'] == crv_em: # CORRECT REVIEWER EMAIL
-            #                 rev_bag.append(mr) # Add Review to bag
-
-            #             select = request.form.get('revoption') # get selected review ID...
-            #             if select == mr['_id']:
-
-            #                 # mt=mr['m-title']
-            #                 # print(mt)    
-            #                 # rev_results = coll_reviews.find({"$text": {"$search": search_tit}}).limit(10)
-                            
-            #                 crv={
-
-            #                     "m_title":mr['m-title'].upper(),
-            #                     "m_sub_title":mr['m-sub-title'],
-            #                     "m_genre":mr['m-genre'],
-            #                     "m_image_link":mr['m-image-link'],
-            #                     "m_synopsis":mr['m-synopsis'],
-            #                     "m_reviewer_name":mr['m-reviewer-name'],
-            #                     "m_review_date":mr['m-review-date'],
-            #                     "m_stars":mr['m-stars'],
-
-            #                     "m_sc_review": mr['m-sc-review'],
-            #                     "m_sc_example": mr['m-sc-example'],
-
-            #                     "m_ac_review": mr['m-ac-review'],
-            #                     "m_ac_example": mr['m-ac-example'],
-                                
-            #                     "m_te_review": mr['m-te-review'],
-            #                     "m_te_example": mr['m-te-example'],
-                                
-            #                     "m_so_review": mr['m-so-review'],
-            #                     "m_so_example": mr['m-so-example'],
-
-            #                     "m_summary": mr['m-summary'],
-            #                     "m_affiliate_link": mr['m-affiliate-link'],
-            #                     "m_email": mr['m-email'],
-            #                     "m_process":'none'
-
-            #                 }
-                     
-
-            #                 return render_template('update-sheet.html', crv=crv,  page='** Update Sheet! **', select=select, fm=siteText["footer-message"], crv_em=crv_em, rev_bag=rev_bag )
-                
-
-
-            #         return render_template('update-my-reviews.html', fm=siteText["footer-message"], crv_em=crv_em, rev_bag=rev_bag )
-
-
-
-#     return render_template('member_ad.html', page='Member - Update / Delete Page', methods=["GET", "POST"], fm=siteText["footer-message"])
-# # =====================================//=============================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -823,7 +716,11 @@ def member_u():
 @app.route('/member-options', methods=["GET", "POST"])
 def memberOptions():
     rev_bag=[]
-    if request.method == "POST":
+    crv={}
+    
+
+    #GET REVIEWS
+    if request.method == "POST" and request.form['user-options']=="None":
        
         movies = coll_reviews.find() # get movie collection
         documents = coll_users.find() # get users collection
@@ -841,8 +738,8 @@ def memberOptions():
 
             unlock = False
             crv_em = request.form['e-mail']
-         
-            if users['u_email'] == request.form['e-mail'] and users['u_password'] == request.form['password']  and request.form['user-options'] !='Delete'  and users['u_role'] == 'Admin':
+
+            if users['u_email'] == request.form['e-mail'] and users['u_password'] == request.form['password']  and request.form['user-options'] =='None'  and users['u_role'] == 'Admin':
                 unlock = True
 
                 for mr in movies:
@@ -851,22 +748,214 @@ def memberOptions():
        
                 return render_template('member-options-gr.html', page='Member Options Page!', fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock )
 
-            elif users['u_email'] == request.form['e-mail'] and users['u_password'] == request.form['password'] and request.form['user-options']=='Delete'  and users['u_role'] == 'Admin':
+
+
+    #DELETE REVIEWS
+    if request.method == "POST" and request.form['user-options']=="Delete":
+
+        movies = coll_reviews.find() # get movie collection
+        documents = coll_users.find() # get users collection
+        for u_cred in documents:
+            users = {
+                "u_my_info": u_cred["my-info"],
+                "u_username": u_cred['username'],
+                "u_f_name": u_cred['f-name'],
+                "u_l_name": u_cred['l-name'],
+                "u_email": u_cred['e-mail'],
+                "u_password": u_cred['password'],
+                "u_role": u_cred['role'],
+                "u_state": u_cred['a-state'],
+            }
+
+            unlock = False
+            crv_em = request.form['e-mail']
+
+            if users['u_email'] == request.form['e-mail'] and users['u_password'] == request.form['password'] and request.form['user-options']=='Delete'  and users['u_role'] == 'Admin':  
                 unlock = True
-                coll_reviews.find()
+
+                # coll_reviews.find()
                 deleterev = request.form['movie-list']
- 
+
                 coll_reviews.delete_one({'_id':ObjectId(deleterev)})
 
                 print("DELETED REVIEW!!")
                 print(deleterev)
 
-                return render_template('member-options-gr.html', page='Member Options Page!', fm=siteText["footer-message"], rev_bag=rev_bag)
+ 
 
-    return render_template('member-options.html', page='Member Options Page!', fm=siteText["footer-message"],rev_bag=rev_bag)
+                return render_template('member-options-gr.html', page='Member Options Page!', fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock )
+
+
+
+
+    #UPDATE REVIEWS
+    if request.method == "POST" and request.form['user-options']=="Update":
+
+        print("0:")
+        movies = coll_reviews.find() # get movie collection
+        documents = coll_users.find() # get users collection
+        for u_cred in documents:
+            users = {
+                "u_my_info": u_cred["my-info"],
+                "u_username": u_cred['username'],
+                "u_f_name": u_cred['f-name'],
+                "u_l_name": u_cred['l-name'],
+                "u_email": u_cred['e-mail'],
+                "u_password": u_cred['password'],
+                "u_role": u_cred['role'],
+                "u_state": u_cred['a-state'],
+            }
+
+            print("1:")
+            unlock = False
+            crv_em = request.form['e-mail']
+
+            updaterev = request.form['movie-list']
+
+            if  users['u_role'] == 'Admin' and request.form['user-options'] == "Update":  
+                unlock = True
+
+
+                print("2")
+
+                movies=coll_reviews.find()
+
+                for mr in movies:
+                    crv = {
+                    "m_title":mr['m-title'],
+                    "m_sub_title":mr['m-sub-title'],
+                    "m_genre":mr['m-genre'],
+                    "m_image_link":mr['m-image-link'],
+                    "m_synopsis":mr['m-synopsis'],
+                    "m_reviewer_name":mr['m-reviewer-name'],
+                    "m_review_date":mr['m-review-date'],
+                    "m_stars":mr['m-stars'],
+                    "m_sc_review": mr['m-sc-review'],
+                    "m_sc_example": mr['m-sc-example'],
+                    "m_ac_review": mr['m-ac-review'],
+                    "m_ac_example": mr['m-ac-example'],
+                    "m_te_review": mr['m-te-review'],
+                    "m_te_example": mr['m-te-example'],
+                    "m_so_review": mr['m-so-review'],
+                    "m_so_example": mr['m-so-example'],
+                    "m_summary": mr['m-summary'],
+                    "m_affiliate_link": mr['m-affiliate-link'],
+                    "m_email": mr['m-email'],
+                    "m_process":'none',
+                    }
+
+                 
+                     
+                    if crv_em == mr['_id']:
+
+                        print("3:")
+
+
+                        print(rev['_id'])       
+
+  
+            return render_template('update-sheet.html', page='Member Update Sheet', fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock, updaterev=updaterev, crv=crv )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # return render_template('member-options.html', page='Member Options Page!', fm=siteText["footer-message"],rev_bag=rev_bag, crv=crv)
+
+
+
+
+
+
+            # #UPDATE
+            # if users['u_email'] == request.form['e-mail'] and users['u_password'] == request.form['password']  and request.form['user-options'] == 'Update'  and users['u_role'] == 'Admin':
+            #     unlock = True
+                
+            #     updaterev = request.form['movie-list']
+            #     updaterev = updaterev
+
+            #     crv = {
+
+            #         "m_title":mr['m-title'],
+            #         "m_sub_title":mr['m-sub-title'],
+            #         "m_genre":mr['m-genre'],
+            #         "m_image_link":mr['m-image-link'],
+            #         "m_synopsis":mr['m-synopsis'],
+            #         "m_reviewer_name":mr['m-reviewer-name'],
+            #         "m_review_date":mr['m-review-date'],
+            #         "m_stars":mr['m-stars'],
+
+            #         "m_sc_review": mr['m-sc-review'],
+            #         "m_sc_example": mr['m-sc-example'],
+
+            #         "m_ac_review": mr['m-ac-review'],
+            #         "m_ac_example": mr['m-ac-example'],
+                    
+            #         "m_te_review": mr['m-te-review'],
+            #         "m_te_example": mr['m-te-example'],
+                    
+            #         "m_so_review": mr['m-so-review'],
+            #         "m_so_example": mr['m-so-example'],
+
+            #         "m_summary": mr['m-summary'],
+            #         "m_affiliate_link": mr['m-affiliate-link'],
+            #         "m_email": mr['m-email'],
+            #         "m_process":'none',
+            #     }
+
+            #     return render_template(url_for('member_u'), mr=mr, page='Member Update Sheet!', fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock, crv=crv, updaterev=updaterev )
+
+            # # return render_template('update-sheet.html', page='Member Update Sheet', fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock, updaterev=updaterev, crv=crv )
+
+
+
+
+            # # DELETE REVIEW
+            # if users['u_email'] == request.form['e-mail'] and users['u_password'] == request.form['password'] and request.form['user-options']=='Delete'  and users['u_role'] == 'Admin':
+                    
+            #     unlock = True
+            #     coll_reviews.find()
+            #     deleterev = request.form['movie-list']
+
+            #     coll_reviews.delete_one({'_id':ObjectId(deleterev)})
+
+            #     print("DELETED REVIEW!!")
+            #     print(deleterev)
+
+            # return render_template('member-options-gr.html', page='Member Options Page!', fm=siteText["footer-message"], rev_bag=rev_bag)
+
+
+
+    return render_template('member-options.html', page='Member Options Page!', fm=siteText["footer-message"],rev_bag=rev_bag, crv=crv)
+
 # =====================================//=============================
 
  
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -875,14 +964,11 @@ def memberOptions():
 @app.route('/member-options-gr', methods=["GET", "POST"])
 def memberOptionsGr():
 
-     
+ 
     return render_template('member-options-gr.html', page=' Page!', fm=siteText["footer-message"],rev_bag=rev_bag)
 # =====================================//=============================
 
-
-
-
-
+ 
 @app.route('/delete-success.html', methods=["GET", "POST"])
 def deleteSuccessOk():
    
@@ -937,25 +1023,18 @@ def memberSubmitOk():
 
 
 
-
 @app.route('/update-sheet.html', methods=["GET", "POST"])
 def updateMyReviews():
-
-    # if request.method == "POST":
-
-    #     movies = coll_reviews.find()
-    #     for each_movie in movies:
-    #         # if each_movie['_id'] == request.form['rev_option']:
-    #         if each_movie['_id'] == select:
-
-    #             print("---")
-
-    #         # coll_reviews.delete_one({"_id":request.form['rev_option']})
-
-    #     return render_template('update-ok.html', page='Update Review Success', fm=siteText["footer-message"])
-
+ 
     return render_template('update-sheet.html', page='Update Reviews', fm=siteText["footer-message"])
 # =====================================//=============================
+
+
+
+
+
+
+
 
 
 if __name__ == "__main__":
