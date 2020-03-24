@@ -16,7 +16,7 @@
     </p>
 
 
- 
+
 
     <div class="row">
         <div class="col-md-12">
@@ -36,7 +36,12 @@
 
     <div class="row">
         <div class="col-sm-12">
-            <h2>{{ [m_title] }} : {{ updaterev }}</h2>
+
+            <label for="picked">Review ID:</label><br>
+            <input id="picked" type="text" name="picked" value="{{ updaterev }}">
+
+
+            <!-- <h2>{{ crv['m_title'] }} : {{ updaterev }}</h2> -->
         </div>
     </div>
 
@@ -60,26 +65,6 @@
                     <label for="pwd">Password:</label>
                     <input type="password" name="password" class="form-control" id="pwd" required="true">
                 </div>
-                <!-- Delete Option -->
-                <!-- <radio class=form-group>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <label for="admin-action">Process:</label><br>
-                            <select id="admin-action" name="admin-action" type="text">
-                                <option value="-">-</option>
-                                <option value="c">Create</option>
-                                <option value="u">Update</option>
-                                <option value="d">Delete</option>
-                            </select>
-                        </div>
-                    </div>
-                </radio>
-                <br> -->
-
-                <!-- Submit Button -->
-                <!-- <button type="submit" class="btn btn-danger">Change An Existing Review</button>
-                <hr> -->
-
 
 
                 <div class="row">
@@ -91,7 +76,6 @@
 
 
 
-              
 
 
 
@@ -115,13 +99,14 @@
 
 
 
-
+                <!-- Review Content -->
+                
                 <div class="row">
                     <!-- Search Title -->
                     <div class="col-md-12 form-group">
                         <label for="m-title">Movie Title:</label><br>
                         <input id="m-title" class="form-control" name="m-title" type="text"
-                            value="{{  [m_title]  }}" placeholder="Movie-Title:"></input>
+                            value="{{  crv['m_title']  }}" placeholder="Movie-Title:"></input>
                     </div>
 
 
@@ -129,7 +114,7 @@
                     <div class="col-md-12">
                         <label for="m-sub-title">Movie Sub Title:</label><br>
                         <input id="m-sub-title" class="form-control" name="m-sub-title" type="text" class="entry-box"
-                            value="{{  [m_sub_title]  }} " placeholder="Sub-Title:"></input>
+                            value="{{  crv['m_sub_title']  }} " placeholder="Sub-Title:"></input>
                     </div>
 
                     <!-- Image Link -->

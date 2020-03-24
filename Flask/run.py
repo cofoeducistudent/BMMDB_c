@@ -40,8 +40,7 @@ Bootstrap(app)
 # //###############################################//==================
 ##     G L O B A L - V A R S - S E C T I O N                          ##
 # //###############################################//==================
-total_allowed = 0
-total_found = 0
+ 
 users = {}
 
 
@@ -52,15 +51,9 @@ siteText = {
 
 rev_result = {}
 rev_bag = []
-my_revs = {}
+ 
 crv_em = ""  # current reviewer email
-select = ""
-
  
- 
-mt=""
-
-
 updaterev=""
  
 
@@ -147,6 +140,8 @@ def contactSuccessOk():
 
 
 
+
+
 @app.route('/contribute', methods=["GET", "POST"])
 def contribute():
 
@@ -188,9 +183,7 @@ def contributeS():
 @app.route('/search', methods=["GET", "POST"])
 def search():
 
-    total_found = 0
-    total_allowed = 0
-
+   
     # Start search when
     if request.method == "POST":
 
@@ -266,7 +259,7 @@ def search():
 
         return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..')
 
-    return render_template('search.html', page='Search', fm=siteText["footer-message"], total_found=total_found, total_allowed=total_allowed)
+    return render_template('search.html', page='Search', fm=siteText["footer-message"])
 # =====================================//=============================
 
 # Search Result
@@ -276,7 +269,7 @@ def searchResults():
     #SEARCH RESULTS PAGE!
     '''
 
-    return render_template('search-results.html', page='Search Result(s) Page..', fm=siteText["footer-message"],  total_found=total_found, total_allowed=total_allowed)
+    return render_template('search-results.html', page='Search Result(s) Page..', fm=siteText["footer-message"])
 # =====================================//=============================
 
 
@@ -459,43 +452,7 @@ def promoteUserS():
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 
@@ -614,9 +571,7 @@ def member_d():
 @app.route('/delete-selected', methods=["GET", "POST"])
 def deleteSelected():
 
-
-
-
+ 
 
     return render_template('delete-selected.html', page='Member - Delete Page', methods=["GET", "POST"], fm=siteText["footer-message"],rev_bag=rev_bag )
 # =====================================//=============================
@@ -651,37 +606,7 @@ def member_u():
     ** MEMBER REVIEW UPDATE  VIEW **
 
     '''
-    # if request.method == "POST":
-    #     unlock = False
-    #     movies = coll_reviews.find()
-    #     rev_bag = []
-    #     documents = coll_users.find()
-
-    #     for u_cred in documents:
-    #         users = {
-    #             "u_my_info": u_cred["my-info"],
-    #             "u_username": u_cred['username'],
-    #             "u_f_name": u_cred['f-name'],
-    #             "u_l_name": u_cred['l-name'],
-    #             "u_email": u_cred['e-mail'],
-    #             "u_password": u_cred['password'],
-    #             "u_role": u_cred['role'],
-    #             "u_state": u_cred['a-state'],
-    #         }
-
-    #         crv_em = request.form['e-mail']
-    #         if users['u_email'] == request.form['e-mail'] and users['u_password'] == request.form['password'] and users['u_role'] == 'Admin':
-    #             unlock = True
-    #             crv_em = u_cred["e-mail"]
-
-    #             if unlock == True and request.form['admin-action'] == "d":#DELETE!!!
-    #                 coll_reviews.find()
-    #                 for mr in movies:
-    #                     if mr['m-email'] == crv_em:
-    #                         rev_bag.append(mr)
- 
-    #                 return render_template('assemble-for-deletion.html', fm=siteText["footer-message"], crv_em=crv_em, rev_bag=rev_bag)
- 
+     
     return render_template('member_u.html', page='Member - Update / Delete Page', methods=["GET", "POST"], fm=siteText["footer-message"])
 # =====================================//=============================
 
@@ -713,17 +638,21 @@ def member_u():
 
 
 
-@app.route('/member-options', methods=["GET", "POST"])
+@app.route('/member-options', methods=["GET", "POST"] )
 def memberOptions():
+
+    
+
     rev_bag=[]
     crv={}
     
 
     #GET REVIEWS
     if request.method == "POST" and request.form['user-options']=="None":
-       
+        
         movies = coll_reviews.find() # get movie collection
         documents = coll_users.find() # get users collection
+
         for u_cred in documents:
             users = {
                 "u_my_info": u_cred["my-info"],
@@ -738,6 +667,7 @@ def memberOptions():
 
             unlock = False
             crv_em = request.form['e-mail']
+            
 
             if users['u_email'] == request.form['e-mail'] and users['u_password'] == request.form['password']  and request.form['user-options'] =='None'  and users['u_role'] == 'Admin':
                 unlock = True
@@ -745,8 +675,13 @@ def memberOptions():
                 for mr in movies:
                     if mr['m-email'] == crv_em and unlock == True:
                         rev_bag.append(mr)
-       
+                        
+                
+                
                 return render_template('member-options-gr.html', page='Member Options Page!', fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock )
+
+
+
 
 
 
@@ -781,9 +716,11 @@ def memberOptions():
                 print("DELETED REVIEW!!")
                 print(deleterev)
 
- 
-
                 return render_template('member-options-gr.html', page='Member Options Page!', fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock )
+
+
+
+
 
 
 
@@ -791,7 +728,7 @@ def memberOptions():
     #UPDATE REVIEWS
     if request.method == "POST" and request.form['user-options']=="Update":
 
-        print("0:")
+      
         movies = coll_reviews.find() # get movie collection
         documents = coll_users.find() # get users collection
         for u_cred in documents:
@@ -806,22 +743,16 @@ def memberOptions():
                 "u_state": u_cred['a-state'],
             }
 
-            print("1:")
             unlock = False
             crv_em = request.form['e-mail']
 
-            updaterev = request.form['movie-list']
-
             if  users['u_role'] == 'Admin' and request.form['user-options'] == "Update":  
                 unlock = True
-
-
-                print("2")
-
                 movies=coll_reviews.find()
 
                 for mr in movies:
-                    crv = {
+
+                    crv = {  
                     "m_title":mr['m-title'],
                     "m_sub_title":mr['m-sub-title'],
                     "m_genre":mr['m-genre'],
@@ -844,97 +775,50 @@ def memberOptions():
                     "m_process":'none',
                     }
 
-                 
-                     
-                    if crv_em == mr['_id']:
+                    # current =mr['_id']
+                    updaterev=request.form['movie-list']
 
-                        print("3:")
+                x = coll_reviews.find_one( {"_id": ObjectId(updaterev)} )
+
+                print (x)
+
+                crv = {  
+                    "m_title":x['m-title'],
+                    "m_sub_title":x['m-sub-title'],
+                    "m_genre":x['m-genre'],
+                    "m_image_link":x['m-image-link'],
+                    "m_synopsis":x['m-synopsis'],
+                    "m_reviewer_name":x['m-reviewer-name'],
+                    "m_review_date":x['m-review-date'],
+                    "m_stars":x['m-stars'],
+                    "m_sc_review": x['m-sc-review'],
+                    "m_sc_example": x['m-sc-example'],
+                    "m_ac_review": x['m-ac-review'],
+                    "m_ac_example": x['m-ac-example'],
+                    "m_te_review": x['m-te-review'],
+                    "m_te_example": x['m-te-example'],
+                    "m_so_review": x['m-so-review'],
+                    "m_so_example": x['m-so-example'],
+                    "m_summary": x['m-summary'],
+                    "m_affiliate_link": x['m-affiliate-link'],
+                    "m_email": x['m-email'],
+                    "m_process":'none',
+                    }
+
+                        # # print(current)
+
+                        # if updaterev == current :
+
+                        #     updaterev = request.form['movie-list']
+                        #     print("KABOOM:")
+                        #     print(updaterev)
 
 
-                        print(rev['_id'])       
-
+                        
   
-            return render_template('update-sheet.html', page='Member Update Sheet', fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock, updaterev=updaterev, crv=crv )
+                return render_template('update-sheet.html', page='Member Update Sheet', fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock, updaterev=updaterev, crv=crv )
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # return render_template('member-options.html', page='Member Options Page!', fm=siteText["footer-message"],rev_bag=rev_bag, crv=crv)
-
-
-
-
-
-
-            # #UPDATE
-            # if users['u_email'] == request.form['e-mail'] and users['u_password'] == request.form['password']  and request.form['user-options'] == 'Update'  and users['u_role'] == 'Admin':
-            #     unlock = True
-                
-            #     updaterev = request.form['movie-list']
-            #     updaterev = updaterev
-
-            #     crv = {
-
-            #         "m_title":mr['m-title'],
-            #         "m_sub_title":mr['m-sub-title'],
-            #         "m_genre":mr['m-genre'],
-            #         "m_image_link":mr['m-image-link'],
-            #         "m_synopsis":mr['m-synopsis'],
-            #         "m_reviewer_name":mr['m-reviewer-name'],
-            #         "m_review_date":mr['m-review-date'],
-            #         "m_stars":mr['m-stars'],
-
-            #         "m_sc_review": mr['m-sc-review'],
-            #         "m_sc_example": mr['m-sc-example'],
-
-            #         "m_ac_review": mr['m-ac-review'],
-            #         "m_ac_example": mr['m-ac-example'],
-                    
-            #         "m_te_review": mr['m-te-review'],
-            #         "m_te_example": mr['m-te-example'],
-                    
-            #         "m_so_review": mr['m-so-review'],
-            #         "m_so_example": mr['m-so-example'],
-
-            #         "m_summary": mr['m-summary'],
-            #         "m_affiliate_link": mr['m-affiliate-link'],
-            #         "m_email": mr['m-email'],
-            #         "m_process":'none',
-            #     }
-
-            #     return render_template(url_for('member_u'), mr=mr, page='Member Update Sheet!', fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock, crv=crv, updaterev=updaterev )
-
-            # # return render_template('update-sheet.html', page='Member Update Sheet', fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock, updaterev=updaterev, crv=crv )
-
-
-
-
-            # # DELETE REVIEW
-            # if users['u_email'] == request.form['e-mail'] and users['u_password'] == request.form['password'] and request.form['user-options']=='Delete'  and users['u_role'] == 'Admin':
-                    
-            #     unlock = True
-            #     coll_reviews.find()
-            #     deleterev = request.form['movie-list']
-
-            #     coll_reviews.delete_one({'_id':ObjectId(deleterev)})
-
-            #     print("DELETED REVIEW!!")
-            #     print(deleterev)
-
-            # return render_template('member-options-gr.html', page='Member Options Page!', fm=siteText["footer-message"], rev_bag=rev_bag)
-
-
-
+ 
     return render_template('member-options.html', page='Member Options Page!', fm=siteText["footer-message"],rev_bag=rev_bag, crv=crv)
 
 # =====================================//=============================
@@ -1025,6 +909,8 @@ def memberSubmitOk():
 
 @app.route('/update-sheet.html', methods=["GET", "POST"])
 def updateMyReviews():
+
+    
  
     return render_template('update-sheet.html', page='Update Reviews', fm=siteText["footer-message"])
 # =====================================//=============================
@@ -1040,6 +926,3 @@ def updateMyReviews():
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP", "127.0.0.1"), port=int(
         os.environ.get("PORT", 8000)), debug=True)
-
-
-
