@@ -752,35 +752,10 @@ def memberOptions():
 
                 for mr in movies:
 
-                    crv = {  
-                    "m_title":mr['m-title'],
-                    "m_sub_title":mr['m-sub-title'],
-                    "m_genre":mr['m-genre'],
-                    "m_image_link":mr['m-image-link'],
-                    "m_synopsis":mr['m-synopsis'],
-                    "m_reviewer_name":mr['m-reviewer-name'],
-                    "m_review_date":mr['m-review-date'],
-                    "m_stars":mr['m-stars'],
-                    "m_sc_review": mr['m-sc-review'],
-                    "m_sc_example": mr['m-sc-example'],
-                    "m_ac_review": mr['m-ac-review'],
-                    "m_ac_example": mr['m-ac-example'],
-                    "m_te_review": mr['m-te-review'],
-                    "m_te_example": mr['m-te-example'],
-                    "m_so_review": mr['m-so-review'],
-                    "m_so_example": mr['m-so-example'],
-                    "m_summary": mr['m-summary'],
-                    "m_affiliate_link": mr['m-affiliate-link'],
-                    "m_email": mr['m-email'],
-                    "m_process":'none',
-                    }
-
-                    # current =mr['_id']
+  
                     updaterev=request.form['movie-list']
 
                 x = coll_reviews.find_one( {"_id": ObjectId(updaterev)} )
-
-                print (x)
 
                 crv = {  
                     "m_title":x['m-title'],
@@ -805,14 +780,7 @@ def memberOptions():
                     "m_process":'none',
                     }
 
-                        # # print(current)
-
-                        # if updaterev == current :
-
-                        #     updaterev = request.form['movie-list']
-                        #     print("KABOOM:")
-                        #     print(updaterev)
-
+                    
 
                         
   
