@@ -182,45 +182,50 @@
                 <div class="form-group">
                     <label id="sc-review" for="m-title">Script-review & Citation:</label><br>
                     <textarea name="sc-review" class="form-control t-entry-box" rows="10" cols="100%" id="textarea"
-                        placeholder="Story/Script-Review">{{  crv[m_sc_review]  }}</textarea>
+                        placeholder="Story/Script-Review">{{  crv['m_sc_review']  }}</textarea>
                     <textarea name="sc-example" class="form-control t-entry-box" rows="10" cols="100%" id="textarea"
-                        placeholder="Story/Script-Example">{{  crv[m_sc_example]  }}</textarea>
+                        placeholder="Story/Script-Example">{{  crv['m_sc_example']  }}</textarea>
                     <hr>
                 </div>
+
                 <!-- Acting Review -->
                 <div class="form-group">
                     <label for="m-title">Acting-review & Citation:</label><br>
                     <textarea id="ac-review" name="ac-review" class="form-control t-entry-box" rows="10" cols="100%"
-                        id="textarea" placeholder="Acting-Review">{{  crv[m_ac_review]  }}</textarea>
+                        id="textarea" placeholder="Acting-Review">{{  crv['m_ac_review']  }}</textarea>
                     <textarea name="ac-example" class="form-control t-entry-box" rows="10" cols="100%" id="textarea"
-                        placeholder="Acting-example">{{  crv[m_ac_example]  }}</textarea>
+                        placeholder="Acting-example">{{  crv['m_ac_example']  }}</textarea>
                     <hr>
                 </div>
+
                 <!-- Technical Review -->
                 <div class="form-group">
                     <label for="te-reviewer">Technical-review & Citation:</label><br>
                     <textarea id="te-review" name="te-review" class="form-control t-entry-box" rows="10" cols="100%"
-                        id="textarea" placeholder="Technical-Review">{{  crv[m_te_review]  }}</textarea>
+                        id="textarea" placeholder="Technical-Review">{{  crv['m_te_review']  }}</textarea>
                     <textarea name="te-example" class="form-control t-entry-box" rows="10" cols="100%" id="textarea"
-                        placeholder="Technical-example">{{  crv[m_te_example]  }}</textarea>
+                        placeholder="Technical-example">{{  crv['m_te_example']  }}</textarea>
                     <hr>
                 </div>
+
                 <!-- Sound/Audio Review -->
                 <div class="form-group">
                     <label for="so-review">Sound-review & Citation:</label><br>
                     <textarea id="so-review" name="so-review" class="form-control t-entry-box" rows="10" cols="100%"
-                        id="textarea" placeholder="Sound/Audio - Review">{{  crv[m_so_review]  }}</textarea>
+                        id="textarea" placeholder="Sound/Audio - Review">{{  crv['m_so_review']  }}</textarea>
                     <textarea name="so-example" class="form-control t-entry-box" rows="10" cols="100%" id="textarea"
-                        placeholder="Sound/Audio - example">{{  crv[m_so_example]  }}</textarea>
+                        placeholder="Sound/Audio - example">{{  crv['m_so_example']  }}</textarea>
                     <hr>
                 </div>
+
                 <!-- Summary Review -->
                 <div class="form-group">
                     <label for="su-review">Summary-review:</label><br>
                     <textarea id="su-review" name="su-review" class="form-control t-entry-box" rows="10" cols="100%"
-                        id="textarea" placeholder="Overall - Summary">{{  crv[m_summary]  }}</textarea>
+                        id="textarea" placeholder="Overall - Summary">{{  crv['m_summary']  }}</textarea>
                     <hr>
                 </div>
+
                 <!-- Submit Button -->
                 <button type="submit" class="btn btn-warning">Submit Review</button>
             </form>
