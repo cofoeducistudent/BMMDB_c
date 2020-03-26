@@ -12,25 +12,18 @@
     <p>
         <h6>Photo Pixabay License </h6>
     </p>
-
     <form action="" method="POST" class="form-group">
-
-
-
-
-
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <p><b>Member Options page</b></p>
-
-                      
-                        
-                        <input type="radio" name="user-options" value="None" class="form-group" checked> -Get Reviews</input><br>
-                        <input type="radio" name="user-options" value="Update" class="form-group"> -Update Review</input><br>
-                        <input type="radio" name="user-options" value="Delete" class="form-group"> -Delete Review</input><br>
-
+                        <input type="radio" name="user-options" value="None" class="form-group" checked> -Get
+                        Reviews</input><br>
+                        <input type="radio" name="user-options" value="Update" class="form-group"> -Update
+                        Review</input><br>
+                        <input type="radio" name="user-options" value="Delete" class="form-group"> -Delete
+                        Review</input><br>
                     </div>
                 </div>
             </div>
@@ -39,7 +32,6 @@
         <!-- Search Button & Form -->
         <div class="row">
             <div class="col-md-12">
-
                 <!-- Username -->
                 <div class="form-group">
                     <label for="username">Username:</label>
@@ -59,18 +51,13 @@
                 <!-- Grab Button -->
                 <button type="submit" class="btn btn-warning">Action Selected Process</button>
                 <hr>
-
-
-
                 <!-- // -->
                 <div class="row">
                     <div class="col-sm-12">
                         <label for="review-item">Movie Review:</label>
                         <select name="movie-list" id="review-item" class="form-control">
                             {% for m in rev_bag %}
-
                             <option value="{{ m['_id'] }}"> {{m['m-title'] }} : {{ m['_id'] }} </option>
-
                             {%endfor%}
                         </select>
                     </div>
@@ -80,9 +67,6 @@
     </form>
 </div>
 </div>
-
-
-
 <!-- Footer -->
 <div class="row">
     <div class="col-md-12 text-center  w-100">

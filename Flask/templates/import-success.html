@@ -1,0 +1,42 @@
+{% extends 'default.html' %}
+
+<body>
+    <!-- ERROR PAGE -->
+    {% block body %}
+    <div class="container">
+        {{super()}}
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Panel -->
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <p>SUCCESS!</p>
+                                <p>You have successfully Imported data into your Database!</p>
+                                <p>
+                                    Done!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Footer -->
+                <div class="row">
+                    <div class="col-md-12 text-center  w-100">
+                        <div class="footer">
+                            <h2>{{fm}}</h2>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endblock body %}
+</body>
+
+</html>

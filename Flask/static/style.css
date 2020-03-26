@@ -16,7 +16,7 @@ body {
     --main-page-text-color: rgb(17, 19, 20);
     --picture-shadow-color: #DAB688;
     color: var(--main-page-text-color);
-    --backplate-background-color: rgb(219, 216, 216);
+    --backplate-background-color: rgb(226, 225, 225);
 }
 /* Main Navigation  Bar  */
 .nav-block, li {

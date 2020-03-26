@@ -1,24 +1,17 @@
 # Imports
 import os
- 
 import pymongo
 from flask import Flask, render_template, url_for, request, redirect, flash
 from flask_bootstrap import Bootstrap
 from os import path
 from bson.objectid import ObjectId
- 
-
-
 # Load Environment Variables
 if path.exists("env.py"):
     import env
-
-
 MONGODB_URI = os.environ.get("MONGO_URI")
 DBS_NAME = "rmrdb"
 COLLECTION_USER_NAME = "users"
 COLLECTION_REVIEWS = "reviews"
-
 # Database Connection
 
 
@@ -34,36 +27,23 @@ def mongo_connect(url):
 conn = mongo_connect(MONGODB_URI)  # Connect database with environment string
 coll_users = conn[DBS_NAME][COLLECTION_USER_NAME]
 coll_reviews = conn[DBS_NAME][COLLECTION_REVIEWS]
-
 app = Flask(__name__)
 Bootstrap(app)
-
-
 # //###############################################//==================
 ##     G L O B A L - V A R S - S E C T I O N                          ##
 # //###############################################//==================
- 
 users = {}
-
-
 # Footer Message
 siteText = {
     "footer-message": " ~ Copyright 2020, Code-Institute Milestone Project-3 - Clement Ofoedu ~ ",
 }
-
 rev_result = {}
 rev_bag = []
- 
 crv_em = ""  # current reviewer email
- 
-updaterev=""
-
-
-
+updaterev = ""
 # //###############################################//==================
 ##     M A I N  - C O D E - S E C T I O N                             #
 # //###############################################//==================
-
 '''
 CHECK FOR DUPLICATE OBJECT ID
 '''
@@ -76,46 +56,21 @@ def checkDup(id):
         if id == stuff['_id']:
             matchid = 1
             return matchid
-
-
 # //###############################################//==================
 ##     M A I N  - VIEWS - S E C T I O N                              ##
 # //###############################################//==================
-
-
 @app.route('/')
 def index():
-
     return render_template('index.html', page='Blockbusters, McGuffins & Moes', fm=siteText["footer-message"])
 # =====================================//=============================
-
 # About
 @app.route('/about')
 def about():
     '''
     #ABOUT PAGE VIEW
     '''
-
     return render_template('about.html', page='About Us', fm=siteText["footer-message"])
 # =====================================//=============================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @app.route('/contact', methods=["GET", "POST"])
 def contact():
     '''
@@ -133,21 +88,8 @@ def contactSuccessOk():
     '''
     return render_template('contact-success.html', page='Thank You for contacting us!', fm=siteText["footer-message"])
 # =====================================//=============================
-
-
-
-
-
-
-
-
-
-
-
-
 @app.route('/contribute', methods=["GET", "POST"])
 def contribute():
-
     if request.method == "POST":
         return redirect(url_for('contributeS'))
     return render_template('contribute.html', page='Contribute Movie Suggestions For Review', fm=siteText["footer-message"])
@@ -155,43 +97,13 @@ def contribute():
 # Contribute Success
 @app.route('/contribute-success', methods=["GET", "POST"])
 def contributeS():
-
     return render_template('contribute-success.html', page='Contribution success!', fm=siteText["footer-message"])
 # =====================================//=============================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @app.route('/search', methods=["GET", "POST"])
 def search():
-
-   
     # Start search when
     if request.method == "POST":
-
         rev_results = []
-
         # Search criteria
         search_tit = request.form["s-title"]
         search_sub = request.form["s-sub-title"]
@@ -199,9 +111,7 @@ def search():
         search_syn = request.form["s-synopsis"]
         search_gen = request.form["s-genre"]
         search_stars = request.form["s-stars"]
-
        ##########################//###############################
-
         '''
         #TITLE
         '''
@@ -209,7 +119,6 @@ def search():
             print(search_tit)
             rev_results = coll_reviews.find(
                 {"$text": {"$search": search_tit}}).limit(10)
-
         '''
         #SUB-TITLE
         '''
@@ -217,7 +126,6 @@ def search():
             print(search_sub)
             rev_results = coll_reviews.find(
                 {"$text": {"$search": search_sub}}).limit(10)
-
         '''
         #SEARCH REVIEWER
         '''
@@ -225,7 +133,6 @@ def search():
             print(search_rev)
             rev_results = coll_reviews.find(
                 {"$text": {"$search": search_rev}}).limit(10)
-
         '''
         #SEARCH SYNOPSIS
         '''
@@ -233,15 +140,13 @@ def search():
             print(search_syn)
             rev_results = coll_reviews.find(
                 {"$text": {"$search": search_syn}}).limit(10)
-
         '''
         #SEARCH GENRE
         '''
         if search_gen != "":
             print(search_gen)
             rev_results = coll_reviews.find(
-                {"$text": {"$search": search_gen }}).limit(10)
-
+                {"$text": {"$search": search_gen}}).limit(10)
         '''
         #SEARCH STARS
         '''
@@ -249,61 +154,29 @@ def search():
             print(search_stars)
             rev_results = coll_reviews.find(
                 {"$text": {"$search": search_stars}}).limit(10)
-
-
         '''
         #DEFAULT SEARCH ON BLANK PARAMS
         '''
         if search_tit == "" and search_sub == "" and search_gen == "" and search_rev == "" and search_syn == "" and search_stars == "":
             search_rev = "Clement"
-
             rev_results = coll_reviews.find(
                 {"$text": {"$search": search_rev}}).limit(10)
-
         return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..')
-
     return render_template('search.html', page='Search', fm=siteText["footer-message"])
 # =====================================//=============================
-
 # Search Result
 @app.route('/search-results', methods=["GET", "POST"])
 def searchResults():
     '''
     #SEARCH RESULTS PAGE!
     '''
-
     return render_template('search-results.html', page='Search Result(s) Page..', fm=siteText["footer-message"])
 # =====================================//=============================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @app.route('/register', methods=["GET", "POST"])
 def register():
     '''
     # Register Users .... Change the role default to Member if you wish everyone to be able to submit a review
-
     '''
-
     if request.method == "POST":
         post = {
             "my-info": request.form["info"],
@@ -315,10 +188,8 @@ def register():
             "role": "user",
             "a-state": "no"
         }
-
         found = False
         unlock = False
-
         documents = coll_users.find()
         found = 0
         for entry in documents:
@@ -326,13 +197,11 @@ def register():
                 found = 1
                 print("Email Already Exists")
                 return redirect(url_for('dupEmail'))
-
         for entry in documents:
             if entry['e-mail'] == request.form['e-mail'] and entry['password'] == request.form['password']:
                 unlock = True
             if entry['e-mail'] == request.form['e-mail']:
                 found = True
-
             # Login success
         if unlock == True:
             return redirect(url_for('loginSuccess'))
@@ -341,10 +210,8 @@ def register():
         elif entry['e-mail'] != request.form['e-mail']:
             coll_users.insert_one(post)
             return redirect(url_for('index'))
-
     return render_template('register.html', page='Member Registration Request', fm=siteText["footer-message"], users=users)
 # =====================================//=============================
-
 @app.route('/dup-email')
 def dupEmail():
     '''
@@ -353,34 +220,6 @@ def dupEmail():
     '''
     return render_template('dup-email.html', page='Error - Duplicate Email!', methods=["GET", "POST"], fm=siteText["footer-message"])
 # =====================================//=============================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @app.route('/promoteuser', methods=["GET", "POST"])
 def promoteUser():
     '''
@@ -397,7 +236,6 @@ def promoteUser():
             uPassword = user['password']
             uRole = user['role']
             aff_state = request.form['a-state']
-
             if fem.upper() == uEmail.upper() and aff_state.upper() == "-" and uRole == "user":
                 print("<<>>"+fem.upper())
                 nw = {
@@ -414,7 +252,6 @@ def promoteUser():
                 coll_users.update_one(user, nw)
                 print("DONE")
                 return redirect(url_for('promoteUserS'))
-
             if fem.upper() == uEmail.upper() and uRole == "Admin" and aff_state.upper() == "YES":
                 print("+//+"+aff_state)
                 nw = {
@@ -429,12 +266,9 @@ def promoteUser():
                     }
                 }
                 coll_users.update_one(user, nw)
-
                 return redirect(url_for('promoteUserS'))
     return render_template('promoteuser.html', page="Grant - Poster Privilege", Methods=["GET", "POST"], fm=siteText["footer-message"])
 # #####################################################################
-
-
 @app.route('/makeadmin-success', methods=["GET", "POST"])
 def promoteUserS():
     '''
@@ -443,39 +277,17 @@ def promoteUserS():
     '''
     return render_template('promoteuser-success.html', page="Promote User - Success", Methods=["GET", "POST"], fm=siteText["footer-message"])
 # #####################################################################
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
- 
 @app.route('/member', methods=["GET", "POST"])
 def member():
     '''
     INSERTION OF NEW MOVIE REVIEW
     VIEW PAGE!
     '''
-
     unlock = False
     if request.method == "POST":
         documents = coll_users.find()
         for u_cred in documents:
- 
             crv_em = u_cred["e-mail"]
-
             for entry in documents:
                 reviews = {
                     "m-title": request.form["m-title"].upper(),
@@ -499,163 +311,50 @@ def member():
                     "m-email": request.form["e-mail"],
                     "m-process": "none",
                 }
-
                 if entry['e-mail'] == request.form['e-mail'] and entry['password'] == request.form['password'] and entry['role'] == 'Admin':
                     unlock = True
-
                     if unlock == True:
                         '''
                             # ADD TO DATABASE NEW REVIEW #
                         '''
                         tuser = coll_users.find()
                         for auser in tuser:
-
                             # Add to Database if Title entry has been made!!
                             if auser['e-mail'] == crv_em and auser['a-state'] == "Yes":
                                 # Insert A Review!!!!!!
                                 reviews["m-affiliate-link"] = request.form["m-af-link"]
                                 coll_reviews.insert_one(reviews)
                                 return render_template(url_for('memberSubmitOk'), page='Member Review Submission OK!', fm=siteText["footer-message"])
-
                             # REMOVE AF-LINK IF MEMBER AF STATUS FALSE
                             if auser['e-mail'] == crv_em and auser['a-state'] == "no":
                                 reviews["m-affiliate-link"] = "#"
                                 coll_reviews.insert_one(reviews)
                                 return render_template(url_for('memberSubmitOk'), page='Member Review Submission OK!', fm=siteText["footer-message"])
-
     return render_template('member.html', page='Member Add Review - Page', methods=["GET", "POST"], fm=siteText["footer-message"])
 # =====================================//=============================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @app.route('/member_d', methods=["GET", "POST"])
 def member_d():
-   
-
-    return render_template('member_d.html', page='Member - Delete Page', methods=["GET", "POST"], fm=siteText["footer-message"],rev_bag=rev_bag )
+    return render_template('member_d.html', page='Member - Delete Page', methods=["GET", "POST"], fm=siteText["footer-message"], rev_bag=rev_bag)
 # =====================================//=============================
-
 @app.route('/delete-selected', methods=["GET", "POST"])
 def deleteSelected():
-
- 
-
-    return render_template('delete-selected.html', page='Member - Delete Page', methods=["GET", "POST"], fm=siteText["footer-message"],rev_bag=rev_bag )
+    return render_template('delete-selected.html', page='Member - Delete Page', methods=["GET", "POST"], fm=siteText["footer-message"], rev_bag=rev_bag)
 # =====================================//=============================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @app.route('/member_u.html', methods=["GET", "POST"])
 def member_u():
     '''
     ** MEMBER REVIEW UPDATE  VIEW **
-
     '''
-     
     return render_template('member_u.html', page='Member - Update / Delete Page', methods=["GET", "POST"], fm=siteText["footer-message"])
 # =====================================//=============================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@app.route('/member-options', methods=["GET", "POST"] )
+@app.route('/member-options', methods=["GET", "POST"])
 def memberOptions():
-
-    
-
-    rev_bag=[]
-    crv={}
-    
-
-    #GET REVIEWS
-    if request.method == "POST" and request.form.get('user-options')=="None":
-        
-        movies = coll_reviews.find() # get movie collection
-        documents = coll_users.find() # get users collection
-
+    rev_bag = []
+    crv = {}
+    # GET REVIEWS
+    if request.method == "POST" and request.form.get('user-options') == "None":
+        movies = coll_reviews.find()  # get movie collection
+        documents = coll_users.find()  # get users collection
         for u_cred in documents:
             users = {
                 "u_my_info": u_cred["my-info"],
@@ -667,32 +366,18 @@ def memberOptions():
                 "u_role": u_cred['role'],
                 "u_state": u_cred['a-state'],
             }
-
             unlock = False
             crv_em = request.form['e-mail']
-            
-
-            if users['u_email'] == request.form['e-mail'] and users['u_password'] == request.form['password']  and request.form['user-options'] =='None'  and users['u_role'] == 'Admin':
+            if users['u_email'] == request.form['e-mail'] and users['u_password'] == request.form['password'] and request.form['user-options'] == 'None' and users['u_role'] == 'Admin':
                 unlock = True
-
                 for mr in movies:
                     if mr['m-email'] == crv_em and unlock == True:
                         rev_bag.append(mr)
-                        
-                
-                
-                return render_template('member-options-gr.html', page='Member Options Page!', fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock )
-
-
-
-
-
-
-    #DELETE REVIEWS
-    if request.method == "POST" and request.form.get('user-options')=="Delete":
-
-        movies = coll_reviews.find() # get movie collection
-        documents = coll_users.find() # get users collection
+                return render_template('member-options-gr.html', page='Member Maintenance Page!', fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock)
+    # DELETE REVIEWS
+    if request.method == "POST" and request.form.get('user-options') == "Delete":
+        movies = coll_reviews.find()  # get movie collection
+        documents = coll_users.find()  # get users collection
         for u_cred in documents:
             users = {
                 "u_my_info": u_cred["my-info"],
@@ -704,39 +389,24 @@ def memberOptions():
                 "u_role": u_cred['role'],
                 "u_state": u_cred['a-state'],
             }
-
             unlock = False
             crv_em = request.form['e-mail']
-
-            if users['u_email'] == request.form['e-mail'] and users['u_password'] == request.form['password'] and request.form['user-options']=='Delete'  and users['u_role'] == 'Admin':  
+            if users['u_email'] == request.form['e-mail'] and users['u_password'] == request.form['password'] and request.form['user-options'] == 'Delete' and users['u_role'] == 'Admin':
                 unlock = True
-
                 # coll_reviews.find()
                 deleterev = request.form['movie-list']
-
-                coll_reviews.delete_one({'_id':ObjectId(deleterev)})
-
+                coll_reviews.delete_one({'_id': ObjectId(deleterev)})
                 print("DELETED REVIEW!!")
                 print(deleterev)
+                return render_template('member-options-gr.html', page='Member Maintenance Page!', fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock)
+    
+    
+    # UPDATE REVIEWS
+    
+    if request.method == "POST" and request.form.get('user-options') == "Update":
+        movies = coll_reviews.find()  # get movie collection
 
-                return render_template('member-options-gr.html', page='Member Options Page!', fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock )
-
-
-
-
-
-
-
-
-
-
-
-
-    #UPDATE REVIEWS
-    if request.method == "POST" and request.form.get('user-options')=="Update":
-  
-        movies = coll_reviews.find() # get movie collection
-        documents = coll_users.find() # get users collection
+        documents = coll_users.find()  # get users collection
         for u_cred in documents:
             users = {
                 "u_my_info": u_cred["my-info"],
@@ -748,36 +418,30 @@ def memberOptions():
                 "u_role": u_cred['role'],
                 "u_state": u_cred['a-state'],
             }
-
             unlock = False
             crv_em = request.form['e-mail']
 
-            if  users['u_role'] == 'Admin' and request.form['user-options'] == "Update":  
-                unlock = True
-                movies=coll_reviews.find()
-
-                for mr in movies:
-
-                    updaterev = request.form['movie-list']
-                    f = open("templates/crvid","w")
-                    f.write(updaterev)
-                    f.close()
-                   
-
-                x = coll_reviews.find_one( {"_id": ObjectId(updaterev)} )
 
             
-
+            if users['u_role'] == 'Admin' and request.form['user-options'] == "Update":
+                unlock = True
+                movies = coll_reviews.find()
+                for mr in movies:
+                    updaterev = request.form['movie-list']
+                    f = open("templates/crvid", "w")
+                    f.write(updaterev)
+                    f.close()
+                x = coll_reviews.find_one({"_id": ObjectId(updaterev)})
                 # Grab What is in Database
-                crv = {  
-                    "m_title":x['m-title'],
-                    "m_sub_title":x['m-sub-title'],
-                    "m_genre":x['m-genre'],
-                    "m_image_link":x['m-image-link'],
-                    "m_synopsis":x['m-synopsis'],
-                    "m_reviewer_name":x['m-reviewer-name'],
-                    "m_review_date":x['m-review-date'],
-                    "m_stars":x['m-stars'],
+                crv = {
+                    "m_title": x['m-title'],
+                    "m_sub_title": x['m-sub-title'],
+                    "m_genre": x['m-genre'],
+                    "m_image_link": x['m-image-link'],
+                    "m_synopsis": x['m-synopsis'],
+                    "m_reviewer_name": x['m-reviewer-name'],
+                    "m_review_date": x['m-review-date'],
+                    "m_stars": x['m-stars'],
                     "m_sc_review": x['m-sc-review'],
                     "m_sc_example": x['m-sc-example'],
                     "m_ac_review": x['m-ac-review'],
@@ -789,18 +453,17 @@ def memberOptions():
                     "m_summary": x['m-summary'],
                     "m_affiliate_link": x['m-affiliate-link'],
                     "m_email": x['m-email'],
-                    "m_process":'none',
-                    }
+                    "m_process": 'none',
+                }
+                return render_template('update-sheet.html', page='Member Update Sheet',  fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock, updaterev=updaterev, crv=crv)
+    
+    # UPDATE INSERT
+    # ***********
 
-                return render_template('update-sheet.html', page='Member Update Sheet',  fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock, updaterev=updaterev, crv=crv )
 
 
+    if request.method == "POST" and request.form.get('confirm') != "None" :
 
-    #UPDATE INSERT
-    #***********
-    if request.method == "POST" and request.form.get('confirm') != "None":
-
-        
         
         m_title = request.form["m-title"]
         m_sub_title = request.form["m-sub-title"]
@@ -823,138 +486,80 @@ def memberOptions():
         m_email = request.form["e-mail"]
         m_process = "none"
 
-
         print(m_title)
-        
-        f = open("templates/crvid","r")
+        f = open("templates/crvid", "r")
         crev_id = f.read()
         f.close()
-
-        x = coll_reviews.find_one( {"_id": ObjectId(crev_id)} )
         
-        myquery = { 
-            
-        "m-title": m_title,
-        "m-sub-title": m_sub_title ,
-        "m-genre:": m_genre,
-        "m-image-link": m_image_link,
-        "m-synopsis": m_synopsis,
-        "m-reviewer-name": m_reviewer_name,
-        "m-review-date": m_review_date,
-        "m-stars": m_stars,
-        "m-sc-review": m_sc_review,
-        "m-sc-example": m_sc_example,
-        "m-ac-review": m_ac_review,
-        "m-ac-example": m_ac_example,
-        "m-te-review": m_te_review,
-        "m-te-example": m_te_example,
-        "m-so-review": m_so_review,
-        "m-so-example": m_so_example,
-        "m-summary": m_summary,
-        "m-affiliate-link": m_affiliate_link,
-        "m-email":m_email,
-        "m-process":m_process,
-
-                }
-
-
-        # #// 
-
-
+        x = coll_reviews.find_one({"_id": ObjectId(crev_id)})
+        
+        myquery = {
+            "m-title": m_title,
+            "m-sub-title": m_sub_title,
+            "m-genre:": m_genre,
+            "m-image-link": m_image_link,
+            "m-synopsis": m_synopsis,
+            "m-reviewer-name": m_reviewer_name,
+            "m-review-date": m_review_date,
+            "m-stars": m_stars,
+            "m-sc-review": m_sc_review,
+            "m-sc-example": m_sc_example,
+            "m-ac-review": m_ac_review,
+            "m-ac-example": m_ac_example,
+            "m-te-review": m_te_review,
+            "m-te-example": m_te_example,
+            "m-so-review": m_so_review,
+            "m-so-example": m_so_example,
+            "m-summary": m_summary,
+            "m-affiliate-link": m_affiliate_link,
+            "m-email": m_email,
+            "m-process": m_process,
+        }
+        # #//
         newvalues = {
-            
-        "$set":{
-
-        "m-title": m_title, 
-        "m-sub-title": m_sub_title,
-        "m-genre": m_genre, 
-        "m-image-link": m_image_link,
-        "m-synopsis": m_synopsis,
-        "m-reviewer-name": m_reviewer_name,
-        "m-review-date": m_review_date,
-        "m-stars": m_stars,
-        "m-sc-review": m_sc_review,
-        "m-sc-example": m_sc_example,
-        "m-ac-review": m_ac_review,
-        "m-ac-example": m_ac_example,
-        "m-te-review": m_te_review,
-        "m-te-example": m_te_example,
-        "m-so-review": m_so_review,
-        "m-so-example": m_so_example,
-        "m-summary": m_summary,
-        "m-affiliate-link": m_affiliate_link,
-        "m-email":m_email,
-        "m-process":m_process 
+            "$set": {
+                "m-title": m_title,
+                "m-sub-title": m_sub_title,
+                "m-genre": m_genre,
+                "m-image-link": m_image_link,
+                "m-synopsis": m_synopsis,
+                "m-reviewer-name": m_reviewer_name,
+                "m-review-date": m_review_date,
+                "m-stars": m_stars,
+                "m-sc-review": m_sc_review,
+                "m-sc-example": m_sc_example,
+                "m-ac-review": m_ac_review,
+                "m-ac-example": m_ac_example,
+                "m-te-review": m_te_review,
+                "m-te-example": m_te_example,
+                "m-so-review": m_so_review,
+                "m-so-example": m_so_example,
+                "m-summary": m_summary,
+                "m-affiliate-link": m_affiliate_link,
+                "m-email": m_email,
+                "m-process": m_process
+            }
         }
-
-        }
-        
-
         coll_reviews.update_one(x, newvalues)
-           
-      
-        return render_template('update-success.html', page='Member Update Sheet' ,fm=siteText["footer-message"] ,  crv=crv, )
+        return render_template('update-success.html', page='Member Update Sheet', fm=siteText["footer-message"],  crv=crv, )
 
-    return render_template('member-options.html', page='Member Options Page!' , fm=siteText["footer-message"], rev_bag=rev_bag, crv=crv, )
-
+          
+    return render_template('member-options.html', page='Member Maintenance Page!', fm=siteText["footer-message"], rev_bag=rev_bag, crv=crv, )
 # =====================================//=============================
-
 @app.route('/update-success.html', methods=["GET", "POST"])
 def updateSuccess():
     print("UPDATE SUCCESS!")
-
- 
-
-    return render_template('update-success.html', page=' Page!', fm=siteText["footer-message"],rev_bag=rev_bag)
+    return render_template('update-success.html', page=' Page!', fm=siteText["footer-message"], rev_bag=rev_bag)
 # =====================================//=============================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @app.route('/member-options-gr', methods=["GET", "POST"])
 def memberOptionsGr():
-
- 
-
-
-
-
-    return render_template('member-options-gr.html', page=' Page!', fm=siteText["footer-message"],rev_bag=rev_bag)
+    return render_template('member-options-gr.html', page=' Page!', fm=siteText["footer-message"], rev_bag=rev_bag)
 # =====================================//=============================
-
-
-
-
-
 @app.route('/delete-success.html', methods=["GET", "POST"])
-def deleteSuccessOk():   
+def deleteSuccessOk():
     # print("DELETE SUCCESS!")
- 
     return render_template('delete-success.html', page='Delete Success OK!', fm=siteText["footer-message"])
 # =====================================//=============================
-
-
-
-
-
-
-
-
-
- 
-
 @app.route('/member-submission-ok.html', methods=["GET", "POST"])
 def memberSubmitOk():
     '''
@@ -962,23 +567,56 @@ def memberSubmitOk():
     '''
     return render_template('member-submission-ok.html', page='Member Review Submission OK!', fm=siteText["footer-message"])
 # =====================================//=============================
-
-
-
- 
-
-
-
-
 @app.route('/update-sheet.html', methods=["GET", "POST"])
 def updateMyReviews():
 
-    
- 
+
     return render_template('update-sheet.html', page='Update Reviews', fm=siteText["footer-message"])
 # =====================================//=============================
 
- 
+
+
+
+
+
+
+
+
+@app.route('/importdatabase', methods=["GET", "POST"])
+def importDatabase():
+
+    if request.method =="POST":
+        d_source=request.form['d-source']
+        
+        if d_source != "":
+            print(d_source)
+
+            try:
+                coll_reviews.insert_many(d_source)
+
+
+                print("import completed!")
+                return redirect(url_for('importSuccess'))
+            except:
+                print("Error couldnt Import database!")
+
+    return render_template('importdatabase.html', page='Import Database', fm=siteText["footer-message"])
+# =====================================//=============================
+@app.route('/import-success', methods=["GET", "POST"])
+def importSuccess():
+
+    if request.method =="POST":
+        print("Import Successful!")
+     
+
+
+    return render_template('import-success.html', page='Import Database Success', fm=siteText["footer-message"])
+# =====================================//=============================
+
+
+
+
+
 
 
 
