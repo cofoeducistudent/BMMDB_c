@@ -830,14 +830,8 @@ def memberOptions():
         crev_id = f.read()
         f.close()
 
-
         x = coll_reviews.find_one( {"_id": ObjectId(crev_id)} )
-        print(x)
-
-
-
-
-
+        
         myquery = { 
             
         "m-title": m_title,
@@ -898,15 +892,7 @@ def memberOptions():
 
         coll_reviews.update_one(x, newvalues)
            
-        print("UPDATED")
-
-
- 
-
-
-
-
-
+      
         return render_template('update-success.html', page='Member Update Sheet' ,fm=siteText["footer-message"] ,  crv=crv, )
 
     return render_template('member-options.html', page='Member Options Page!' , fm=siteText["footer-message"], rev_bag=rev_bag, crv=crv, )
@@ -918,10 +904,6 @@ def updateSuccess():
     print("UPDATE SUCCESS!")
 
  
-
-
-
-
 
     return render_template('update-success.html', page=' Page!', fm=siteText["footer-message"],rev_bag=rev_bag)
 # =====================================//=============================
