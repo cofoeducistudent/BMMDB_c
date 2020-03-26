@@ -37,8 +37,8 @@
     <div class="row">
         <div class="col-sm-12">
 
-            <label for="picked">Review ID:</label><br>
-            <input id="picked" type="text" name="picked" value="{{ updaterev }}">
+            <label for="picked">Review ID Confirmation:</label><br>
+            <input id="picked" type="text" name="picked" value="{{ updaterev }}" size="50%" disabled >
 
 
             <!-- <h2>{{ crv['m_title'] }} : {{ updaterev }}</h2> -->
@@ -77,12 +77,7 @@
 
 
 
-
-
-
-
-
-
+ 
 
 
 
@@ -106,7 +101,7 @@
                     <div class="col-md-12 form-group">
                         <label for="m-title">Movie Title:</label><br>
                         <input id="m-title" class="form-control" name="m-title" type="text"
-                            value="{{  crv['m_title']  }}" placeholder="Movie-Title:"></input>
+                            value="{{  crv['m_title']  }}" placeholder="Movie-Title:" required></input>
                     </div>
 
 
@@ -227,7 +222,23 @@
                 </div>
 
                 <!-- Submit Button -->
-                <button type="submit" class="btn btn-warning">Submit Review</button>
+                
+                <div class="row">
+                    <div class="col-sm-12">
+                            <button type="submit" class="btn btn-warning">Submit Review</button>
+                    </div>
+                </div>
+                
+                <br>
+
+                <div class="row">
+                    <div class="col-sm-12 text-left"
+                    <label for="confirm">Confirm changes </label>
+                    <input type="checkbox" name="confirm" id="confirm">
+                </div>
+
+               
+
             </form>
         </div>
     </div>

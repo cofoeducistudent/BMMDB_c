@@ -1,10 +1,12 @@
 # Imports
 import os
+ 
 import pymongo
 from flask import Flask, render_template, url_for, request, redirect, flash
 from flask_bootstrap import Bootstrap
 from os import path
 from bson.objectid import ObjectId
+ 
 
 
 # Load Environment Variables
@@ -55,7 +57,8 @@ rev_bag = []
 crv_em = ""  # current reviewer email
  
 updaterev=""
- 
+
+
 
 # //###############################################//==================
 ##     M A I N  - C O D E - S E C T I O N                             #
@@ -648,7 +651,7 @@ def memberOptions():
     
 
     #GET REVIEWS
-    if request.method == "POST" and request.form['user-options']=="None":
+    if request.method == "POST" and request.form.get('user-options')=="None":
         
         movies = coll_reviews.find() # get movie collection
         documents = coll_users.find() # get users collection
@@ -686,7 +689,7 @@ def memberOptions():
 
 
     #DELETE REVIEWS
-    if request.method == "POST" and request.form['user-options']=="Delete":
+    if request.method == "POST" and request.form.get('user-options')=="Delete":
 
         movies = coll_reviews.find() # get movie collection
         documents = coll_users.find() # get users collection
@@ -725,10 +728,13 @@ def memberOptions():
 
 
 
-    #UPDATE REVIEWS
-    if request.method == "POST" and request.form['user-options']=="Update":
 
-      
+
+
+
+    #UPDATE REVIEWS
+    if request.method == "POST" and request.form.get('user-options')=="Update":
+  
         movies = coll_reviews.find() # get movie collection
         documents = coll_users.find() # get users collection
         for u_cred in documents:
@@ -752,11 +758,17 @@ def memberOptions():
 
                 for mr in movies:
 
-  
-                    updaterev=request.form['movie-list']
+                    updaterev = request.form['movie-list']
+                    f = open("templates/crvid","w")
+                    f.write(updaterev)
+                    f.close()
+                   
 
                 x = coll_reviews.find_one( {"_id": ObjectId(updaterev)} )
 
+            
+
+                # Grab What is in Database
                 crv = {  
                     "m_title":x['m-title'],
                     "m_sub_title":x['m-sub-title'],
@@ -780,23 +792,139 @@ def memberOptions():
                     "m_process":'none',
                     }
 
-                    
+                return render_template('update-sheet.html', page='Member Update Sheet',  fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock, updaterev=updaterev, crv=crv )
 
-                        
-  
-                return render_template('update-sheet.html', page='Member Update Sheet', fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock, updaterev=updaterev, crv=crv )
+
+
+    #UPDATE INSERT
+    #***********
+    if request.method == "POST" and request.form.get('confirm') != "None":
+
+        
+        
+        m_title = request.form["m-title"]
+        m_sub_title = request.form["m-sub-title"]
+        m_genre = request.form["m-genre"]
+        m_image_link = request.form["m-image-link"]
+        m_synopsis = request.form["m-synopsis"]
+        m_reviewer_name = request.form["r-name"]
+        m_review_date = request.form["r-date"]
+        m_stars = request.form["m-stars"]
+        m_sc_review = request.form["sc-review"]
+        m_sc_example = request.form["sc-example"]
+        m_ac_review = request.form["ac-review"]
+        m_ac_example = request.form["ac-example"]
+        m_te_review = request.form["te-review"]
+        m_te_example = request.form["te-example"]
+        m_so_review = request.form["so-review"]
+        m_so_example = request.form["so-example"]
+        m_summary = request.form["su-review"]
+        m_affiliate_link = request.form["m-af-link"]
+        m_email = request.form["e-mail"]
+        m_process = "none"
+
+
+        print(m_title)
+        
+        f = open("templates/crvid","r")
+        crev_id = f.read()
+        f.close()
+
+
+        x = coll_reviews.find_one( {"_id": ObjectId(crev_id)} )
+        print(x)
+
+
+
+
+
+        myquery = { 
+            
+        "m-title": m_title,
+        "m-sub-title": m_sub_title ,
+        "m-genre:": m_genre,
+        "m-image-link": m_image_link,
+        "m-synopsis": m_synopsis,
+        "m-reviewer-name": m_reviewer_name,
+        "m-review-date": m_review_date,
+        "m-stars": m_stars,
+        "m-sc-review": m_sc_review,
+        "m-sc-example": m_sc_example,
+        "m-ac-review": m_ac_review,
+        "m-ac-example": m_ac_example,
+        "m-te-review": m_te_review,
+        "m-te-example": m_te_example,
+        "m-so-review": m_so_review,
+        "m-so-example": m_so_example,
+        "m-summary": m_summary,
+        "m-affiliate-link": m_affiliate_link,
+        "m-email":m_email,
+        "m-process":m_process,
+
+                }
+
+
+        # #// 
+
+
+        newvalues = {
+            
+        "$set":{
+
+        "m-title": m_title, 
+        "m-sub-title": m_sub_title,
+        "m-genre": m_genre, 
+        "m-image-link": m_image_link,
+        "m-synopsis": m_synopsis,
+        "m-reviewer-name": m_reviewer_name,
+        "m-review-date": m_review_date,
+        "m-stars": m_stars,
+        "m-sc-review": m_sc_review,
+        "m-sc-example": m_sc_example,
+        "m-ac-review": m_ac_review,
+        "m-ac-example": m_ac_example,
+        "m-te-review": m_te_review,
+        "m-te-example": m_te_example,
+        "m-so-review": m_so_review,
+        "m-so-example": m_so_example,
+        "m-summary": m_summary,
+        "m-affiliate-link": m_affiliate_link,
+        "m-email":m_email,
+        "m-process":m_process 
+        }
+
+        }
+        
+
+        coll_reviews.update_one(x, newvalues)
+           
+        print("UPDATED")
+
 
  
-    return render_template('member-options.html', page='Member Options Page!', fm=siteText["footer-message"],rev_bag=rev_bag, crv=crv)
+
+
+
+
+
+        return render_template('update-success.html', page='Member Update Sheet' ,fm=siteText["footer-message"] ,  crv=crv, )
+
+    return render_template('member-options.html', page='Member Options Page!' , fm=siteText["footer-message"], rev_bag=rev_bag, crv=crv, )
 
 # =====================================//=============================
 
+@app.route('/update-success.html', methods=["GET", "POST"])
+def updateSuccess():
+    print("UPDATE SUCCESS!")
+
  
- 
 
 
 
 
+
+    return render_template('update-success.html', page=' Page!', fm=siteText["footer-message"],rev_bag=rev_bag)
+# =====================================//=============================
 
 
 
@@ -817,15 +945,21 @@ def memberOptions():
 def memberOptionsGr():
 
  
+
+
+
+
     return render_template('member-options-gr.html', page=' Page!', fm=siteText["footer-message"],rev_bag=rev_bag)
 # =====================================//=============================
 
- 
-@app.route('/delete-success.html', methods=["GET", "POST"])
-def deleteSuccessOk():
-   
-    # print("DELETE SUCCESS!")
 
+
+
+
+@app.route('/delete-success.html', methods=["GET", "POST"])
+def deleteSuccessOk():   
+    # print("DELETE SUCCESS!")
+ 
     return render_template('delete-success.html', page='Delete Success OK!', fm=siteText["footer-message"])
 # =====================================//=============================
 
@@ -837,23 +971,7 @@ def deleteSuccessOk():
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 @app.route('/member-submission-ok.html', methods=["GET", "POST"])
 def memberSubmitOk():
@@ -865,12 +983,7 @@ def memberSubmitOk():
 
 
 
-
-
-
-
-
-
+ 
 
 
 
@@ -883,11 +996,7 @@ def updateMyReviews():
     return render_template('update-sheet.html', page='Update Reviews', fm=siteText["footer-message"])
 # =====================================//=============================
 
-
-
-
-
-
+ 
 
 
 
