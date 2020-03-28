@@ -325,6 +325,7 @@ def member():
                                 reviews["m-affiliate-link"] = request.form["m-af-link"]
                                 coll_reviews.insert_one(reviews)
                                 return render_template(url_for('memberSubmitOk'), page='Member Review Submission OK!', fm=siteText["footer-message"])
+                            
                             # REMOVE AF-LINK IF MEMBER AF STATUS FALSE
                             if auser['e-mail'] == crv_em and auser['a-state'] == "no":
                                 reviews["m-affiliate-link"] = "#"
@@ -581,40 +582,7 @@ def updateMyReviews():
 
 
 
-
-@app.route('/importdatabase', methods=["GET", "POST"])
-def importDatabase():
-
-    if request.method =="POST":
-        d_source=request.form['d-source']
-        
-        if d_source != "":
-            print(d_source)
-
-            try:
-                coll_reviews.insert_many(d_source)
-
-
-                print("import completed!")
-                return redirect(url_for('importSuccess'))
-            except:
-                print("Error couldnt Import database!")
-
-    return render_template('importdatabase.html', page='Import Database', fm=siteText["footer-message"])
-# =====================================//=============================
-@app.route('/import-success', methods=["GET", "POST"])
-def importSuccess():
-
-    if request.method =="POST":
-        print("Import Successful!")
-     
-
-
-    return render_template('import-success.html', page='Import Database Success', fm=siteText["footer-message"])
-# =====================================//=============================
-
-
-
+ 
 
 
 
