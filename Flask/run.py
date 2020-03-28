@@ -8,6 +8,7 @@ from bson.objectid import ObjectId
 # Load Environment Variables
 if path.exists("env.py"):
     import env
+
 MONGODB_URI = os.environ.get("MONGO_URI")
 DBS_NAME = "rmrdb"
 COLLECTION_USER_NAME = "users"
@@ -590,4 +591,4 @@ def updateMyReviews():
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP", "127.0.0.1"), port=int(
-        os.environ.get("PORT", 8000)), debug=True)
+        os.environ.get("PORT", 8000)), debug=False)
