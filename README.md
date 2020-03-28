@@ -282,63 +282,6 @@ This collection holds the reviews created by all the registered/Authorized poste
 
 * Note this date is never updated. To generate a new date a complete new review must be created *
 
-## **collections:results** ##
-
-When a search is carried out for a review, this collection holds the results of the search.
-
-| database | collection| field | type |purpose|
-|----------|-----------|-------|--------|------|
-|rmrdb|results|_id|auto|index|
-|rmrdb|results|m-title|string|movie title|
-|rmrdb|results|m-sub-title|string|movie sub-title |
-|rmrdb|results|m-genre|text|movie genre classification|
-|rmrdb|results|m-image-link|string|image hosting address|
-|rmrdb|results|m-synopsis|string|movie synopsis|
-|rmrdb|results|m-reviewer-name|string|Name of the reviewer|
-|rmrdb|results|m-reviewer-date|date|date review was created *|
-|rmrdb|results|m-stars|string|star quality 0-5|
-|rmrdb|results|m-sc-review|string|script-review|
-|rmrdb|results|m-sc-example|string|script-citation|
-|rmrdb|results|m-ac-review|string|Acting-review|
-|rmrdb|results|m-ac-example|string|Acting-citation|
-|rmrdb|results|m-te-review|string|Technical-review|
-|rmrdb|results|m-te-example|string|Technical-citation|
-|rmrdb|results|m-so-review|string|Sound-review|
-|rmrdb|results|m-so-example|string|Sound-citation|
-|rmrdb|results|m-summary|string|Overall-summary|
-|rmrdb|results|m-affiliate-link|string|affiliate link only functions if activated for user|
-|rmrdb|results|m-email|string|email of reviewer who created it|
-|rmrdb|results|m-process|string|left for future feature of bulk delete etc |
-
-## **collection:mod** ##
-
-This collection holds the resultant reviews that are about to be updated, as a result of the 'CRUD' update feature. These reviews have the common aspect that they are made by a single reviewer
-
-| database | collection| field | type |purpose|
-|----------|-----------|-------|--------|------|
-|rmrdb|mod|_id|auto|index|
-|rmrdb|mod|m-title|string|movie title|
-|rmrdb|mod|m-sub-title|string|movie sub-title |
-|rmrdb|mod|m-genre|text|movie genre classification|
-|rmrdb|mod|m-image-link|string|image hosting address|
-|rmrdb|mod|m-synopsis|string|movie synopsis|
-|rmrdb|mod|m-reviewer-name|string|Name of the reviewer|
-|rmrdb|mod|m-reviewer-date|date|date review was created *|
-|rmrdb|mod|m-stars|string|star quality 0-5|
-|rmrdb|mod|m-sc-review|string|script-review|
-|rmrdb|mod|m-sc-example|string|script-citation|
-|rmrdb|mod|m-ac-review|string|Acting-review|
-|rmrdb|mod|m-ac-example|string|Acting-citation|
-|rmrdb|mod|m-te-review|string|Technical-review|
-|rmrdb|mod|m-te-example|string|Technical-citation|
-|rmrdb|mod|m-so-review|string|Sound-review|
-|rmrdb|mod|m-so-example|string|Sound-citation|
-|rmrdb|mod|m-summary|string|Overall-summary|
-|rmrdb|mod|m-affiliate-link|string|affiliate link only functions if activated for user|
-|rmrdb|mod|m-email|string|email of reviewer who created it|
-|rmrdb|mod|m-process|string|left for future feature of bulk delete etc |
-
-
 >## SKELETON ##
 
 For design of the site I used Balsamiq 3.x prototype software  to create the mockups

@@ -312,7 +312,13 @@ def member():
                     "m-email": request.form["e-mail"],
                     "m-process": "none",
                 }
-                if entry['e-mail'] == request.form['e-mail'] and entry['password'] == request.form['password'] and entry['role'] == 'Admin':
+
+                eem = entry['e-mail']
+                eem =eem.upper()
+                rem =request.form['e-mail']
+                rem = rem.upper()
+
+                if eem == rem  and entry['password'] == request.form['password'] and entry['role'] == 'Admin':
                     unlock = True
                     if unlock == True:
                         '''
@@ -334,10 +340,12 @@ def member():
                                 return render_template(url_for('memberSubmitOk'), page='Member Review Submission OK!', fm=siteText["footer-message"])
     return render_template('member.html', page='Member Add Review - Page', methods=["GET", "POST"], fm=siteText["footer-message"])
 # =====================================//=============================
+
 @app.route('/member_d', methods=["GET", "POST"])
 def member_d():
     return render_template('member_d.html', page='Member - Delete Page', methods=["GET", "POST"], fm=siteText["footer-message"], rev_bag=rev_bag)
 # =====================================//=============================
+
 @app.route('/delete-selected', methods=["GET", "POST"])
 def deleteSelected():
     return render_template('delete-selected.html', page='Member - Delete Page', methods=["GET", "POST"], fm=siteText["footer-message"], rev_bag=rev_bag)
@@ -369,11 +377,20 @@ def memberOptions():
                 "u_state": u_cred['a-state'],
             }
             unlock = False
+
             crv_em = request.form['e-mail']
-            if users['u_email'] == request.form['e-mail'] and users['u_password'] == request.form['password'] and request.form['user-options'] == 'None' and users['u_role'] == 'Admin':
+
+            uem=users['u_email']
+            rem=request.form['e-mail']
+            uem=uem.upper()
+            rem=rem.upper()
+            if uem == rem and users['u_password'] == request.form['password'] and request.form['user-options'] == 'None' and users['u_role'] == 'Admin':
                 unlock = True
                 for mr in movies:
-                    if mr['m-email'] == crv_em and unlock == True:
+                    mem=mr['m-email']
+                    mem=mem.upper()
+                    crv_em=crv_em.upper()
+                    if mem == crv_em and unlock == True:
                         rev_bag.append(mr)
                 return render_template('member-options-gr.html', page='Member Maintenance Page!', fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock)
     # DELETE REVIEWS
@@ -392,8 +409,14 @@ def memberOptions():
                 "u_state": u_cred['a-state'],
             }
             unlock = False
+
+            uem=users['u_email']
+            rem=request.form['e-mail']
+            uem=uem.upper()
+            rem=rem.upper()
             crv_em = request.form['e-mail']
-            if users['u_email'] == request.form['e-mail'] and users['u_password'] == request.form['password'] and request.form['user-options'] == 'Delete' and users['u_role'] == 'Admin':
+
+            if uem == rem and users['u_password'] == request.form['password'] and request.form['user-options'] == 'Delete' and users['u_role'] == 'Admin':
                 unlock = True
                 # coll_reviews.find()
                 deleterev = request.form['movie-list']
