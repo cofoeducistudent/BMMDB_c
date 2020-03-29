@@ -1,4 +1,5 @@
 {% extends 'default.html' %}
+
 <body>
     <!-- ERROR PAGE -->
     {% block body %}
@@ -22,7 +23,7 @@
             <div class="jumbotron">
                 <div class="row">
                     <div class="col-sm-12 ">
-                        
+
                         <h4>{{'Movie Title:'}}</h4>
                         <h1><b>{{ chunk['m-title'] }}</b></h1>
                         <h4>{{'Movie Subtitle:'}}</h4>
@@ -61,28 +62,42 @@
                         <p>{{chunk['m-summary' ]}}</p>
                     </div>
                 </div>
-        <div class="row">
-            <div class="col-sm-12 text-center ">
-                <a href="{{url_for('search')}}">
-                    <h2><span class="fa fa-arrow-circle-left sm-icons" aria-hidden="true"></span></h2>
-                </a>
-            </div>
-        </div>
-            </div>
-        </div>
-        {% endfor %}
-        <!-- Footer -->
-        <div class="row">
-            <div class="col-md-12 text-center  w-100">
-                <div class="footer">
-                    <h2>{{fm}}</h2>
+                <div class="row">
+                    <div class="col-sm-12 text-center ">
+                        <a href="{{url_for('search')}}">
+                            <h2><span class="fa fa-arrow-circle-left sm-icons" aria-hidden="true"></span></h2>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- // -->
+        {% endfor %}
+
+
+        <!-- Legal -->
+        <div class="col-sm-12 text-center  w-100"></div>
+        <div class="legal-message">
+            <p>
+                <h3>{{lg}}</h3>
+            </p>
+        </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <div class="row">
+        <div class="col-md-12 text-center  w-100">
+            <div class="footer">
+                <h2>{{fm}}</h2>
+            </div>
+        </div>
+    </div>
+    <!-- // -->
     </div>
     </div>
     </div>
     {% endblock body %}
 </body>
+
 </html>

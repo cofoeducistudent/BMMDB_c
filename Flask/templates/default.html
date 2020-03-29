@@ -1,7 +1,6 @@
 {% extends 'bootstrap/base.html' %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +27,6 @@
   <script type="javascript" src="{{url_for('static', filename='main.js')}}"></script>
   {% endblock scripts %}
 </head>
-
 <body>
   Navbar Main
   {% block body %}
@@ -68,6 +66,7 @@
       </div>
     </div>
   </nav>
+  
   <!-- Social Media Icons -->
   <div class="row">
     <div class="col-sm-12 text-left">
@@ -82,14 +81,16 @@
       <!-- <hr> -->
     </div>
   </div>
-  <div class="col-sm-12 text-center ">
-    <a href="{{url_for('search')}}" class="sm-icons">
-      <h2><span class="fa fa-search" aria-hidden="true">Search</span></h2>
-    </a>
+  <!-- Quick Search Icon -->
+  <div class="row">
+    <div class="col-sm-12 text-center ">
+      <a href="{{url_for('search')}}" class="sm-icons">
+        <h2><span class="fa fa-search" aria-hidden="true">uick Search</span></h2>
+      </a>
+    </div>
   </div>
   <!--Page Titles-  -->
   <h1 class="page-titles">{{page}}</h1>
   {% endblock body %}
 </body>
-
 </html>

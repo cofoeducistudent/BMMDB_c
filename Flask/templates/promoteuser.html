@@ -1,4 +1,5 @@
 {% extends 'default.html' %}
+
 <body>
     <!-- ERROR PAGE -->
     {% block body %}
@@ -32,25 +33,36 @@
                                 <option name="-">-</option>
                                 <option name="Yes">Yes</option>
                             </select>
-                            <hr>    
+                            <hr>
                         </div>
-                         <!-- Submit Button -->
+                        <!-- Submit Button -->
                         <div class="col-sm-12">
                             <button type="submit" class="btn btn-danger form-group">Submit</button>
                         </div>
                     </div>
                 </form>
-                <!-- Footer -->
-                <div class="row">
-                    <div class="col-md-12 text-center  w-100">
-                        <div class="footer">
-                            <h2>{{fm}}</h2>
-                        </div>
+
+                <!-- Legal -->
+                <div class="col-sm-12 text-center  w-100"></div>
+                <div class="legal-message">
+                    <p>
+                        <h3>{{lg}}</h3>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="row">
+                <div class="col-md-12 text-center  w-100">
+                    <div class="footer">
+                        <h2>{{fm}}</h2>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </div>
     {% endblock body %}
 </body>
+
 </html>

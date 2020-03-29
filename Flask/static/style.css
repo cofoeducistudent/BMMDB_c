@@ -198,3 +198,11 @@ body {
     font-size: 1.5rem;
     background-color: var(--backplate-background-color);
  }
+
+ .legal-message, h3{
+    
+    text-align: justify;
+    background-color: var(--main-body-color);
+    color: var(--main-page-text-color);
+    font-size: 1rem;
+ }

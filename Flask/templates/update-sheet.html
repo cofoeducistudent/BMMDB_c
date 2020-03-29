@@ -38,7 +38,7 @@
         <div class="col-sm-12">
 
             <label for="picked">Review ID Confirmation:</label><br>
-            <input id="picked" type="text" name="picked" value="{{ updaterev }}" size="33%"  disabled >
+            <input id="picked" type="text" name="picked" value="{{ updaterev }}" size="33%" disabled>
 
 
             <!-- <h2>{{ crv['m_title'] }} : {{ updaterev }}</h2> -->
@@ -77,7 +77,7 @@
 
 
 
- 
+
 
 
 
@@ -95,7 +95,7 @@
 
 
                 <!-- Review Content -->
-                
+
                 <div class="row">
                     <!-- Search Title -->
                     <div class="col-md-12 form-group">
@@ -222,33 +222,44 @@
                 </div>
 
                 <!-- Submit Button -->
-                
+
                 <div class="row">
                     <div class="col-sm-12">
-                            <button type="submit" class="btn btn-warning">Submit Review</button>
+                        <button type="submit" class="btn btn-warning">Submit Review</button>
                     </div>
                 </div>
-                
+
                 <br>
 
                 <div class="row">
-                    <div class="col-sm-12 text-left"
-                    <label for="confirm">Confirm changes </label>
-                    <input type="checkbox" name="confirm" id="confirm">
-                </div>
+                    <div class="col-sm-12 text-left" <label for="confirm">Confirm changes </label>
+                        <input type="checkbox" name="confirm" id="confirm">
+                    </div>
 
-               
+
 
             </form>
         </div>
     </div>
-    <!-- Footer -->
-    <div class="row">
-        <div class="col-md-12 text-center  w-100">
-            <div class="footer">
-                <h2>{{fm}}</h2>
-            </div>
+
+    <!-- Legal -->
+    <div class="col-sm-12 text-center  w-100"></div>
+    <div class="legal-message">
+        <p>
+            <h3>{{lg}}</h3>
+        </p>
+    </div>
+    </div>
+
+
+
+<!-- Footer -->
+<div class="row">
+    <div class="col-md-12 text-center  w-100">
+        <div class="footer">
+            <h2>{{fm}}</h2>
         </div>
     </div>
+</div>
 </div>
 {% endblock body %}
