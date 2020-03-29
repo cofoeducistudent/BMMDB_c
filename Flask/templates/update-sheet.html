@@ -2,7 +2,6 @@
 {% block body %}
 <div class="container">
     {{super()}}
-
     <!-- Image -->
     <div class="row">
         <div class="col-sm-12">
@@ -10,14 +9,9 @@
                 alt="man-typing image">
         </div>
     </div>
-
     <p>
         <h6>Photo Pixabay License </h6>
     </p>
-
-
-
-
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
@@ -33,18 +27,13 @@
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-sm-12">
-
             <label for="picked">Review ID Confirmation:</label><br>
             <input id="picked" type="text" name="picked" value="{{ updaterev }}" size="33%" disabled>
-
-
             <!-- <h2>{{ crv['m_title'] }} : {{ updaterev }}</h2> -->
         </div>
     </div>
-
     <br>
     <!-- Search Button & Form -->
     <div class="row">
@@ -65,37 +54,12 @@
                     <label for="pwd">Password:</label>
                     <input type="password" name="password" class="form-control" id="pwd" required="true">
                 </div>
-
-
                 <div class="row">
-
                     <div class="col-md-12">
                         <img src="" alt="">
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 <!-- Review Content -->
-
                 <div class="row">
                     <!-- Search Title -->
                     <div class="col-md-12 form-group">
@@ -103,15 +67,12 @@
                         <input id="m-title" class="form-control" name="m-title" type="text"
                             value="{{  crv['m_title']  }}" placeholder="Movie-Title:" required></input>
                     </div>
-
-
                     <!-- Search Subtitle -->
                     <div class="col-md-12">
                         <label for="m-sub-title">Movie Sub Title:</label><br>
                         <input id="m-sub-title" class="form-control" name="m-sub-title" type="text" class="entry-box"
                             value="{{  crv['m_sub_title']  }} " placeholder="Sub-Title:"></input>
                     </div>
-
                     <!-- Image Link -->
                     <div class="col-md-12">
                         <label for="m-image-link">Image:</label><br>
@@ -137,7 +98,6 @@
                             <!-- <option value="Any">Any</option> -->
                         </select>
                     </div>
-
                     <!-- Search Synopsis -->
                     <br>
                     <div class="col-md-12">
@@ -151,8 +111,6 @@
                         <label for="r-name">Reviewer Name:</label><br>
                         <input id="r-name" name="r-name" type="text" class="form-control t-entry-box"
                             value="{{  crv['m_reviewer_name']  }}" placeholder="Reviewer Name:"></input>
-
-
                         <!-- Review Date -->
                         <br>
                         <label for="r-date">Review Date:</label><br>
@@ -182,7 +140,6 @@
                         placeholder="Story/Script-Example">{{  crv['m_sc_example']  }}</textarea>
                     <hr>
                 </div>
-
                 <!-- Acting Review -->
                 <div class="form-group">
                     <label for="m-title">Acting-review & Citation:</label><br>
@@ -192,7 +149,6 @@
                         placeholder="Acting-example">{{  crv['m_ac_example']  }}</textarea>
                     <hr>
                 </div>
-
                 <!-- Technical Review -->
                 <div class="form-group">
                     <label for="te-reviewer">Technical-review & Citation:</label><br>
@@ -202,7 +158,6 @@
                         placeholder="Technical-example">{{  crv['m_te_example']  }}</textarea>
                     <hr>
                 </div>
-
                 <!-- Sound/Audio Review -->
                 <div class="form-group">
                     <label for="so-review">Sound-review & Citation:</label><br>
@@ -212,7 +167,6 @@
                         placeholder="Sound/Audio - example">{{  crv['m_so_example']  }}</textarea>
                     <hr>
                 </div>
-
                 <!-- Summary Review -->
                 <div class="form-group">
                     <label for="su-review">Summary-review:</label><br>
@@ -220,39 +174,28 @@
                         id="textarea" placeholder="Overall - Summary">{{  crv['m_summary']  }}</textarea>
                     <hr>
                 </div>
-
                 <!-- Submit Button -->
-
                 <div class="row">
                     <div class="col-sm-12">
                         <button type="submit" class="btn btn-warning">Submit Review</button>
                     </div>
                 </div>
-
                 <br>
-
                 <div class="row">
                     <div class="col-sm-12 text-left" <label for="confirm">Confirm changes </label>
                         <input type="checkbox" name="confirm" id="confirm">
                     </div>
-
-
-
             </form>
         </div>
+        <!-- Legal -->
+        <div class="col-sm-12 text-center  w-100"></div>
+        <div class="legal-message">
+            <p>
+                <h3>{{lg}}</h3>
+            </p>
+        </div>
     </div>
-
-    <!-- Legal -->
-    <div class="col-sm-12 text-center  w-100"></div>
-    <div class="legal-message">
-        <p>
-            <h3>{{lg}}</h3>
-        </p>
-    </div>
-    </div>
-
-
-
+</div>
 <!-- Footer -->
 <div class="row">
     <div class="col-md-12 text-center  w-100">

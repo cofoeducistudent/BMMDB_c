@@ -432,7 +432,7 @@ def memberOptions():
                 coll_reviews.delete_one({'_id': ObjectId(deleterev)})
                 print("DELETED REVIEW!!")
                 print(deleterev)
-                return render_template('member-options-gr.html', page='Member Maintenance Page!', fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock)
+                return render_template('member-options-gr.html', page='Member Maintenance Page!', fm=siteText["footer-message"],lg=legalFooter["legal-message"], rev_bag=rev_bag, unlock=unlock)
     
     
     # UPDATE REVIEWS
@@ -489,7 +489,7 @@ def memberOptions():
                     "m_email": x['m-email'],
                     "m_process": 'none',
                 }
-                return render_template('update-sheet.html', page='Member Update Sheet',  fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock, updaterev=updaterev, crv=crv)
+                return render_template('update-sheet.html', page='Member Update Sheet',  fm=siteText["footer-message"], lg=legalFooter["legal-message"],rev_bag=rev_bag, unlock=unlock, updaterev=updaterev, crv=crv)
     
     # UPDATE INSERT
     # ***********
@@ -575,7 +575,7 @@ def memberOptions():
             }
         }
         coll_reviews.update_one(x, newvalues)
-        return render_template('update-success.html', page='Member Update Sheet', fm=siteText["footer-message"],  crv=crv, )
+        return render_template('update-success.html', page='Member Update Sheet', fm=siteText["footer-message"],  crv=crv, lg=legalFooter["legal-message"] )
 
           
     return render_template('member-options.html', page='Member Maintenance Page!', fm=siteText["footer-message"], rev_bag=rev_bag, crv=crv, lg=legalFooter["legal-message"] )
