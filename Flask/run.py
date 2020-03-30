@@ -347,6 +347,10 @@ def member():
                                 reviews["m-affiliate-link"] = "#"
                                 coll_reviews.insert_one(reviews)
                                 return render_template(url_for('memberSubmitOk'), page='Member Review Submission OK!', fm=siteText["footer-message"])
+
+                else:
+                    return redirect(url_for('member'))
+
     return render_template('member.html', page='Member Add Review - Page', methods=["GET", "POST"], fm=siteText["footer-message"],lg=legalFooter["legal-message"])
 # =====================================//=============================
 
@@ -366,12 +370,21 @@ def member_u():
     '''
     return render_template('member_u.html', page='Member - Update / Delete Page', methods=["GET", "POST"], fm=siteText["footer-message"], lg=legalFooter["legal-message"])
 # =====================================//=============================
+
+
+
+
+
+
+
 @app.route('/member-options', methods=["GET", "POST"])
 def memberOptions():
+    unlock=False
     rev_bag = []
     crv = {}
     # GET REVIEWS
     if request.method == "POST" and request.form.get('user-options') == "None":
+         
         movies = coll_reviews.find()  # get movie collection
         documents = coll_users.find()  # get users collection
         for u_cred in documents:
@@ -402,6 +415,7 @@ def memberOptions():
                     if mem == crv_em and unlock == True:
                         rev_bag.append(mr)
                 return render_template('member-options-gr.html', page='Member Maintenance Page!', fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock,lg=legalFooter["legal-message"])
+    
     # DELETE REVIEWS
     if request.method == "POST" and request.form.get('user-options') == "Delete":
         movies = coll_reviews.find()  # get movie collection
@@ -437,7 +451,7 @@ def memberOptions():
     
     # UPDATE REVIEWS
     
-    if request.method == "POST" and request.form.get('user-options') == "Update":
+    if request.method == "POST" and request.form.get('user-options') == "Update" :
         movies = coll_reviews.find()  # get movie collection
 
         documents = coll_users.find()  # get users collection
@@ -489,14 +503,14 @@ def memberOptions():
                     "m_email": x['m-email'],
                     "m_process": 'none',
                 }
-                return render_template('update-sheet.html', page='Member Update Sheet',  fm=siteText["footer-message"], lg=legalFooter["legal-message"],rev_bag=rev_bag, unlock=unlock, updaterev=updaterev, crv=crv)
+                return render_template('update-sheet.html', page='Member Update Sheet',  fm=siteText["footer-message"], lg=legalFooter["legal-message"],rev_bag=rev_bag,  updaterev=updaterev, crv=crv)
     
     # UPDATE INSERT
     # ***********
 
 
 
-    if request.method == "POST" and request.form.get('confirm') != "None" :
+    if request.method == "POST" and request.form.get('confirm') != "None"  and unlock==True:
 
         
         m_title = request.form["m-title"]
@@ -524,7 +538,7 @@ def memberOptions():
         f = open("templates/crvid", "r")
         crev_id = f.read()
         f.close()
-        
+    
         x = coll_reviews.find_one({"_id": ObjectId(crev_id)})
         
         myquery = {
@@ -575,10 +589,10 @@ def memberOptions():
             }
         }
         coll_reviews.update_one(x, newvalues)
-        return render_template('update-success.html', page='Member Update Sheet', fm=siteText["footer-message"],  crv=crv, lg=legalFooter["legal-message"] )
+        return render_template('update-success.html', page='Member Update Sheet', fm=siteText["footer-message"],  crv=crv, lg=legalFooter["legal-message"], unlock=unlock )
 
           
-    return render_template('member-options.html', page='Member Maintenance Page!', fm=siteText["footer-message"], rev_bag=rev_bag, crv=crv, lg=legalFooter["legal-message"] )
+    return render_template('member-options.html', page='Member Maintenance Page!', fm=siteText["footer-message"], rev_bag=rev_bag, crv=crv, lg=legalFooter["legal-message"],unlock=unlock )
 # =====================================//=============================
 @app.route('/update-success.html', methods=["GET", "POST"])
 def updateSuccess():
