@@ -1,5 +1,4 @@
 {% extends 'default.html' %}
-
 <body>
     <!-- ERROR PAGE -->
     {% block body %}
@@ -17,13 +16,11 @@
             </div>
         </div>
         <!-- Create Results -->
-        <!-- {{rev_results[0]}} -->
         {% for chunk in rev_results %}
         <div class="container">
             <div class="jumbotron">
                 <div class="row">
                     <div class="col-sm-12 ">
-
                         <h4>{{'Movie Title:'}}</h4>
                         <h1><b>{{ chunk['m-title'] }}</b></h1>
                         <h4>{{'Movie Subtitle:'}}</h4>
@@ -72,8 +69,6 @@
             </div>
         </div>
         {% endfor %}
-
-
         <!-- Legal -->
         <div class="col-sm-12 text-center  w-100"></div>
         <div class="legal-message">
@@ -81,23 +76,14 @@
                 <h3>{{lg}}</h3>
             </p>
         </div>
-    </div>
-
-
-
-    <!-- Footer -->
-    <div class="row">
-        <div class="col-sm-12 text-center  w-100">
-            <div class="footer">
-                <h2>{{fm}}</h2>
+        <!-- Footer -->
+        <div class="row">
+            <div class="col-sm-12 text-center  w-100">
+                <div class="footer">
+                    <h2>{{fm}}</h2>
+                </div>
             </div>
         </div>
     </div>
-    <!-- // -->
-    </div>
-    </div>
-    </div>
     {% endblock body %}
 </body>
-
-</html>

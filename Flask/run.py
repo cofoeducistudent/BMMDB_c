@@ -171,7 +171,7 @@ def search():
             search_rev = "Clement"
             rev_results = coll_reviews.find(
                 {"$text": {"$search": search_rev}}).limit(10)
-        return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..')
+        return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"] )
     return render_template('search.html', page='Search', fm=siteText["footer-message"],lg=legalFooter["legal-message"])
 # =====================================//=============================
 # Search Result
@@ -287,6 +287,11 @@ def promoteUserS():
     '''
     return render_template('promoteuser-success.html', page="Promote User - Success", Methods=["GET", "POST"], fm=siteText["footer-message"],lg=legalFooter["legal-message"])
 # #####################################################################
+
+
+
+
+
 @app.route('/member', methods=["GET", "POST"])
 def member():
     '''
@@ -294,10 +299,13 @@ def member():
     VIEW PAGE!
     '''
     unlock = False
+
     if request.method == "POST":
         documents = coll_users.find()
+
         for u_cred in documents:
             crv_em = u_cred["e-mail"]
+
             for entry in documents:
                 reviews = {
                     "m-title": request.form["m-title"].upper(),
@@ -326,7 +334,6 @@ def member():
                 eem =eem.upper()
                 rem =request.form['e-mail']
                 rem = rem.upper()
-
                 if eem == rem  and entry['password'] == request.form['password'] and entry['role'] == 'Admin':
                     unlock = True
                     if unlock == True:
@@ -342,14 +349,15 @@ def member():
                                 coll_reviews.insert_one(reviews)
                                 return render_template(url_for('memberSubmitOk'), page='Member Review Submission OK!', fm=siteText["footer-message"])
                             
+
                             # REMOVE AF-LINK IF MEMBER AF STATUS FALSE
                             if auser['e-mail'] == crv_em and auser['a-state'] == "no":
                                 reviews["m-affiliate-link"] = "#"
                                 coll_reviews.insert_one(reviews)
                                 return render_template(url_for('memberSubmitOk'), page='Member Review Submission OK!', fm=siteText["footer-message"])
 
-                else:
-                    return redirect(url_for('member'))
+                    else:
+                        return redirect(url_for('index'))
 
     return render_template('member.html', page='Member Add Review - Page', methods=["GET", "POST"], fm=siteText["footer-message"],lg=legalFooter["legal-message"])
 # =====================================//=============================
@@ -382,6 +390,7 @@ def memberOptions():
     unlock=False
     rev_bag = []
     crv = {}
+
     # GET REVIEWS
     if request.method == "POST" and request.form.get('user-options') == "None":
          
@@ -414,9 +423,16 @@ def memberOptions():
                     crv_em=crv_em.upper()
                     if mem == crv_em and unlock == True:
                         rev_bag.append(mr)
+
                 return render_template('member-options-gr.html', page='Member Maintenance Page!', fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock,lg=legalFooter["legal-message"])
     
+            elif  uem == rem and users['u_password'] != request.form['password'] :
+
+                return redirect(url_for('index'))
+
+
     # DELETE REVIEWS
+   
     if request.method == "POST" and request.form.get('user-options') == "Delete":
         movies = coll_reviews.find()  # get movie collection
         documents = coll_users.find()  # get users collection
@@ -446,15 +462,17 @@ def memberOptions():
                 coll_reviews.delete_one({'_id': ObjectId(deleterev)})
                 print("DELETED REVIEW!!")
                 print(deleterev)
+
                 return render_template('member-options-gr.html', page='Member Maintenance Page!', fm=siteText["footer-message"],lg=legalFooter["legal-message"], rev_bag=rev_bag, unlock=unlock)
-    
-    
-    # UPDATE REVIEWS
-    
+   
+
+
+
+    # UPDATE REVIEWS    
     if request.method == "POST" and request.form.get('user-options') == "Update" :
         movies = coll_reviews.find()  # get movie collection
-
         documents = coll_users.find()  # get users collection
+        
         for u_cred in documents:
             users = {
                 "u_my_info": u_cred["my-info"],
@@ -480,6 +498,7 @@ def memberOptions():
                     f.write(updaterev)
                     f.close()
                 x = coll_reviews.find_one({"_id": ObjectId(updaterev)})
+
                 # Grab What is in Database
                 crv = {
                     "m_title": x['m-title'],
@@ -505,6 +524,9 @@ def memberOptions():
                 }
                 return render_template('update-sheet.html', page='Member Update Sheet',  fm=siteText["footer-message"], lg=legalFooter["legal-message"],rev_bag=rev_bag,  updaterev=updaterev, crv=crv)
     
+
+
+
     # UPDATE INSERT
     # ***********
 
