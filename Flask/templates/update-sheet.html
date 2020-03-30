@@ -13,7 +13,7 @@
         <h6>Photo Pixabay License </h6>
     </p>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-sm-12">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <p>Authorized movie reviewer, Update Sheet.</p>
@@ -37,7 +37,7 @@
     <br>
     <!-- Search Button & Form -->
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-sm-12">
             <form action="#" method="POST" class="form-group">
                 <!-- Username -->
                 <div class="form-group">
@@ -55,38 +55,38 @@
                     <input type="password" name="password" class="form-control" id="pwd" required="true">
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-sm-12">
                         <img src="" alt="">
                     </div>
                 </div>
                 <!-- Review Content -->
                 <div class="row">
                     <!-- Search Title -->
-                    <div class="col-md-12 form-group">
+                    <div class="col-sm-12 form-group">
                         <label for="m-title">Movie Title:</label><br>
                         <input id="m-title" class="form-control" name="m-title" type="text"
                             value="{{  crv['m_title']  }}" placeholder="Movie-Title:" required></input>
                     </div>
                     <!-- Search Subtitle -->
-                    <div class="col-md-12">
+                    <div class="col-sm-12">
                         <label for="m-sub-title">Movie Sub Title:</label><br>
                         <input id="m-sub-title" class="form-control" name="m-sub-title" type="text" class="entry-box"
                             value="{{  crv['m_sub_title']  }} " placeholder="Sub-Title:"></input>
                     </div>
                     <!-- Image Link -->
-                    <div class="col-md-12">
+                    <div class="col-sm-12">
                         <label for="m-image-link">Image:</label><br>
                         <input id="m-image-link" class="form-control" name="m-image-link" type="text" class="entry-box"
                             value="{{  crv['m_image_link']  }} " placeholder="Image-link:"></input>
                     </div>
                     <!-- Affiliate Link -->
-                    <div class="col-md-12">
+                    <div class="col-sm-12">
                         <label for="m-af-link">Affiliate Link:</label><br>
                         <input id="m-af-link" class="form-control" name="m-af-link" type="text" class="entry-box"
                             value="{{  crv['m_affiliate_link']  }} " placeholder="Affiliate-link:"></input>
                     </div>
                     <!-- Genre -->
-                    <div class="col-md-12">
+                    <div class="col-sm-12">
                         <label for="m-genre">Genre:</label><br>
                         <select id="m-genre" class="form-control" name="m-genre" type="text" class="entry-box">
                             <option value="Drama">Drama</option>
@@ -100,14 +100,14 @@
                     </div>
                     <!-- Search Synopsis -->
                     <br>
-                    <div class="col-md-12">
+                    <div class="col-sm-12">
                         <label for="m-synopsis">Synopsis:</label><br>
                         <textarea id="m-synopsis" name="m-synopsis" type="textarea" class="form-control t-entry-box"
                             rows="10" cols="100%" placeholder="Synopsis:">{{  crv['m_synopsis']  }}</textarea>
                     </div>
                     <!-- Reviewer Name -->
                     <br>
-                    <div class="col-md-12">
+                    <div class="col-sm-12">
                         <label for="r-name">Reviewer Name:</label><br>
                         <input id="r-name" name="r-name" type="text" class="form-control t-entry-box"
                             value="{{  crv['m_reviewer_name']  }}" placeholder="Reviewer Name:"></input>
@@ -118,7 +118,7 @@
                             value="{{  crv['m_review_date']  }}" placeholder="Review Date:"></input>
                     </div>
                     <!-- Stars -->
-                    <div class="col-md-12">
+                    <div class="col-sm-12">
                         <label for="m-stars">Movie Stars:</label><br>
                         <select id="m-stars" name="m-stars" type="text" class="form-control t-entry-box">
                             <option value="0">0</option>
@@ -187,8 +187,9 @@
                     </div>
             </form>
         </div>
-        <!-- Legal -->
-        <div class="col-sm-12 text-center  w-100"></div>
+    </div>
+    <!-- Legal -->
+    <div class="col-sm-12 text-center  w-100">
         <div class="legal-message">
             <p>
                 <h3>{{lg}}</h3>
@@ -198,7 +199,7 @@
 </div>
 <!-- Footer -->
 <div class="row">
-    <div class="col-md-12 text-center  w-100">
+    <div class="col-sm-12 text-center  w-100">
         <div class="footer">
             <h2>{{fm}}</h2>
         </div>

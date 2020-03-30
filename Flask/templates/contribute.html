@@ -2,7 +2,6 @@
 {%block body%}
 <div class="container">
     {{super()}}
-
     <!-- Image -->
     <div class="row">
         <div class="col-sm-12">
@@ -10,12 +9,9 @@
                 alt="lamp-image">
         </div>
     </div>
-
     <h6>Photo Raphaelsilva Pixabay License </h6>
-
     <div class="row">
-        <div class="col-md-12 text-justify">
-
+        <div class="col-sm-12 text-justify">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <p>If you are not one of our reviewers and wish to submit a specific film suggestion for our members
@@ -31,17 +27,12 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
-
-
+        <div class="col-sm-12">
             <hr>
-
-
             <!-- Search Button & Form -->
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-sm-12">
                     <form action="contribute-success" method="POST">
-
                         <!-- Email Address -->
                         <div class="form-group">
                             <label for="email">Email address:</label>
@@ -53,27 +44,22 @@
                             <textarea name="textmessage" class="form-control" rows="10" cols="50"
                                 id="textarea"></textarea>
                         </div>
-
                         <!-- Submit Button -->
                         <button name="submit" type="submit" class="btn btn-primary" value="submit">Submit</button>
-
                     </form>
                 </div>
+                <!-- Legal -->
+                <div class="col-sm-12 text-center  w-100">
+                    <div class="legal-message">
+                        <p>
+                            <h3>{{lg}}</h3>
+                        </p>
+                    </div>
+                </div>
             </div>
-
-            <!-- Legal -->
-            <div class="col-sm-12 text-center  w-100"></div>
-            <div class="legal-message">
-                <p>
-                    <h3>{{lg}}</h3>
-                </p>
-            </div>
-            </div>
-            
-
             <!-- Footer -->
             <div class="row">
-                <div class="col-md-12 text-center  w-100">
+                <div class="col-sm-12 text-center  w-100">
                     <div class="footer">
                         <h2>{{fm}}</h2>
                     </div>
@@ -81,5 +67,4 @@
             </div>
         </div>
     </div>
-</div>
-{% endblock body%}
+    {% endblock body%}
