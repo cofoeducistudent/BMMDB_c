@@ -9,7 +9,6 @@
                 alt="man-typing image">
         </div>
     </div>
-
     <p>
         <h6>Photo Pixabay License </h6>
     </p>
@@ -33,7 +32,6 @@
         <!-- Search Button & Form -->
         <div class="row">
             <div class="col-sm-12">
-
                 <!-- Username -->
                 <div class="form-group">
                     <label for="username">Username:</label>
@@ -53,8 +51,6 @@
                 <!-- Grab Button -->
                 <button type="submit" class="btn btn-warning">Action Selected Process</button>
                 <hr>
-
-
                 <!-- // -->
                 <div class="row">
                     <div class="col-sm-12">
@@ -64,60 +60,27 @@
                             <option value="{{ m['_id'] }}"> {{m['m-title'] }} : {{ m['_id'] }} </option>
                             {%endfor%}
                         </select>
-
                     </div>
-
                 </div>
-
-
-
-
-
-
-
-
-
-
                 <!-- // -->
                 <hr>
-
-
+            </div>
+            <!-- Legal -->
+            <div class="col-sm-12 text-center  w-100">
+                <div class="legal-message">
+                    <p>
+                        <h3>{{lg}}</h3>
+                    </p>
+                </div>
             </div>
         </div>
-
-
-
-
-
     </form>
-
-
-    <!-- Legal -->
-    <div class="col-sm-12 text-center  w-100">
-            <div class="legal-message">
-    
-                <p>
-                    <h3>{{lg}}</h3>
-                </p>
-    
-            </div>
-        </div>
-
-
-
-
-
-
-
     <!-- Footer -->
     <div class="row">
-
         <div class="col-md-12 text-center  w-100">
             <div class="footer">
                 <h2>{{fm}}</h2>
             </div>
         </div>
     </div>
-
-
     {% endblock body %}
