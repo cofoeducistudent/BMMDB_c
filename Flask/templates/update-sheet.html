@@ -98,6 +98,9 @@
                             <!-- <option value="Any">Any</option> -->
                         </select>
                     </div>
+
+
+                    
                     <!-- Search Synopsis -->
                     <br>
                     <div class="col-sm-12">
@@ -105,12 +108,16 @@
                         <textarea id="m-synopsis" name="m-synopsis" type="textarea" class="form-control t-entry-box"
                             rows="10" cols="100%" placeholder="Synopsis:">{{  crv['m_synopsis']  }}</textarea>
                     </div>
-                    <!-- Reviewer Name -->
+
+                   
                     <br>
+                    <!-- Reviewer Name -->
                     <div class="col-sm-12">
                         <label for="r-name">Reviewer Name:</label><br>
                         <input id="r-name" name="r-name" type="text" class="form-control t-entry-box"
-                            value="{{  crv['m_reviewer_name']  }}" placeholder="Reviewer Name:" required=True></input>
+                            value="{{  crv['m_reviewer_name']  }}" placeholder="{{ crv['m_reviewer_name'] }}" required=True></input>
+
+                            
                         <!-- Review Date -->
                         <br>
                         <label for="r-date">Review Date:</label><br>
