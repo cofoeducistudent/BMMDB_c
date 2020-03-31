@@ -1,4 +1,6 @@
-# Movie-Review-Database-MS3 #
+# Real Movie-Review-Database (MS3) #
+
+## Blockbusters, McGuffins & Moes 
 
 [BMMDB Live Site](https://bmmdb.herokuapp.com)
 
@@ -10,24 +12,161 @@
 
 >## Project Brief ##
 
-I was asked to create a MOVIE REVIEW WEBSITE that will help promote reviews for movies past and present in a professionally critiqued manner.The site will differ from others by the fact of sourcing reviews from people who are serious film reviewers. We do not wish to have clickbait or slander in respect to our reviews of films, but calm considered critique. We also wish to distance ourselves from the two predominant types of reviewers.
+* My scenario was to create a MOVIE REVIEW WEBSITE to promote movies past and present, in a professionally critiqued manner. The sites 'ssp' will be the sourcing of reviews from curated public film reviewers. I don't wish to have clickbait/slanderous soundbite reviews, in respect to our reviews, but calm considered critique. In effect I wish to distance the site from the predominant types of reviewers on the web.The first, a homogenous company having the hidden agenda of reviews favouring particular movie production companies via a nepotist back channel.
+The other is the many millennial ‘woke’ childish reviews targeting films that do not conform to their partisan view of what a film should be, simply for slander for gaining self promotion.
 
-The first, a homogenous company having the hidden agenda of reviews favouring particular movie production companies via a nepotist back channel. The other reviewer class  we wish to distance ourselves from, is the many millennial ‘woke’ childish reviews that target films that do not conform to their partisan view of what a film should be, for slander.
+* I want a clean looking site, with calm considered reviews, that present reviews within the 'class' a film was intended for. The site will aim to have more serious content and attract true film officiators.Comparing a low budget film with a tent pole $200 million dollar production is simply ridiculous.
 
-We want a clean looking site, with calm considered reviews, that present reviews within the 'class' a film was intended for. For example,  comparing a low budget film with a tent pole monster $200 million dollar production is simply ridiculous. To help solve this issue, each reviewer be sourced from the public, however, they will not be allowed to post reviews without membership and agreeing to our terms and conditions.Secondly the reviewers will have segregated topic areas with regards to the film review, and a corresponding section for a citation supporting their review on that section. I feel this will be a good approach because it will cause the poster to validate any assertions made.
+* To help solve the above issues, each reviewer is be sourced from the public, however, they will not be allowed to post reviews without membership and agreeing to our terms and conditions. Or they will be struck off, with all their reviews removed.
 
-|No|Review element|Review Citation|
+* Secondly the reviewers will cover specific topic areas, thus keeping a strict format. Each section section will have a corresponding one,  for a citation supporting the review
+
+* This will cause the poster to think and validate any assertions made. Rather than writing flippant soundbites!
+
+|No|Review Area|Supporting Citation|
 |--|--------------|---------------|
-|.|Synopsis|-|
-|.|Script-review|Citation|
-|.|Acting-review|Citation|
-|.|Technical-review|Citation|
-|.|Sound-review|Citation|
-|.|Summary|-|
+|1|Synopsis|N/A|
+|2|Script-review|Citation|
+|3|Acting-review|Citation|
+|4|Technical-review|Citation|
+|5|Sound-review|Citation|
+|6|Summary|N/A|
 
-* **Each review should be carried out in-line with a comparison to a film of similar genre and production budget.** Otherwise the reviews are unfair.
-* Each review will be supported with one image of the film (usually the production released public poster).
-* Particular review attributes must be present. These include Title, sub-title, genre, stars (0-5).
-* Each reviewer will have the autonomy to administrate their reviews by update or delete. However, they cannot interfere with other reviewers reviews of course.
+A guiding principle will be that each review should be carried out in comparison to a film of similar genre and production budget, else the reviews will be unfair.
+
+Each review will be supported with:
+
+* A single image of the film (usually the production released public poster).
+
+* review attributes. These include:
+
+* Title, sub-title, genre, stars (0-5).
+
+* Each reviewer will have the autonomy to administrate their reviews by update or delete.However, they cannot interfere with other reviewers reviews of course.
+
 * The public will be able to search for a particular title, or browse through existing reviews
-----
+
+# Index
+
+>1 UX
+
+a. Strategy
+
+b. Scope
+
+c. Structure
+
+d. Skeleton
+
+e. Surface
+
+>2.FEATURES
+
+a. Existing Features
+
+b. Features Left to Implement
+
+>3.TECHNOLOGIES USED
+
+>4.TESTING
+
+>5.DEPLOYMENT
+
+>6.CREDITS
+
+>7.CONTENT
+
+>8.MEDIA
+
+>9.ACKNOWLEDGEMENTS
+
+>10.USEAGE INSTRUCTIONS
+
+# UX
+
+## STRATEGY
+
+The website is to be created and hosted on Heroku. **GitHub cannot be used in this instance as the site requires technologies that make it dynamic. GitHub does not allow non-static sites.**
+
+I intend to use the following technologies:
+
+* HTML, for the structure
+* CSS, for styling
+* Google Fonts
+* Fontawesome - for icons
+* Bootstrap, takes up the heavy lifting of form and formatting
+* Mongo database (Atlas) – for a database storage solution
+* Flask micro-framework - will be used as the template infrastructure. One that uses the Jinja engine
+* Python3 – for program control logic
+* Git & GitHub will be used for Version control
+* Heroku platform – Will be used for hosting
+
+To clarify the objective for the site, its worth reminding ourselves of the user requirements.
+
+> External User Goal** (Mainly the general public)
+
+* Users will be able to search and browse existing reviews
+* Registered users – Will be able receive promotional material via email
+* Authorized Users (posters) – Will be able to post movie reviews, having full (CRUD) functionality.
+
+> Site Owner Goal
+
+* The site owner will be able to publish a “self-user-moderated site”, presenting reviews for movies past and present.
+* The site owner will be able to convert registered users to “authorized reviewers”, allowing them to post movie reviews
+* Site owners – Will be able post promo material to registered users and communicate.
+* Site owners or designated site Admins will be able to delete entire database, promote users to 'posters'
+
+## SCOPE
+
+There are endless features possible for a site such as this, however we will limit our scope.
+
+**In scope:**
+
+* Database design & connectivity
+* Website pages design
+* **Although not requested in the MS3 task, a rudimentary authentication process has been implemented to reduce rouge postings and/or abuse of content.** It is not a fully realized login security system and does not employ sessions. Rather, it is a simple authentication against existing database credentials.
+
+In addition there will be :
+
+* Full CRUD ability for ‘authorized-users’..... (Create, Read, Update, Delete)
+* Partial CRUD for ‘non-authorized / un-registered users’.....(Read).
+* Affiliate Site link ability for authorized 'posters' ( Allows them to lik to a ecommerce site)
+
+**Outside Scope:**
+
+* **Mass deletion or reviews for admin purposes can be added**, and i have  included a field in the reviews data structure for that purpose(m-process). However as I do not think that is critical for this release it has been de-scoped.
+
+**CRUD features for clarity mean:**
+
+* Creation of a movie review (Create).
+* Reading of an existing search (Read).
+* Modification of an existing review (Update).
+* Deletion of an existing review (Delete)
+
+> ## User Stories ##
+
+I have identified 4 main users or stakeholders for this site
+
+1. **Site Owner**
+2. **Site Admin**
+3. **Registered Users** (Poster)
+4. **Anon User**
+
+|Story|User Type|Feature|Reason/Goal|
+|-----|---------|-------|-----------|
+|1|Site Owner|I want a movie review website|So that I can create a traffic hotspot, that can be used later for marketing purposes|
+|2|Site OWner|I want users to be able to post reviews| To reduce the maintenaces and information population burden|
+|3|Site Owner|I want some method of rudimentary authentication, incl contact information| So that site has some inherent basic moderation and also I can accquire contact details to reduce SPAM content and ultmately govern uses|
+|4|Site Owner|I want a Registration Page|To allow the public to apply for membership|
+|5|Site Owner|I want a contact feature| So that the posters and general public an communicate with us|
+|6|Site Owner|I want a contribute feature| So that no members can suggest movies for review|
+|7|Site Owner|I want a members page| So that member(authorized users) can amend/delete their reviews  giving them full (CRUD) ability for their posts|
+|8|Site Owner|I want a method of affiliation sale-thru| So I can incentivize good reviewers, for more quality posts|  
+|-||||
+|9|Site Admin|I want a 'Database Initialize' ability | I can restore (after initialization & test of new site install ) The site can be cleared within seconds.
+|10|Site Admin|I want a user 'PROMOTE-USER' feature|So that I can at will grant a new (Registered) member 'POST' ability on merit"
+|11|Site Admin|I want a affiliate-link Activation feature| So that I can target and grant our top reviewers, pass-though-sale ability as a reward for continuous quality postings|
+|-||||
+|12|Anon User|I wish to see a browse/search feature|So I can read posted reviews about movies|
+|-||||
+|13|Registered User|I wish for a my movie reviews management page|So that I can (Post/Update/Delete) my reviews|
