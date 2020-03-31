@@ -108,6 +108,7 @@ To clarify the objective for the site, its worth reminding ourselves of the user
 * Users will be able to search and browse existing reviews
 * Registered users – Will be able receive promotional material via email
 * Authorized Users (posters) – Will be able to post movie reviews, having full (CRUD) functionality.
+* Authorized valued users will in addition to posting privalages, have the ability to create an afilliate link to an ec-commerce site of their choosing within the sites terms & rules
 
 > Site Owner Goal
 
@@ -308,7 +309,7 @@ Below are the intended pages
 
 >## Surface ##
 
-The design of the site is sparse and not clustered. This was intentional as my site is trying to attract serious film reviewers and fans. No javascrript pop-ups in site. I wish more written content than images, as this is the only way I can consider a film justifiably reviewed. With thesame mind I chose light colours to make it look clean.
+The design of the site is sparse and not clustered. This was intentional as my site is trying to attract serious film reviewers and fans. No javascript pop-ups in site. I wish more written content than images, as this is the only way I can consider a film justifiably reviewed. With thesame mind I chose light colours to make it look clean.
 
 I used the **'Just pick'** color tool to grab and alter colors
 
