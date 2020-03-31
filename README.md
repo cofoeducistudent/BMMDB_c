@@ -308,11 +308,11 @@ Below are the intended pages
 
 >## Surface ##
 
-The design of the site is based on sparse spacing and not clustered. In addition I chose light colours to make it clean looking.
+The design of the site is sparse and not clustered. This was intentional as my site is trying to attract serious film reviewers and fans. No javascrript pop-ups in site. I wish more written content than images, as this is the only way I can consider a film justifiably reviewed. With thesame mind I chose light colours to make it look clean.
 
-I used the 'Justpick color tool to grab and alter colors"
+I used the **'Just pick'** color tool to grab and alter colors
 
-I used Colormind website to give me colour ideas
+I used **'Colormind website'** to give me colour ideas
 
 |No|Color Pallet variation|
 |--|------------|
@@ -320,7 +320,7 @@ I used Colormind website to give me colour ideas
 |2|<img src="support/colormind2.png" width="200">|
 |3|<img src="support/colormind3.png" width="200">|
 
-I did not stick strictly to these options of course,but varied slightly, as I felt a creative flair
+I did not stick strictly to these options of course,but varied slightly and felt a necessity for some creative flair
 The colour was gained by analysis of the curtain image
 
 **Google Fonts CDN**  was used to pull in the font style
@@ -331,7 +331,7 @@ The colour was gained by analysis of the curtain image
 
 Apart from the general page features stipulated in the previous section, lets look at the search page to view the search feature elements.
 
-Feature|What is it?|state:
+Feature|What is it?|Employed?|
 |-------|-----------|-----|
 |About| Brief highlight of the sites objectives|Yes|
 |Contact|Allows public/member to contact site owner|Yes|
@@ -340,8 +340,8 @@ Feature|What is it?|state:
 |Create Review|Authorized users can post a review|Yes|
 |Update Review|Authorized users can update/modify their post|Yes|
 |Delete Review|Authorized users can delete their post|Yes|
-|defaultdb-py|Site-Admin can wipe datbase after install & initial tests|Yes|
-|Promote User|Site Admin can convert 'standard users' to a 'posters' In addition allow pass through link to eccomerce site for reviewer|Yes|
+|defaultdb-py|Site-Admin can wipe datbase after install & initial tests, restoring to a default selection of films|Yes|
+|Promote User|Site Admin can convert 'standard users' to a 'posters' In addition allow pass through link to e-commerce site for reviewer|Yes|
 |Social Media|links to social media sites for the owner|Yes|
 |Mass Review Deletion/Modification|Allows users to alter review posts en-masse|No|
 
@@ -359,16 +359,16 @@ Feature|What is it?|state:
 >## TECHNOLOGIES/TOOLS USED ##
 
 * **HTML5-**
-Html5 will be used for structure
+Html5  is used for structure
 * **CSS3-**
-CSS3 will be used for styling
+CSS3 is used for styling
 * **Bootstrap 3.x-**
-I will use bootstrap for the heavy lifting of alignment for the website components. However, I will be using version 3.x, rather than the current v4. This is to do with flask, which is currently one version behind the current mainstream release.
+I used bootstrap for the heavy lifting of alignment for the website components. However, I used version 3.x, rather than the current v4. This is to do with flask, which is currently one version behind the current mainstream release. It is not advised to mesh v5 with it as it's untested at time of build.
 * **Flask-** mini-framework for templating and page consistency
 * **Icons-**
-The obligatory font-awesome repository will be utilized for my site icons, for the social media icons etc. Again, I will use the previous release 4.x rather than the current 5.x, as this seems to play nicer with flask.
+The obligatory font-awesome repository will be utilized for my site icons, for the social media icons etc. Again, I will use the previous release 4.x rather than the current 5.x, as this seems to play nicer with flask version.
 * **Database-**
-As stated, we will employ a database for storage, allowing for rudimentary search and retrieve functionality. I will  use a 'document model', ‘NO-SQL’ database.... **(MongoDB)**. Specifically, I will use the online, cloud-based version, **'Atlas'**.
+As stated, I employed a database for storage, allowing for rudimentary search and retrieve functionality. I will  use a 'document model', ‘NO-SQL’ database.... **(MongoDB)**. Specifically, I will use the online, cloud-based version, **'Atlas'**.
 * **Templates-**
 Flask using the Jinja2 engine will be my choice of framework, to speed up design and keep some level of uniformity across the site page content.
 * **Python3-**
@@ -377,10 +377,85 @@ Python version 3.x shall be used as the underpinning project logic control withi
 * **E-mail-**
 Omitted from the site will be the background extended infrastructure that models the business behavior. I refer to things such as system admin monitoring and email response eco-system. From the front-end perspective, there will be email options, however the forms will remain un-hooked.
 * **Testing-**
-I will use chrome tools for testing, as that’s proves satisfactory. I will test on the main browsers including, Chrome, Firefox, Opera, Navigator etc. in addition I will use the CSS cross platform tool.
-* **Git-** Used for version control
-* **Git-Hub-** Repository to store build
-* **Heroku-** Used for hosting the site
-* **Monosnap-** Used to capture screen Shots
-* **Terminal v2.10** used to execute and connect to remote systems
-* **Google Fonts** 
+I used chrome tools for testing, as that has prooved satisfactory historically for me. I will test on the main browsers including, Chrome, Firefox, Opera, Navigator etc. in addition I will use the CSS cross platform tool.
+* **Git-** I used for version control
+* **Git-Hub-** I used GitHub Repository to store the build
+* **Heroku-** I used for hosting the site
+* **Monosnap-** I used to capture screen Shots
+* **Terminal v2.10** I used Apples Terminal client to execute and connect to remote systems
+* **Google Fonts** I used google fonts for the page fontwork
+
+># TESTING #
+
+The site features were tested and the results tabled below
+
+| Feature   |  Action  | Screen | Result | Success
+|-----------|----------|--------|--------|--------|
+| **Launch site**| Browse to Heroku Site|<img src="support/sshot-11.png" width="200">|<img src="support/sshot-11.png" width="200">|Yes|
+| **About the site**| click on 'About' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-12.png" width="200">|Yes|
+| **Contact us**| click on 'Contact' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-15.png" width="200">|Yes|
+| **Contribute a review idea**| click on 'Contribute' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-14.png" width="200">|Yes|
+| **Register to become a member**| click on 'Register' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-16.png" width="200">|Yes|
+| **Search for a movie review**| click on 'Search' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-13.png" width="200">|Yes|
+| **Member Submit/update/delete  movie reviews as a member**| click on 'Member' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-2.png" width="200">|Yes|
+| **Make a user into a 'Poster' / Activate Affiliate Link...**| click on 'Member' |<img src="support/sshot-18.png" width="200"> |<img src="support/sshot-19.png" width="200">|Yes|
+
+># DEPLOYMENT #
+
+>## **MONGO ATLAS DATABASE CONFIGURATION:** ##
+
+**I have already carried out the Mongo Atlas Database setup as part of the task of this project.** However if you wish to create/use your own Mongo DB Atlas instance, you need to set up and configure it
+
+1 . Sign up to mongo atlas if you have noton the [Mongo Site](https://www.mongodb.com/cloud/atlas/register)
+* Keep your Atlas Login, **This is the master account password and not the one for the databse connectivity**.
+
+2 . Follow instructions and carry out the basic set up account credentials (note the username & password)
+
+* **Create a Cluster**
+* **Create a 'database' in that cluster**
+* **Create 3 'collections' (reviews, temp, users ) in that cluster**
+
+* **In Security - Database Access .. Add New Databse User ( Keep these credentials as they will be used to connect to the database)**
+* **In Security - Network Access ... Add IP address 0.0.0.0/0.. This ensures any one can connet to the database, because you cannot predict where the users of your software will be.**
+
+**N/A - The site will not function on a published Github platform as the site is dynamic in nature. You can however review the readme (This page).**
+
+> ## **LOCAL CLONE DEPLOYMENT:** ##
+
+* Prereq: [**Download Git**](https://git-scm.com/) and install on your local computer if you have not already done so.
+
+* Browse to a **location of your choice, on  your local computer**, which you have admin access.
+
+1. Goto [BMMDB_c GithubRepo](https://github.com/cofoeducistudent/BMMDB_c) and press the clone button.
+
+2. Copy the deployment link by clicking on the 'grab Url' icon
+
+<img src="support/sshot-clone-link.png" width="200">
+
+3. Open a terminal window.
+
+* If you are on Mac, you can find it in your applications start-up.
+
+* If on windows, get to the CMD window (command prompt)
+
+4. Type the following command "git clone **[paste the link]** ; where the link should be on your clipboard from clicking and copying the link in git-hub button in the image
+
+**SETUP ENVIRONMENT VARIABLES:**
+
+during development on the local machine and operations, an environment variable is required to allow the database to connect
+when python3 is run and attempts to connect to the mongo database ( in our case its mongo Atlas).Therefore on the local machine type.
+
+>## export  MONGO_URI=  mongodb+srv://**username**: **password**@cluster0-ored3.mongodb.net/**xxxx**   where xxxx = database
+
+This command will create an environment variable on the local system named **'MONGO_URI'**
+When the site is launched flask/mongo will look for it during initialization
+The site was created inside a virtual environment.
+The file **requirements.txt** details the modules installed to allow the install of the website.
+
+**I will not lay out the access credentials here,  as it is forbidden by task requirements and a security breach. However in a real situation this info will be given to the sysadmin.** The site is already up and running however on the Heroku platform, thereore visit the site. the link is at the top of this page.
+
+[Heroku Deployment](https://bmmdb.herokuapp.com/)
+**Connect to Heroku as the site is already up and running.**
+*The environment variable is already configured in the Heroku app system setting.*
+>## **HEROKU DEPLOYMENT:**
+
