@@ -130,11 +130,11 @@ In addition there will be :
 
 * Full CRUD ability for ‘authorized-users’..... (Create, Read, Update, Delete)
 * Partial CRUD for ‘non-authorized / un-registered users’.....(Read).
-* Affiliate Site link ability for authorized 'posters' ( Allows them to lik to a ecommerce site)
+* Affiliate Site link ability for authorized 'posters' ( Allows them to lik to a e-commerce site)
 
 **Outside Scope:**
 
-* **Mass deletion or reviews for admin purposes can be added**, and i have  included a field in the reviews data structure for that purpose(m-process). However as I do not think that is critical for this release it has been de-scoped.
+* **Mass deletion or reviews for admin purposes can be added**, and I have  included a field in the reviews data structure for that purpose(m-process). However as I do not think that is critical for this release it has been de-scoped.
 
 **CRUD features for clarity mean:**
 
@@ -204,21 +204,183 @@ I will implement the site using the following folder/file structure.
 The site is classed as dynamic, moving data back and forth from a separate database. Only features within the defined scope will be implemented. There will be enough functionality to allow the site to be visibly operative. However the greater infrastructure support such as email - communications to the members and mailshot facility will not be operational.
 
 Note:
-Two features are placed within the repo by default. These need to be removed when the site is put in a production scenarion.
+Two features are placed within the repo by default. These need to be removed when the site is put in a production scenario.
 
-* defaultdb.py
+* defaultdb-py
 
-* promoteuser html... link
+* promoteuser.html... link, Currently only found on the homepage, lower left of screen
 
-Ultimately in a fully costed production, these features will and should be implemented in a CMS page of some sort, accessed by users with the correct rights.
- 
-**Warning:These features should be removed or accessed with security rights equivalent to 'site admins only!'**
+Ultimately in a fully costed production, these features will and should be implemented in a CMS page of some sort, accessed by users with the appropriate rights.
 
-The first feature **'defaultdb.py'** - wipes the database and places **5 films reviews** in the site database.
-This feature is and should only be used in an initial site install.
+>**Warning:The following features should be removed or accessed with security rights equivalent to 'site admins only!'**
+
+* The first feature **'defaultdb-py'** - wipes the database and places **5 films reviews** in the site database. This feature is and should only be used in an initial site install.
 
 * The second feature **'promoteuser'** - allows the site admin to turn a registered user into a **'poster'**. This grants the user rights to Create/Read/Update/Delete reviews that they post( but no one elses).
 
 * once the reviewer/poster has created sufficient reviews conforming to the sites 'terms and condition', re-run the second page again, entering that users email.
 
 * The system will allow them to post an AFFILIATE LINK , that can go to a site of their choosing. This is to incentivize reviewers to post many quality  reviews and benefit by allowing that link to go to a site of their choosing. From here they can have a central affiliate links to many products to make monetary gains.
+
+> ### DATABASE STRUCTURE ###
+
+**MongoDB version Atlas is used.**
+I chose to use the atlas version of mongo, because the database is provided as a service online in the cloud. This means
+that the provider will maintain the database and fix any failing during run-time. So far as your code is fine , the system should function. Note the project is for the purpose of the course. If this site was to be deployed in a real scenario of course, a discussion would be had with the client as to the database version required, as they may already have a mondo database.
+
+As MongoDB is a document based database, the content will be 'collections' with fields representing each element of data. The site is built on this database structure. The database and collections are represented below.
+
+## **collection:users** ##
+
+When users register on the site and complete the form, this data is created.
+Each user is defaulted to 'user' privilege. They are **not allowed** to make any posts.
+However the site owner has their emails and can communicate with the user. If they have asked to be a movie reviewer
+we will consider it ,and if we agree, will flip their role to 'Admin',allowing them to post.
+
+| database | collection| field | type |purpose|
+|----------|-----------|-------|--------|------|
+|rmrdb|users|_id|auto|index|
+|rmrdb|users|my-info|string|user reason for membership request|
+|rmrdb|users|username|string|username|
+|rmrdb|users|f-name|string|first name|
+|rmrdb|users|l-name|string|last-name|
+|rmrdb|users|e-mail|string|users registered email|
+|rmrdb|users|password|string|password|
+|rmrdb|users|role|string|security privilege -user-Admin|
+|rmrdb|users|a-state|string|Affiliation link on poster image active -no-yes|
+
+## **collection:temp** ##
+
+This collection is use dto find and hold the email of the registered poster. We will use this to search for posts, so a user can and only will see his/her post for update or delete actions. This is a safeguard!
+
+| database | collection| field | type |purpose|
+|----------|-----------|-------|--------|------|
+|rmrdb|temp|_id|auto|index|
+|rmrdb|temp|cr|string|user email to be used to track reviews|
+
+## **collection:reviews** ##
+
+This collection holds the reviews created by all the registered/Authorized posters
+
+| database | collection| field | type |purpose|
+|----------|-----------|-------|--------|------|
+|rmrdb|reviews|_id|auto|index|
+|rmrdb|reviews|m-title|string|movie title|
+|rmrdb|reviews|m-sub-title|string|movie sub-title |
+|rmrdb|reviews|m-genre|text|movie genre classification|
+|rmrdb|reviews|m-image-link|string|image hosting address|
+|rmrdb|reviews|m-synopsis|string|movie synopsis|
+|rmrdb|reviews|m-reviewer-name|string|Name of the reviewer|
+|rmrdb|reviews|m-reviewer-date|date|date review was created *|
+|rmrdb|reviews|m-stars|string|star quality 0-5|
+|rmrdb|reviews|m-sc-review|string|script-review|
+|rmrdb|reviews|m-sc-example|string|script-citation|
+|rmrdb|reviews|m-ac-review|string|Acting-review|
+|rmrdb|reviews|m-ac-example|string|Acting-citation|
+|rmrdb|reviews|m-te-review|string|Technical-review|
+|rmrdb|reviews|m-te-example|string|Technical-citation|
+|rmrdb|reviews|m-so-review|string|Sound-review|
+|rmrdb|reviews|m-so-example|string|Sound-citation|
+|rmrdb|reviews|m-summary|string|Overall-summary|
+|rmrdb|reviews|m-affiliate-link|string|affiliate link only functions if activated for user|
+|rmrdb|reviews|m-email|string|email of reviewer who created it|
+|rmrdb|reviews|m-process|string|left for future feature of bulk delete etc |
+
+* Note this date is never updated. To generate a new date a complete new review must be created *
+
+>## SKELETON ##
+
+For design of the site I used Balsamiq 3.x prototype software  to create the mockups
+Below are the intended pages
+
+|page|mockup|Created|
+|----|------|-------|
+|Home page|<img src="support/mock-1.png" width="200">|Yes|
+|Menus|<img src="support/mock-2.png" width="200">|Yes|
+|About|<img src="support/mock-3.png" width="200">|Yes|
+|Contribute|<img src="support/mock-5.png" width="200">|Yes|
+|Contact|<img src="support/mock-6.png" width="200">|Yes|
+|Register|<img src="support/mock-7.png" width="200">|Yes|
+|Member Page|<img src="support/mock-8.png" width="200">|Yes|
+|Member-Submission-page|<img src="support/mock-9.png" width="200">|Yes|
+|Search page|<img src="support/mock-4.png" width="200">|Yes|
+|Make-Admin Page|<img src="support/mock-10.png" width="200">|Yes|
+
+>## Surface ##
+
+The design of the site is based on sparse spacing and not clustered. In addition I chose light colours to make it clean looking.
+
+I used the 'Justpick color tool to grab and alter colors"
+
+I used Colormind website to give me colour ideas
+
+|No|Color Pallet variation|
+|--|------------|
+|1|<img src="support/colormind1.png" width="200">|
+|2|<img src="support/colormind2.png" width="200">|
+|3|<img src="support/colormind3.png" width="200">|
+
+I did not stick strictly to these options of course,but varied slightly, as I felt a creative flair
+The colour was gained by analysis of the curtain image
+
+**Google Fonts CDN**  was used to pull in the font style
+**font-family: 'Montserrat', sans-serif;**
+**Styling was carried out with CSS** as usual. I decided to add curves to the back panel and the images resulting from the searches.
+
+>## Features ##
+
+Apart from the general page features stipulated in the previous section, lets look at the search page to view the search feature elements.
+
+Feature|What is it?|state:
+|-------|-----------|-----|
+|About| Brief highlight of the sites objectives|Yes|
+|Contact|Allows public/member to contact site owner|Yes|
+|Search|Search the database for reviews|Yes|
+|Register|People can request membership|Yes|
+|Create Review|Authorized users can post a review|Yes|
+|Update Review|Authorized users can update/modify their post|Yes|
+|Delete Review|Authorized users can delete their post|Yes|
+|defaultdb-py|Site-Admin can wipe datbase after install & initial tests|Yes|
+|Promote User|Site Admin can convert 'standard users' to a 'posters' In addition allow pass through link to eccomerce site for reviewer|Yes|
+|Social Media|links to social media sites for the owner|Yes|
+|Mass Review Deletion/Modification|Allows users to alter review posts en-masse|No|
+
+## Search Page ##
+
+* Title
+* Sub-Title
+* Reviewer Name
+* Genre
+* Stars
+* Synopsis
+
+>** Note: The way MongoSearch works is that it search for a term across all field's with an index applied.Therefore it is possible to enter a search term in one field and have the result found in another field.The solution can be to just have one 'general search' field available, however I have opted to have each defined for clarity and speed response.
+
+>## TECHNOLOGIES/TOOLS USED ##
+
+* **HTML5-**
+Html5 will be used for structure
+* **CSS3-**
+CSS3 will be used for styling
+* **Bootstrap 3.x-**
+I will use bootstrap for the heavy lifting of alignment for the website components. However, I will be using version 3.x, rather than the current v4. This is to do with flask, which is currently one version behind the current mainstream release.
+* **Flask-** mini-framework for templating and page consistency
+* **Icons-**
+The obligatory font-awesome repository will be utilized for my site icons, for the social media icons etc. Again, I will use the previous release 4.x rather than the current 5.x, as this seems to play nicer with flask.
+* **Database-**
+As stated, we will employ a database for storage, allowing for rudimentary search and retrieve functionality. I will  use a 'document model', ‘NO-SQL’ database.... **(MongoDB)**. Specifically, I will use the online, cloud-based version, **'Atlas'**.
+* **Templates-**
+Flask using the Jinja2 engine will be my choice of framework, to speed up design and keep some level of uniformity across the site page content.
+* **Python3-**
+Although minor elements of jQuery and JavaScript may be be utilized within support modules bootstrap and other elements
+Python version 3.x shall be used as the underpinning project logic control within the flask views.
+* **E-mail-**
+Omitted from the site will be the background extended infrastructure that models the business behavior. I refer to things such as system admin monitoring and email response eco-system. From the front-end perspective, there will be email options, however the forms will remain un-hooked.
+* **Testing-**
+I will use chrome tools for testing, as that’s proves satisfactory. I will test on the main browsers including, Chrome, Firefox, Opera, Navigator etc. in addition I will use the CSS cross platform tool.
+* **Git-** Used for version control
+* **Git-Hub-** Repository to store build
+* **Heroku-** Used for hosting the site
+* **Monosnap-** Used to capture screen Shots
+* **Terminal v2.10** used to execute and connect to remote systems
+* **Google Fonts** 
