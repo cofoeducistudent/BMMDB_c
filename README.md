@@ -1,5 +1,9 @@
 # Movie-Review-Database-MS3 #
 
+[BMMDB Live Site](https://bmmdb.herokuapp.com)
+
+[BMMDB - Github - Site](https://github.com/cofoeducistudent/BMMDB_c)
+
 ![Blockbusters - Mcguffins & Moes](/support/‎1-home-page.png)
 
 >With the many film review sites on the internet, I found it frustrating that the reviews frequently had an agenda. Indeed,I have found that I could not trust them. There are reasons for this. Primarily it’s that most reviews come from one source or publisher, and the others from the general public, who mainly are not professional film reviewers, rather individuals voicing an opinion. However, in both situations a bias agenda exits, nonetheless. I wanted to balance this out somewhat. Therefore, I decided to take the best from both sides of reviewer types and see what I could come up with.I decided to make a film review website, that can be controlled to eliminate the bias as much as possible. Therefore, I set the following brief to attain a site suited to something I would like to see.
