@@ -170,3 +170,55 @@ I have identified 4 main users or stakeholders for this site
 |12|Anon User|I wish to see a browse/search feature|So I can read posted reviews about movies|
 |-||||
 |13|Registered User|I wish for a my movie reviews management page|So that I can (Post/Update/Delete) my reviews|
+
+>## Structure ##
+The site will be dynamic, involving a few technologies
+
+* HTML
+* CSS
+* Flask
+* Bootstrap
+* Google Fonts
+* Font-awesome
+* Database (Mongo)
+
+I will implement the site using the following folder/file structure.
+
+![folder structure](/support/2-folder-structure1.png)
+
+| Folder   |  Content  |
+|----------|-----------|
+| static   | This folder contains Images, CSS|
+| templates| HTML files, temp files|
+| flask | Contains the project files |
+| support | files supporting this README.md document |
+| vscode| workfolder|
+| venv | Virtual environment|
+
+![Folder](/support/3-folder-structure2.png)
+
+![Folder](/support/4-folder-structure3.png)
+
+![Folder](/support/5-folder-structure4.png)
+
+The site is classed as dynamic, moving data back and forth from a separate database. Only features within the defined scope will be implemented. There will be enough functionality to allow the site to be visibly operative. However the greater infrastructure support such as email - communications to the members and mailshot facility will not be operational.
+
+Note:
+Two features are placed within the repo by default. These need to be removed when the site is put in a production scenarion.
+
+* defaultdb.py
+
+* promoteuser html... link
+
+Ultimately in a fully costed production, these features will and should be implemented in a CMS page of some sort, accessed by users with the correct rights.
+ 
+**Warning:These features should be removed or accessed with security rights equivalent to 'site admins only!'**
+
+The first feature **'defaultdb.py'** - wipes the database and places **5 films reviews** in the site database.
+This feature is and should only be used in an initial site install.
+
+* The second feature **'promoteuser'** - allows the site admin to turn a registered user into a **'poster'**. This grants the user rights to Create/Read/Update/Delete reviews that they post( but no one elses).
+
+* once the reviewer/poster has created sufficient reviews conforming to the sites 'terms and condition', re-run the second page again, entering that users email.
+
+* The system will allow them to post an AFFILIATE LINK , that can go to a site of their choosing. This is to incentivize reviewers to post many quality  reviews and benefit by allowing that link to go to a site of their choosing. From here they can have a central affiliate links to many products to make monetary gains.
