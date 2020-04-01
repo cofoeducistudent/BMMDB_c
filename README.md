@@ -392,14 +392,14 @@ The site features were tested and the results tabled below
 
 | Feature   |  Action  | Screen | Result | Success
 |-----------|----------|--------|--------|--------|
-| **Launch site**| Browse to Heroku Site|<img src="support/sshot-11.png" width="100">|<img src="support/sshot-11.png" width="100">|Yes|
-| **About the site**| click on 'About' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-12.png" width="200">|Yes|
-| **Contact us**| click on 'Contact' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-15.png" width="200">|Yes|
-| **Contribute a review idea**| click on 'Contribute' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-14.png" width="200">|Yes|
-| **Register to become a member**| click on 'Register' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-16.png" width="200">|Yes|
-| **Search for a movie review**| click on 'Search' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-13.png" width="200">|Yes|
-| **Member Submit/update/delete  movie reviews as a member**| click on 'Member' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-2.png" width="200">|Yes|
-| **Make a user into a 'Poster' / Activate Affiliate Link...**| click on 'Member' |<img src="support/sshot-18.png" width="200"> |<img src="support/sshot-19.png" width="200">|Yes|
+| **Launch site**| Browse to Heroku Site|<img src="support/sshot11.png" width="200">|<img src="support/sshot11.png" width="200">|Yes|
+| **About the site**| Click on 'About' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-12.png" width="200">|Yes|
+| **Contact us**| Click on 'Contact' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-15.png" width="200">|Yes|
+| **Contribute a review idea**| Click on 'Contribute' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-14.png" width="200">|Yes|
+| **Register to become a member**| Click on 'Register' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-16.png" width="200">|Yes|
+| **Search for a movie review**| Click on 'Search' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-13.png" width="200">|Yes|
+| **Member Submit/update/delete  movie reviews as a member**| Click on 'Member' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-2.png" width="200">|Yes|
+| **Make a user into a 'Poster' / Activate Affiliate Link...**| Click on 'Member' |<img src="support/sshot-18.png" width="200"> |<img src="support/sshot-19.png" width="200">|Yes|
 
 ># DEPLOYMENT #
 
