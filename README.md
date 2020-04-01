@@ -378,7 +378,7 @@ Python version 3.x shall be used as the underpinning project logic control withi
 * **E-mail-**
 Omitted from the site will be the background extended infrastructure that models the business behavior. I refer to things such as system admin monitoring and email response eco-system. From the front-end perspective, there will be email options, however the forms will remain un-hooked.
 * **Testing-**
-I used chrome tools for testing, as that has prooved satisfactory historically for me. I will test on the main browsers including, Chrome, Firefox, Opera, Navigator etc. in addition I will use the CSS cross platform tool.
+I used chrome tools for testing, as that has proved satisfactory historically for me. I will test on the main browsers including, Chrome, Firefox, Opera, Navigator etc. in addition I will use the CSS cross platform tool.
 * **Git-** I used for version control
 * **Git-Hub-** I used GitHub Repository to store the build
 * **Heroku-** I used for hosting the site
@@ -460,3 +460,118 @@ The file **requirements.txt** details the modules installed to allow the install
 *The environment variable is already configured in the Heroku app system setting.*
 >## **HEROKU DEPLOYMENT:**
 
+++++
+
+># CREDITS #
+
+* Code assistance ... Pymongo search - Stack Overflow *
+* sr9yar - Stack Overflow *
+* user3375448 - Stack Overflow *
+
+># CONTENT #
+
+The coding was entirely mine. No code snippet was used, apart from standard a templates in Bootstrap 3.x 
+
+># MEDIA #
+
+Pictures were taken from pixabay & pexels site.
+All images are royalty free and allowed for use. Below are credits for the creators
+
+* Photo by Clem Onojenghuo from pexels *
+* Photo free - pixabay *
+* Image by Peggy und Marco Lachmann-Anke from Pixabay *
+* Photo Raphaelsilva Pixabay License *
+* Photo Gordon Johnson Pixabay License *
+* Photo Luis Quintero Pexels *
+
+* **Note: movie cover images - remain copyright of that of their respective companies.**
+
+># ACKNOWLEDGEMENTS #
+
+Thanks to Mentor **Prudence ljedge**, **Aaron Sinnott** I for review of site.
+
+># USEAGE INSTRUCTIONS #
+
+The site operation is simple.
+
+1. Browse the site and reviews. If you wish to browse, then simply click the **blue < Search/browse>** button
+
+2. Register on the site.
+
+* If you wish to become a reviewer.
+
+* If you want registration simply to receive our promotional material
+
+>FOR EXAMINER:
+The following features will be removed or made available for site administrators only via a CMS page of sorts.
+
+3. On the home page (bottom left) . The **"delete this link"**, allows access to the promote user tool
+
+4. On the resulting page. enter the email address you signed up with, and 'submit' to promote a new user to a ' review poster'
+
+5. If you wish to activate affiliate pass thru, you need to exit the screen  once the user is made 'review-poster', then re-run
+the promote user tool, but selecting the affiliate link.
+
+**This is because you are not allowed affiliate pass-through benefits, unless you are already an 'review-poster'. Also
+both actions would nevernormally happen at once. You need to become a successful poster before you are given affiliate access**
+
+## **Posting: A Review**
+
+1. As an **'Review-Poster'**, browse to **'Members - Add Review Page'**
+
+2. Enter: username/email address/password...
+
+3. scroll down the page , completing the section.
+
+4. Press blue <Submit Review> button.
+
+## **Delete: A Review** ##
+
+1. As an **'Review-Poster'**, browse to **'Members Maintenance Page'**
+
+2. Select Radio Button Option **Get My Review(s)**
+
+2. Enter: username/email address/password
+
+3. Press the blue <'Process Button'>
+
+    **This will provide a selection of all your reviews**
+
+3. Use the drop down and select a review to delete
+
+4. Select Radio Button Option **Delete Review**
+
+5. Enter: username/email address/password
+
+5. Click on orange **'<Action Selected Process>'**
+
+
+## **Update: A Review** ##
+
+1. As an **'Review-Poster'**, browse to **'Members Page'**
+
+2. Select Radio Button Option **Get Review(s)**
+
+3. Enter: username/email address/password...
+
+4. Press the blue <'Process'>
+
+    **This will provide a selection of all your reviews**
+
+5. Select Radio Button Option **Update Review(s)**
+
+6. Enter: username/email address/password...
+
+7. Use the drop down and select a review to update
+
+8. click on the orange **'<Update Selected>'** button.
+
+    **Member Update Sheet page will open up, you can complete your changes**
+
+10. Enter: username/email address/password...
+
+11. Complete the Sheet
+
+12. Tick the 'Confirm Changes' check box
+
+13. press the orange **Submit Review** button.
