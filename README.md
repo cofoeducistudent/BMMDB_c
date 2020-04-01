@@ -460,6 +460,49 @@ The file **requirements.txt** details the modules installed to allow the install
 *The environment variable is already configured in the Heroku app system setting.*
 >## **HEROKU DEPLOYMENT:**
 
+If you wish to deploy to the Heroku Platform:
+
+* Ensure you have cloned repo from the **BMMDB_c GitHub Site** to a local drive location, you have admin access.
+
+* Ensure these two files are within thesame directory as the python executable.. **(run.py)**
+
+* **requirements.txt**  --- This can be generated (inside the folder with python executable.. **(run.py)**) with the command python3 freeze -local > requirements.txt
+* **Procfile** --- This can be generated (inside the folder with python executable.. **(run.py)**) with the command echo "web: python run.py" > Procfile
+
+* Sign Up to the **Heroku Platform** Follow their instructions
+
+* Create a **Heroku - APP** and note the name [ app-name ]. This will be used to hold the local **BMMDB_c** repo you have cloned
+
+* In the local terminal window, within the flask folder( holding the two files requirements.txt and Procfile). type Heroku login
+
+    **A webpage will launch inviting you to enter login credentials.** You will now be connected to the Heroku Site
+
+
+*  Now you must upload the repo using Git
+
+1. type git add .
+2. git commit -am "..message..."
+3. git push heroku master
+
+    **Git will upload the repo**
+
+## **Setup Environment Variables for the Heroku App**
+
+1. Click on settings
+2. Click on **Reveal Configs**
+3. Add a key **'IP'**  & a value **'0.0.0.0'**   ; This will allow the app to run on any computer
+4. Add a key **'MONGO_URI'**  &  Value 'The value of the MONGO_URI environment var create earlier 
+
+>## export  MONGO_URI=  mongodb+srv://**username**: **password**@cluster0-ored3.mongodb.net/**xxxx**   where xxxx = database
+
+    **Note substitute the credentials accordingly with those created when you configured the MONGO ATLAS DB previously**
+
+5. Add a key **PORT** & a value **'8000'**
+
+    Finally at the bottom you will find the heroku site launch address of your **Heroku-App**.
+
+    **https://appname.herokuapp.com/**
+
 ++++
 
 ># CREDITS #
