@@ -392,7 +392,7 @@ The site features were tested and the results tabled below
 
 | Feature   |  Action  | Screen | Result | Success
 |-----------|----------|--------|--------|--------|
-| **Launch site**| Browse to Heroku Site|<img src="support/sshot-11.png" width="200">|<img src="support/sshot-11.png" width="200">|Yes|
+| **Launch site**| Browse to Heroku Site|<img src="support/sshot-11.png" width="100">|<img src="support/sshot-11.png" width="100">|Yes|
 | **About the site**| click on 'About' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-12.png" width="200">|Yes|
 | **Contact us**| click on 'Contact' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-15.png" width="200">|Yes|
 | **Contribute a review idea**| click on 'Contribute' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-14.png" width="200">|Yes|
@@ -407,7 +407,7 @@ The site features were tested and the results tabled below
 
 **I have already carried out the Mongo Atlas Database setup as part of the task of this project.** However if you wish to create/use your own Mongo DB Atlas instance, you need to set up and configure it
 
-1 . Sign up to mongo atlas if you have noton the [Mongo Site](https://www.mongodb.com/cloud/atlas/register)
+1 . Sign up to mongo atlas if you have not. The [Mongo Site](https://www.mongodb.com/cloud/atlas/register)
 * Keep your Atlas Login, **This is the master account password and not the one for the databse connectivity**.
 
 2 . Follow instructions and carry out the basic set up account credentials (note the username & password)
@@ -416,12 +416,12 @@ The site features were tested and the results tabled below
 * **Create a 'database' in that cluster**
 * **Create 3 'collections' (reviews, temp, users ) in that cluster**
 
-* **In Security - Database Access .. Add New Databse User ( Keep these credentials as they will be used to connect to the database)**
-* **In Security - Network Access ... Add IP address 0.0.0.0/0.. This ensures any one can connet to the database, because you cannot predict where the users of your software will be.**
+* **In Security - Database Access .. Add New Database User ( Keep these credentials as they will be used to connect to the database)**
+* **In Security - Network Access ... Add IP address 0.0.0.0/0.. This ensures any one can connet to the database, because you cannot predict where the users of your website will be.**
 
 **N/A - The site will not function on a published Github platform as the site is dynamic in nature. You can however review the readme (This page).**
 
-> ## **LOCAL CLONE DEPLOYMENT:** ##
+> ## **LOCAL DEPLOYMENT:** ##
 
 * Prereq: [**Download Git**](https://git-scm.com/) and install on your local computer if you have not already done so.
 
