@@ -9,8 +9,7 @@ from os import path
 from bson.objectid import ObjectId
 
 # Load Environment Variables
-# if path.exists("env.py"):
-    # import env
+ 
 
 MONGODB_URI = os.environ.get("MONGO_URI")
 DBS_NAME = "rmrdb"
@@ -73,7 +72,7 @@ def checkDup(id):
 @app.route('/')
 def index():
     return render_template('index.html', page='Blockbusters, McGuffins & Moes', fm=siteText["footer-message"], lg=legalFooter["legal-message"])
-# =====================================//=============================
+ 
 # About
 @app.route('/about')
 def about():
@@ -81,7 +80,7 @@ def about():
     #ABOUT PAGE VIEW
     '''
     return render_template('about.html', page='About Us',fm=siteText["footer-message"],lg=legalFooter["legal-message"])
-# =====================================//=============================
+ 
 @app.route('/contact', methods=["GET", "POST"])
 def contact():
     '''
@@ -90,7 +89,7 @@ def contact():
     if request.method == "POST":
         return redirect(url_for('contactSuccessOk'))
     return render_template('contact.html', page='Contact us', fm=siteText["footer-message"],lg=legalFooter["legal-message"])
-# =====================================//=============================
+ 
 # Contact Success
 @app.route('/contact-success', methods=["GET", "POST"])
 def contactSuccessOk():
@@ -98,18 +97,18 @@ def contactSuccessOk():
     VIEW SHOWN ON COMPLETION & POST OF CONTACT FORM
     '''
     return render_template('contact-success.html', page='Thank You for contacting us!', fm=siteText["footer-message"],lg=legalFooter["legal-message"])
-# =====================================//=============================
+ 
 @app.route('/contribute', methods=["GET", "POST"])
 def contribute():
     if request.method == "POST":
         return redirect(url_for('contributeS'))
     return render_template('contribute.html', page='Contribute Movie Suggestions For Review', fm=siteText["footer-message"],lg=legalFooter["legal-message"])
-# =====================================//=============================
+ 
 # Contribute Success
 @app.route('/contribute-success', methods=["GET", "POST"])
 def contributeS():
     return render_template('contribute-success.html', page='Contribution success!', fm=siteText["footer-message"],lg=legalFooter["legal-message"])
-# =====================================//=============================
+ 
 @app.route('/search', methods=["GET", "POST"])
 def search():
     # Start search when
@@ -122,7 +121,7 @@ def search():
         search_syn = request.form["s-synopsis"]
         search_gen = request.form["s-genre"]
         search_stars = request.form["s-stars"]
-       ##########################//###############################
+        
         '''
         #TITLE
         '''
@@ -174,7 +173,7 @@ def search():
                 {"$text": {"$search": search_rev}}).limit(10)
         return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"] )
     return render_template('search.html', page='Search', fm=siteText["footer-message"],lg=legalFooter["legal-message"])
-# =====================================//=============================
+ 
 # Search Result
 @app.route('/search-results', methods=["GET", "POST"])
 def searchResults():
@@ -182,7 +181,7 @@ def searchResults():
     #SEARCH RESULTS PAGE!
     '''
     return render_template('search-results.html', page='Search Result(s) Page..', fm=siteText["footer-message"],lg=legalFooter["legal-message"])
-# =====================================//=============================
+ 
 @app.route('/register', methods=["GET", "POST"])
 def register():
     '''
@@ -222,7 +221,7 @@ def register():
             coll_users.insert_one(post)
             return redirect(url_for('index'))
     return render_template('register.html', page='Member Registration Request', fm=siteText["footer-message"], users=users,lg=legalFooter["legal-message"])
-# =====================================//=============================
+ 
 @app.route('/dup-email')
 def dupEmail():
     '''
@@ -230,7 +229,7 @@ def dupEmail():
     Email address has already been used in the database record
     '''
     return render_template('dup-email.html', page='Error - Duplicate Email!', methods=["GET", "POST"], fm=siteText["footer-message"],lg=legalFooter["legal-message"])
-# =====================================//=============================
+ 
 @app.route('/promoteuser', methods=["GET", "POST"])
 def promoteUser():
     '''
@@ -279,7 +278,7 @@ def promoteUser():
                 coll_users.update_one(user, nw)
                 return redirect(url_for('promoteUserS'))
     return render_template('promoteuser.html', page="Grant - Poster Privilege", Methods=["GET", "POST"], fm=siteText["footer-message"],lg=legalFooter["legal-message"])
-# #####################################################################
+ 
 @app.route('/makeadmin-success', methods=["GET", "POST"])
 def promoteUserS():
     '''
@@ -287,7 +286,7 @@ def promoteUserS():
     Successfully converted standard user to an Admin, or added Affiliate pass-thru link ability
     '''
     return render_template('promoteuser-success.html', page="Promote User - Success", Methods=["GET", "POST"], fm=siteText["footer-message"],lg=legalFooter["legal-message"])
-# #####################################################################
+ 
 
 
 
@@ -361,24 +360,24 @@ def member():
                         return redirect(url_for('index'))
 
     return render_template('member.html', page='Member Add Review - Page', methods=["GET", "POST"], fm=siteText["footer-message"],lg=legalFooter["legal-message"])
-# =====================================//=============================
+ 
 
 @app.route('/member_d', methods=["GET", "POST"])
 def member_d():
     return render_template('member_d.html', page='Member - Delete Page', methods=["GET", "POST"], fm=siteText["footer-message"], rev_bag=rev_bag, lg=legalFooter["legal-message"])
-# =====================================//=============================
+ 
 
 @app.route('/delete-selected', methods=["GET", "POST"])
 def deleteSelected():
     return render_template('delete-selected.html', page='Member - Delete Page', methods=["GET", "POST"], fm=siteText["footer-message"], rev_bag=rev_bag, lg=legalFooter["legal-message"])
-# =====================================//=============================
+ 
 @app.route('/member_u.html', methods=["GET", "POST"])
 def member_u():
     '''
     ** MEMBER REVIEW UPDATE  VIEW **
     '''
     return render_template('member_u.html', page='Member - Update / Delete Page', methods=["GET", "POST"], fm=siteText["footer-message"], lg=legalFooter["legal-message"])
-# =====================================//=============================
+ 
 
 
 
@@ -458,7 +457,12 @@ def memberOptions():
 
             if uem == rem and users['u_password'] == request.form['password'] and request.form['user-options'] == 'Delete' and users['u_role'] == 'Admin':
                 unlock = True
-                # coll_reviews.find()
+               
+                try:
+                    updaterev = request.form['movie-list']
+                except:    
+                    return redirect(url_for('memberOptions'))
+
                 deleterev = request.form['movie-list']
                 coll_reviews.delete_one({'_id': ObjectId(deleterev)})
                 print("DELETED REVIEW!!")
@@ -469,10 +473,11 @@ def memberOptions():
 
 
 
-    # UPDATE REVIEWS    
-    if request.method == "POST" and request.form.get('user-options') == "Update" :
+    # UPDATE REVIEWS
+    if request.method == "POST" and request.form.get('user-options') == "Update":
         movies = coll_reviews.find()  # get movie collection
         documents = coll_users.find()  # get users collection
+         
         
         for u_cred in documents:
             users = {
@@ -488,11 +493,15 @@ def memberOptions():
             unlock = False
             crv_em = request.form['e-mail']
 
-
-            
             if users['u_role'] == 'Admin' and request.form['user-options'] == "Update":
                 unlock = True
                 movies = coll_reviews.find()
+
+                try:
+                    updaterev = request.form['movie-list']
+                except:    
+                    return redirect(url_for('memberOptions'))
+
                 for mr in movies:
                     updaterev = request.form['movie-list']
                     f = open("templates/crvid", "w")
@@ -529,13 +538,7 @@ def memberOptions():
 
 
     # UPDATE INSERT
-    # ***********
-
-
-
     if request.method == "POST" and request.form.get('confirm') != "None":
-
-        
         m_title = request.form["m-title"]
         m_sub_title = request.form["m-sub-title"]
         m_genre = request.form["m-genre"]
@@ -564,29 +567,7 @@ def memberOptions():
     
         x = coll_reviews.find_one({"_id": ObjectId(crev_id)})
         
-        # myquery = {
-        #     "m-title": m_title,
-        #     "m-sub-title": m_sub_title,
-        #     "m-genre:": m_genre,
-        #     "m-image-link": m_image_link,
-        #     "m-synopsis": m_synopsis,
-        #     "m-reviewer-name": m_reviewer_name,
-        #     "m-review-date": m_review_date,
-        #     "m-stars": m_stars,
-        #     "m-sc-review": m_sc_review,
-        #     "m-sc-example": m_sc_example,
-        #     "m-ac-review": m_ac_review,
-        #     "m-ac-example": m_ac_example,
-        #     "m-te-review": m_te_review,
-        #     "m-te-example": m_te_example,
-        #     "m-so-review": m_so_review,
-        #     "m-so-example": m_so_example,
-        #     "m-summary": m_summary,
-        #     "m-affiliate-link": m_affiliate_link,
-        #     "m-email": m_email,
-        #     "m-process": m_process,
-        # }
-        # #//
+ 
         newvalues = {
             "$set": {
                 "m-title": m_title,
@@ -616,38 +597,38 @@ def memberOptions():
 
           
     return render_template('member-options.html', page='Member Maintenance Page!', fm=siteText["footer-message"], rev_bag=rev_bag, crv=crv, lg=legalFooter["legal-message"],unlock=unlock )
-# =====================================//=============================
+ 
 @app.route('/update-success.html', methods=["GET", "POST"])
 def updateSuccess():
     print("UPDATE SUCCESS!")
     return render_template('update-success.html', page=' Page!', fm=siteText["footer-message"], rev_bag=rev_bag, lg=legalFooter["legal-message"])
-# =====================================//=============================
+ 
 @app.route('/member-options-gr', methods=["GET", "POST"])
 def memberOptionsGr():
     return render_template('member-options-gr.html', page=' Page!', fm=siteText["footer-message"], rev_bag=rev_bag, lg=legalFooter["legal-message"])
-# =====================================//=============================
+ 
 @app.route('/delete-success.html', methods=["GET", "POST"])
 def deleteSuccessOk():
     # print("DELETE SUCCESS!")
     return render_template('delete-success.html', page='Delete Success OK!', fm=siteText["footer-message"], lg=legalFooter["legal-message"])
-# =====================================//=============================
+ 
 @app.route('/member-submission-ok.html', methods=["GET", "POST"])
 def memberSubmitOk():
     '''
     # MEMBER REVIEW SUBMISSION OK 
     '''
     return render_template('member-submission-ok.html', page='Member Review Submission OK!', fm=siteText["footer-message"], lg=legalFooter["legal-message"])
-# =====================================//=============================
+ 
 @app.route('/update-sheet.html', methods=["GET", "POST"])
 def updateMyReviews():
 
 
     return render_template('update-sheet.html', page='Update Reviews', fm=siteText["footer-message"], lg=legalFooter["legal-message"])
-# =====================================//=============================
+ 
 
 
 
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP", "127.0.0.1"), port=int(
-        os.environ.get("PORT", 8000)), debug=True)
+        os.environ.get("PORT", 8000)), debug=False)

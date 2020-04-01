@@ -1,6 +1,6 @@
 # Real Movie-Review-Database (MS3) #
 
-## Blockbusters, McGuffins & Moes 
+>## **Blockbusters, McGuffins & Moes** ##
 
 [BMMDB Live Site](https://bmmdb.herokuapp.com)
 
@@ -9,8 +9,7 @@
 ![Blockbusters - Mcguffins & Moes](/support/‎1-home-page.png)
 
 >With the many film review sites on the internet, I found it frustrating that the reviews frequently had an agenda. Indeed,I have found that I could not trust them. There are reasons for this. Primarily it’s that most reviews come from one source or publisher, and the others from the general public, who mainly are not professional film reviewers, rather individuals voicing an opinion. However, in both situations a bias agenda exits, nonetheless. I wanted to balance this out somewhat. Therefore, I decided to take the best from both sides of reviewer types and see what I could come up with.I decided to make a film review website, that can be controlled to eliminate the bias as much as possible. Therefore, I set the following brief to attain a site suited to something I would like to see.
-
->## Project Brief ##
+> ## Project Brief ##
 
 * My scenario was to create a MOVIE REVIEW WEBSITE to promote movies past and present, in a professionally critiqued manner. The sites 'ssp' will be the sourcing of reviews from curated public film reviewers. I don't wish to have clickbait/slanderous soundbite reviews, in respect to our reviews, but calm considered critique. In effect I wish to distance the site from the predominant types of reviewers on the web.The first, a homogenous company having the hidden agenda of reviews favouring particular movie production companies via a nepotist back channel.
 The other is the many millennial ‘woke’ childish reviews targeting films that do not conform to their partisan view of what a film should be, simply for slander for gaining self promotion.
@@ -46,7 +45,7 @@ Each review will be supported with:
 
 * The public will be able to search for a particular title, or browse through existing reviews
 
-# Index
+## Index ##
 
 >1 UX
 
@@ -68,23 +67,30 @@ b. Features Left to Implement
 
 >3.TECHNOLOGIES USED
 
+*
 >4.TESTING
 
+*
 >5.DEPLOYMENT
 
+*
 >6.CREDITS
 
+*
 >7.CONTENT
 
+*
 >8.MEDIA
 
+*
 >9.ACKNOWLEDGEMENTS
 
+*
 >10.USEAGE INSTRUCTIONS
 
-# UX
+## UX ##
 
-## STRATEGY
+## STRATEGY ##
 
 The website is to be created and hosted on Heroku. **GitHub cannot be used in this instance as the site requires technologies that make it dynamic. GitHub does not allow non-static sites.**
 
@@ -117,7 +123,7 @@ To clarify the objective for the site, its worth reminding ourselves of the user
 * Site owners – Will be able post promo material to registered users and communicate.
 * Site owners or designated site Admins will be able to delete entire database, promote users to 'posters'
 
-## SCOPE
+## SCOPE ##
 
 There are endless features possible for a site such as this, however we will limit our scope.
 
@@ -173,6 +179,7 @@ I have identified 4 main users or stakeholders for this site
 |13|Registered User|I wish for a my movie reviews management page|So that I can (Post/Update/Delete) my reviews|
 
 >## Structure ##
+
 The site will be dynamic, involving a few technologies
 
 * HTML
@@ -392,7 +399,7 @@ The site features were tested and the results tabled below
 
 | Feature   |  Action  | Screen | Result | Success|
 |-----------|----------|--------|--------|--------|
-| **Launch site**| Browse to Heroku Site|<img src="support/sshot-11.png" width="200">|<img src="support/sshot-11.png" width="200">|Yes|
+| **Launch site**| Browse to Heroku Site|![sshot-11](./support/sshot-11.png")|<img src="support/sshot-11.png" width="200">|Yes|
 | **About the site**| Click on 'About' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-12.png" width="200">|Yes|
 | **Contact us**| Click on 'Contact' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-15.png" width="200">|Yes|
 | **Contribute a review idea**| Click on 'Contribute' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-14.png" width="200">|Yes|
@@ -413,7 +420,9 @@ The site features were tested and the results tabled below
 2 . Follow instructions and carry out the basic set up account credentials (note the username & password)
 
 * **Create a Cluster**
-* **Create a 'database' in that cluster**
+
+* **Create a 'database' in that cluster 'xxxx' **
+
 * **Create 3 'collections' (reviews, temp, users ) in that cluster**
 
 * **In Security - Database Access .. Add New Database User ( Keep these credentials as they will be used to connect to the database)**
