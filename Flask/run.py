@@ -7,9 +7,10 @@ from flask import Flask, render_template, url_for, request, redirect, flash
 from flask_bootstrap import Bootstrap
 from os import path
 from bson.objectid import ObjectId
+
 # Load Environment Variables
-if path.exists("env.py"):
-    import env
+# if path.exists("env.py"):
+    # import env
 
 MONGODB_URI = os.environ.get("MONGO_URI")
 DBS_NAME = "rmrdb"
@@ -563,28 +564,28 @@ def memberOptions():
     
         x = coll_reviews.find_one({"_id": ObjectId(crev_id)})
         
-        myquery = {
-            "m-title": m_title,
-            "m-sub-title": m_sub_title,
-            "m-genre:": m_genre,
-            "m-image-link": m_image_link,
-            "m-synopsis": m_synopsis,
-            "m-reviewer-name": m_reviewer_name,
-            "m-review-date": m_review_date,
-            "m-stars": m_stars,
-            "m-sc-review": m_sc_review,
-            "m-sc-example": m_sc_example,
-            "m-ac-review": m_ac_review,
-            "m-ac-example": m_ac_example,
-            "m-te-review": m_te_review,
-            "m-te-example": m_te_example,
-            "m-so-review": m_so_review,
-            "m-so-example": m_so_example,
-            "m-summary": m_summary,
-            "m-affiliate-link": m_affiliate_link,
-            "m-email": m_email,
-            "m-process": m_process,
-        }
+        # myquery = {
+        #     "m-title": m_title,
+        #     "m-sub-title": m_sub_title,
+        #     "m-genre:": m_genre,
+        #     "m-image-link": m_image_link,
+        #     "m-synopsis": m_synopsis,
+        #     "m-reviewer-name": m_reviewer_name,
+        #     "m-review-date": m_review_date,
+        #     "m-stars": m_stars,
+        #     "m-sc-review": m_sc_review,
+        #     "m-sc-example": m_sc_example,
+        #     "m-ac-review": m_ac_review,
+        #     "m-ac-example": m_ac_example,
+        #     "m-te-review": m_te_review,
+        #     "m-te-example": m_te_example,
+        #     "m-so-review": m_so_review,
+        #     "m-so-example": m_so_example,
+        #     "m-summary": m_summary,
+        #     "m-affiliate-link": m_affiliate_link,
+        #     "m-email": m_email,
+        #     "m-process": m_process,
+        # }
         # #//
         newvalues = {
             "$set": {
