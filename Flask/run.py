@@ -417,6 +417,14 @@ def memberOptions():
             rem=rem.upper()
             if uem == rem and users['u_password'] == request.form['password'] and request.form['user-options'] == 'None' and users['u_role'] == 'Admin':
                 unlock = True
+
+                try:
+                    users['u_password'] == request.form['password']
+                except:    
+                    return redirect(url_for('memberOptions'))
+
+
+
                 for mr in movies:
                     mem=mr['m-email']
                     mem=mem.upper()
@@ -458,6 +466,7 @@ def memberOptions():
             if uem == rem and users['u_password'] == request.form['password'] and request.form['user-options'] == 'Delete' and users['u_role'] == 'Admin':
                 unlock = True
                
+
                 try:
                     updaterev = request.form['movie-list']
                 except:    
@@ -539,6 +548,14 @@ def memberOptions():
 
     # UPDATE INSERT
     if request.method == "POST" and request.form.get('confirm') != "None":
+
+        try:
+            m_title = request.form["m-titl"]
+        except:    
+            redirect(url_for('memberOptions'))
+ 
+   
+
         m_title = request.form["m-title"]
         m_sub_title = request.form["m-sub-title"]
         m_genre = request.form["m-genre"]
