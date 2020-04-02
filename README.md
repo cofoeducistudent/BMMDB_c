@@ -2,19 +2,105 @@
 
 >## **Blockbusters, McGuffins & Moes** ##
 
+**WARNING: THIS SITE REQUIRES USER ACCOUNTS WITH THE CORRECT CREDENTIALS, BEFORE POSTING REVIEWS ARE POSSIBLE. THEREFORE PLEASE READ THE USEAGE INSTRUCTIONS AT THE BOTTOM...BEFORE USE!**
+
 [BMMDB Live Site](https://bmmdb.herokuapp.com)
 
 [BMMDB - Github - Site](https://github.com/cofoeducistudent/BMMDB_c)
 
 ![Blockbusters - Mcguffins & Moes](/support/‎1-home-page.png)
 
->With the many film review sites on the internet, I found it frustrating that the reviews frequently had an agenda. Indeed,I have found that I could not trust them. There are reasons for this. Primarily it’s that most reviews come from one source or publisher, and the others from the general public, who mainly are not professional film reviewers, rather individuals voicing an opinion. However, in both situations a bias agenda exits, nonetheless. I wanted to balance this out somewhat. Therefore, I decided to take the best from both sides of reviewer types and see what I could come up with.I decided to make a film review website, that can be controlled to eliminate the bias as much as possible. Therefore, I set the following brief to attain a site suited to something I would like to see.
+## Index ##
+
+[Overview](#overview)
+
+[Project Brief](#projectbrief)
+
+
+>[1 UX](#ux)
+
+
+[a. Strategy](#strategy)
+
+* [External Goals](#externalusergoals)
+* [Internal Goals](#siteownergoals)
+
+[b. Scope](#scope)
+
+* [In Scope](#inscope)
+
+* [Outside scope](#outsidescope)
+
+* [CRUD features](#crudfeatures)
+
+* [User Stories](#userstories)
+
+[c. Structure](#structure)
+
+* [Folder/Directory Structures](#folderstructures)
+
+* [Database Structure](#databasestructure)
+
+[d. Skeleton](#skeleton)
+
+[e. Surface](#surface)
+
+* [Color scheme](#colorscheme)
+* [Font Family](#fontfamily)
+
+>[2.FEATURES](#features)
+
+* [a. Existing Features](#existingfeatures)
+* [b. Features Left to Implement](#featureslefttoimplement)
+
+>[3.TECHNOLOGIES USED](#technologiesused)
+
+>[4.TESTING](#testing])
+
+>[5.DEPLOYMENT](#deployment)
+
+* [MongoDb Atlas](#mongoatlasconfiguration)
+
+* [Local Deployment](#localdeployment)
+
+* [Setup Environment Variables](#setupenvironmentvariables)
+
+* [Heroku Deployment](#herokudeployment)
+
+* [Heroku Environment Configuration](#herokuenvironmentconfiguration)
+
+>[6.CREDITS](#credits)
+
+>[7.CONTENT](#content)
+
+>[8.MEDIA](#media)
+
+>[9.ACKNOWLEDGEMENTS](#acknowledgements)
+
+>[10.USEAGE INSTRUCTIONS](#useageinstructions)
+
+* [For Examiner](#forexaminer)
+
+* [Post a Review](#postareview)
+
+* [Delete a Review](#deleteareview)
+
+* [Update a Review](#updateareview)
+
+* [Important - post install action](#important)
+
+>
+<a id="overview"></a>
+> ## Overview ##
+
+> With the many film review sites on the internet, I found it frustrating that the reviews frequently had an agenda. Indeed, I have found that I could not trust them. There are reasons for this. Primarily it’s that most reviews come from one source or publisher, and the others from the general public, who mainly are not professional film reviewers, rather individuals voicing an opinion. However, in both situations a bias agenda exits, nonetheless. I wanted to balance this out somewhat. Therefore, I decided to take the best from both sides of the reviewer types and see what I could come up with. I decided to make a film review website, that can be controlled to eliminate the bias as much as possible. Therefore, I set the following brief to attain a site suited to something I would like to see.
+
+<a id="projectbrief"></a>
 > ## Project Brief ##
 
-* My scenario was to create a MOVIE REVIEW WEBSITE to promote movies past and present, in a professionally critiqued manner. The sites 'ssp' will be the sourcing of reviews from curated public film reviewers. I don't wish to have clickbait/slanderous soundbite reviews, in respect to our reviews, but calm considered critique. In effect I wish to distance the site from the predominant types of reviewers on the web.The first, a homogenous company having the hidden agenda of reviews favouring particular movie production companies via a nepotist back channel.
-The other is the many millennial ‘woke’ childish reviews targeting films that do not conform to their partisan view of what a film should be, simply for slander for gaining self promotion.
+*  My scenario was to create a **MOVIE REVIEW WEBSITE** to promote movies past and present, in a professionally critiqued manner. The sites 'ssp' will be the sourcing of reviews from curated public film reviewers. I don't wish to have clickbait/slanderous soundbite reviews, concerning our reviews, but calmly considered critique. In effect, I wish to distance the site from the predominant types of reviewers on the web. The first, a homogenous company having the hidden agenda of reviews favouring particular movie production companies via a nepotist backchannel. The other is the many millennial ‘woke’ childish reviews targeting films that do not conform to their partisan view of what a film should be, simply for slander for gaining self-promotion.
 
-* I want a clean looking site, with calm considered reviews, that present reviews within the 'class' a film was intended for. The site will aim to have more serious content and attract true film officiators.Comparing a low budget film with a tent pole $200 million dollar production is simply ridiculous.
+*  I want a clean looking site, with calmly considered reviews, that present reviews within the 'class' a film was intended for. The site will aim to have more serious content and attract true film officiators. Comparing a low budget film with a tent pole $200 million movie production is simply ridiculous.
 
 * To help solve the above issues, each reviewer is be sourced from the public, however, they will not be allowed to post reviews without membership and agreeing to our terms and conditions. Or they will be struck off, with all their reviews removed.
 
@@ -45,51 +131,10 @@ Each review will be supported with:
 
 * The public will be able to search for a particular title, or browse through existing reviews
 
-## Index ##
-
->1 UX
-
-a. Strategy
-
-b. Scope
-
-c. Structure
-
-d. Skeleton
-
-e. Surface
-
->2.FEATURES
-
-a. Existing Features
-
-b. Features Left to Implement
-
->3.TECHNOLOGIES USED
-
-*
->4.TESTING
-
-*
->5.DEPLOYMENT
-
-*
->6.CREDITS
-
-*
->7.CONTENT
-
-*
->8.MEDIA
-
-*
->9.ACKNOWLEDGEMENTS
-
-*
->10.USEAGE INSTRUCTIONS
-
+<a id="ux"></a>
 ## UX ##
 
+<a id="strategy"></a>
 ## STRATEGY ##
 
 The website is to be created and hosted on Heroku. **GitHub cannot be used in this instance as the site requires technologies that make it dynamic. GitHub does not allow non-static sites.**
@@ -109,24 +154,29 @@ I intend to use the following technologies:
 
 To clarify the objective for the site, its worth reminding ourselves of the user requirements.
 
-> External User Goal** (Mainly the general public)
+<a id="externalusergoals"></a>
+> **External User Goal** (Mainly the general public)
 
 * Users will be able to search and browse existing reviews
 * Registered users – Will be able receive promotional material via email
 * Authorized Users (posters) – Will be able to post movie reviews, having full (CRUD) functionality.
-* Authorized valued users will in addition to posting privalages, have the ability to create an afilliate link to an ec-commerce site of their choosing within the sites terms & rules
+* Authorized valued users will in addition to posting privileges, have the ability to create an afilliate link to an ec-commerce site of their choosing within the sites terms & rules
 
-> Site Owner Goal
+<a id="siteownergoals"></a>
+> **Site Owner Goal**
 
 * The site owner will be able to publish a “self-user-moderated site”, presenting reviews for movies past and present.
 * The site owner will be able to convert registered users to “authorized reviewers”, allowing them to post movie reviews
 * Site owners – Will be able post promo material to registered users and communicate.
 * Site owners or designated site Admins will be able to delete entire database, promote users to 'posters'
 
+<a id="scope"></a>
 ## SCOPE ##
 
-There are endless features possible for a site such as this, however we will limit our scope.
 
+Endless features are possible for a site such as this, however we will limit our scope.
+
+<a id="inscope"></a>
 **In scope:**
 
 * Database design & connectivity
@@ -139,10 +189,12 @@ In addition there will be :
 * Partial CRUD for ‘non-authorized / un-registered users’.....(Read).
 * Affiliate Site link ability for authorized 'posters' ( Allows them to lik to a e-commerce site)
 
+<a id="outsidescope"></a>
 **Outside Scope:**
 
 * **Mass deletion or reviews for admin purposes can be added**, and I have  included a field in the reviews data structure for that purpose(m-process). However as I do not think that is critical for this release it has been de-scoped.
 
+<a id="crudfeatures"></a>
 **CRUD features for clarity mean:**
 
 * Creation of a movie review (Create).
@@ -150,6 +202,7 @@ In addition there will be :
 * Modification of an existing review (Update).
 * Deletion of an existing review (Delete)
 
+<a id="userstories"></a>
 > ## User Stories ##
 
 I have identified 4 main users or stakeholders for this site
@@ -178,6 +231,7 @@ I have identified 4 main users or stakeholders for this site
 |-||||
 |13|Registered User|I wish for a my movie reviews management page|So that I can (Post/Update/Delete) my reviews|
 
+<a id="structure"></a>
 >## Structure ##
 
 The site will be dynamic, involving a few technologies
@@ -191,6 +245,9 @@ The site will be dynamic, involving a few technologies
 * Database (Mongo)
 
 I will implement the site using the following folder/file structure.
+
+<a id="folderstructures"></a>
+>##Folder/Directory Structures
 
 ![folder structure](/support/2-folder-structure1.png)
 
@@ -214,9 +271,9 @@ The site is classed as dynamic, moving data back and forth from a separate datab
 Note:
 Two features are placed within the repo by default. These need to be removed when the site is put in a production scenario.
 
-* defaultdb-py
+* **defaultdb-py**
 
-* promoteuser.html... link, Currently only found on the homepage, lower left of screen
+* **promoteuser.html**... link, Currently only found on the homepage, lower left of screen
 
 Ultimately in a fully costed production, these features will and should be implemented in a CMS page of some sort, accessed by users with the appropriate rights.
 
@@ -230,11 +287,12 @@ Ultimately in a fully costed production, these features will and should be imple
 
 * The system will allow them to post an AFFILIATE LINK , that can go to a site of their choosing. This is to incentivize reviewers to post many quality  reviews and benefit by allowing that link to go to a site of their choosing. From here they can have a central affiliate links to many products to make monetary gains.
 
+<a id="databasestructure"></a>
 > ### DATABASE STRUCTURE ###
 
 **MongoDB version Atlas is used.**
 I chose to use the atlas version of mongo, because the database is provided as a service online in the cloud. This means
-that the provider will maintain the database and fix any failing during run-time. So far as your code is fine , the system should function. Note the project is for the purpose of the course. If this site was to be deployed in a real scenario of course, a discussion would be had with the client as to the database version required, as they may already have a mondo database.
+that the provider will maintain the database and fix any failings during run-time. So far as your code is fine , the system should function. Note the project is for the purpose of the course. If this site was to be deployed in a real scenario of course, a discussion would be had with the client as to the database version required, as they may already have a mondo database.
 
 As MongoDB is a document based database, the content will be 'collections' with fields representing each element of data. The site is built on this database structure. The database and collections are represented below.
 
@@ -296,6 +354,7 @@ This collection holds the reviews created by all the registered/Authorized poste
 
 * Note this date is never updated. To generate a new date a complete new review must be created *
 
+<a id="skeleton"></a>
 >## SKELETON ##
 
 For design of the site I used Balsamiq 3.x prototype software  to create the mockups
@@ -314,13 +373,16 @@ Below are the intended pages
 |Search page|<img src="support/mock-4.png" width="200">|Yes|
 |Make-Admin Page|<img src="support/mock-10.png" width="200">|Yes|
 
+<a id="surface"></a>
 >## Surface ##
 
 The design of the site is sparse and not clustered. This was intentional as my site is trying to attract serious film reviewers and fans. No javascript pop-ups in site. I wish more written content than images, as this is the only way I can consider a film justifiably reviewed. With thesame mind I chose light colours to make it look clean.
 
+<a id="colorscheme"></a>
+> ## Colour Scheme ##
 I used the **'Just pick'** color tool to grab and alter colors
 
-I used **'Colormind website'** to give me colour ideas
+Additionally, I used **'Colormind website'** to give me colour ideas
 
 |No|Color Pallet variation|
 |--|------------|
@@ -328,14 +390,20 @@ I used **'Colormind website'** to give me colour ideas
 |2|<img src="support/colormind2.png" width="200">|
 |3|<img src="support/colormind3.png" width="200">|
 
-I did not stick strictly to these options of course,but varied slightly and felt a necessity for some creative flair
+I did not stick strictly to these options of course,but varied slightly and felt a necessity for some creative flair.
+
 The colour was gained by analysis of the curtain image
+
+<a id="fontfamily"></a>
+> ## Font Family ##
 
 **Google Fonts CDN**  was used to pull in the font style
 **font-family: 'Montserrat', sans-serif;**
 **Styling was carried out with CSS** as usual. I decided to add curves to the back panel and the images resulting from the searches.
 
+<a id="features"></a>
 >## Features ##
+
 
 Apart from the general page features stipulated in the previous section, lets look at the search page to view the search feature elements.
 
@@ -353,17 +421,19 @@ Feature|What is it?|Employed?|
 |Social Media|links to social media sites for the owner|Yes|
 |Mass Review Deletion/Modification|Allows users to alter review posts en-masse|No|
 
-## Search Page ##
+## Search page content ##
+<a id="searchpage"></a>
 
-* Title
-* Sub-Title
-* Reviewer Name
-* Genre
-* Stars
-* Synopsis
+* **Title**
+* **Sub-Title**
+* **Reviewer Name**
+* **Genre**
+* **Stars**
+* **Synopsis**
 
 >** Note: The way MongoSearch works is that it search for a term across all field's with an index applied.Therefore it is possible to enter a search term in one field and have the result found in another field.The solution can be to just have one 'general search' field available, however I have opted to have each defined for clarity and speed response.
 
+<a id="technologiesused"></a>
 >## TECHNOLOGIES/TOOLS USED ##
 
 * **HTML5-**
@@ -393,9 +463,9 @@ I used chrome tools for testing, as that has proved satisfactory historically fo
 * **Terminal v2.10** I used Apples Terminal client to execute and connect to remote systems
 * **Google Fonts** I used google fonts for the page fontwork
 
-># TESTING #
+<a id="testing"></a>
+>## TESTING ##
 
- 
 The site features were tested and the results tabled below
 
 | Feature   |  Action  | Screen | Result | Success|
@@ -409,30 +479,31 @@ The site features were tested and the results tabled below
 | **Member Submit/update/delete  movie reviews as a member**| Click on 'Member' |<img src="support/sc_menu.PNG" width="200">|<img src="support/sc_maintenance.PNG" width="200">|Yes|
 | **Make a user into a 'Poster' / Activate Affiliate Link...**| Click on 'delete this link' @ bottom left of screen' |<img src="support/sc_homepage.PNG" width="200"> |<img src="support/sc_grantprivilage.PNG" width="200">|Yes|
 
->Tested Browsers
+>**Tested Browsers**
 
 |Browser|Result|
 |-------|------|
 |Firefox|Ok|
 |Safari|Ok|
 |Opera|Ok|
-|IExplore|-|
+|IExplorer|OK|
 
+>## DEPLOYMENT ##
 
-># DEPLOYMENT #
-
+<a id="mongoatlasconfiguration"></a>
 >## **MONGO ATLAS DATABASE CONFIGURATION:** ##
 
 **I have already carried out the Mongo Atlas Database setup as part of the task of this project.** However if you wish to create/use your own Mongo DB Atlas instance, you need to set up and configure it
 
 1 . Sign up to mongo atlas if you have not. The [Mongo Site](https://www.mongodb.com/cloud/atlas/register)
-* Keep your Atlas Login, **This is the master account password and not the one for the databse connectivity**.
+
+* Keep your Atlas Login, **This is the master account password and not the one for the database connectivity**.
 
 2 . Follow instructions and carry out the basic set up account credentials (note the username & password)
 
 * **Create a Cluster**
 
-* **Create a 'database' in that cluster 'xxxx' **
+* **Create a 'database' in that cluster 'xxxx'**
 
 * **Create 3 'collections' (reviews, temp, users ) in that cluster**
 
@@ -441,6 +512,7 @@ The site features were tested and the results tabled below
 
 **N/A - The site will not function on a published Github platform as the site is dynamic in nature. You can however review the readme (This page).**
 
+<a id="localdeployment"></a>
 > ## **LOCAL DEPLOYMENT:** ##
 
 * Prereq: [**Download Git**](https://git-scm.com/) and install on your local computer if you have not already done so.
@@ -461,12 +533,13 @@ The site features were tested and the results tabled below
 
 4. Type the following command "git clone **[paste the link]** ; where the link should be on your clipboard from clicking and copying the link in git-hub button in the image
 
+<a id="setupenvironmentvariables"></a>
 **SETUP ENVIRONMENT VARIABLES:**
 
 during development on the local machine and operations, an environment variable is required to allow the database to connect
 when python3 is run and attempts to connect to the mongo database ( in our case its mongo Atlas).Therefore on the local machine type.
 
->## export  MONGO_URI=  mongodb+srv://**username**: **password**@cluster0-ored3.mongodb.net/**xxxx**   where xxxx = database
+>## export  MONGO_URI=  mongodb+srv://**username**: **password**@cluster0-ored3.mongodb.net/**xxxx**   where xxxx = database ##
 
 This command will create an environment variable on the local system named **'MONGO_URI'**
 When the site is launched flask/mongo will look for it during initialization
@@ -478,7 +551,9 @@ The file **requirements.txt** details the modules installed to allow the install
 [Heroku Deployment](https://bmmdb.herokuapp.com/)
 **Connect to Heroku as the site is already up and running.**
 *The environment variable is already configured in the Heroku app system setting.*
->## **HEROKU DEPLOYMENT:**
+
+<a id="herokudeployment"></a>
+>## **HEROKU DEPLOYMENT:** ##
 
 If you wish to deploy to the Heroku Platform:
 
@@ -493,12 +568,11 @@ If you wish to deploy to the Heroku Platform:
 
 * Create a **Heroku - APP** and note the name [ app-name ]. This will be used to hold the local **BMMDB_c** repo you have cloned
 
-* In the local terminal window, within the flask folder( holding the two files requirements.txt and Procfile). type Heroku login
+* In the **local terminal window*, within the flask folder( holding the two files requirements.txt and Procfile)**. type Heroku login
 
     **A webpage will launch inviting you to enter login credentials.** You will now be connected to the Heroku Site
 
-
-*  Now you must upload the repo using Git
+*  Now you must upload the repo using the **Git** tool.
 
 1. type git add .
 2. git commit -am "..message..."
@@ -506,14 +580,17 @@ If you wish to deploy to the Heroku Platform:
 
     **Git will upload the repo**
 
-## **Setup Environment Variables for the Heroku App**
+<a id="herokuenvironmentconfiguration"></a>
+## **Setup Environment Variables for the Heroku App** ##
+
+The 'Heroku-App' will not operate unless its environmental settings are completed
 
 1. Click on settings
 2. Click on **Reveal Configs**
-3. Add a key **'IP'**  & a value **'0.0.0.0'**   ; This will allow the app to run on any computer
-4. Add a key **'MONGO_URI'**  &  Value 'The value of the MONGO_URI environment var create earlier 
+3. Add a key **'IP'**  with a value **'0.0.0.0'**   ; This will allow the app to run on any computer
+4. Add a key **'MONGO_URI'**  with  the  Value The value of the MONGO_URI environment var create earlier,following the = sign.
 
->## export  MONGO_URI=  mongodb+srv://**username**: **password**@cluster0-ored3.mongodb.net/**xxxx**   where xxxx = database
+>## export  MONGO_URI=  mongodb+srv://**username**: **password**@cluster0-ored3.mongodb.net/**xxxx**   where xxxx = database ##
 
     **Note substitute the credentials accordingly with those created when you configured the MONGO ATLAS DB previously**
 
@@ -523,19 +600,23 @@ If you wish to deploy to the Heroku Platform:
 
     **https://appname.herokuapp.com/**
 
-++++
+<a id="credits"></a>
+>## CREDITS ##
 
-># CREDITS #
+Inspiration was provided on the stackoverflow website.Below are some
+key coders that provided solutions to some of my trickier issues.
 
 * Code assistance ... Pymongo search - Stack Overflow *
 * sr9yar - Stack Overflow *
 * user3375448 - Stack Overflow *
 
-># CONTENT #
+<a href="content"></a>
+>## CONTENT ##
 
-The coding was entirely mine. No code snippet was used, apart from standard a templates in Bootstrap 3.x 
+The coding was entirely mine. No code snippet was directly used, apart from standard templates code in Bootstrap 3.x and w3schools.
 
-># MEDIA #
+<a id="media"></a>
+>## MEDIA ##
 
 Pictures were taken from pixabay & pexels site.
 All images are royalty free and allowed for use. Below are credits for the creators
@@ -549,11 +630,13 @@ All images are royalty free and allowed for use. Below are credits for the creat
 
 * **Note: movie cover images - remain copyright of that of their respective companies.**
 
-># ACKNOWLEDGEMENTS #
+<a id="acknowledgements"></a>
+>## ACKNOWLEDGEMENTS ##
 
 Thanks to Mentor **Prudence ljedge**, **Aaron Sinnott** I for review of site.
 
-># USEAGE INSTRUCTIONS #
+<a id="usageinstructions"></a>
+>## USEAGE INSTRUCTIONS ##
 
 The site operation is simple.
 
@@ -565,20 +648,23 @@ The site operation is simple.
 
 * If you want registration simply to receive our promotional material
 
+<a id="forexaminer"></a>
 >FOR EXAMINER:
-The following features will be removed or made available for site administrators only via a CMS page of sorts.
+
+**The following feature will be removed or made available for site administrators only via a CMS page of sorts.**
 
 3. On the home page (bottom left) . The **"delete this link"**, allows access to the promote user tool
 
 4. On the resulting page. enter the email address you signed up with, and 'submit' to promote a new user to a ' review poster'
 
-5. If you wish to activate affiliate pass thru, you need to exit the screen  once the user is made 'review-poster', then re-run
+5. If you wish to activate affiliate pass thru, you need to exit the screen  once the user is made 'review-poster', then **re-run**
 the promote user tool, but selecting the affiliate link.
 
 **This is because you are not allowed affiliate pass-through benefits, unless you are already an 'review-poster'. Also
 both actions would nevernormally happen at once. You need to become a successful poster before you are given affiliate access**
 
-## **Posting: A Review**
+<a id="postareview"></a>
+## **Post: A Review** ##
 
 1. As an **'Review-Poster'**, browse to **'Members - Add Review Page'**
 
@@ -588,6 +674,7 @@ both actions would nevernormally happen at once. You need to become a successful
 
 4. Press blue <Submit Review> button.
 
+<a id="deleteareview"></a>
 ## **Delete: A Review** ##
 
 1. As an **'Review-Poster'**, browse to **'Members Maintenance Page'**
@@ -609,6 +696,7 @@ both actions would nevernormally happen at once. You need to become a successful
 5. Click on orange **'<Action Selected Process>'**
 
 
+<a id="updateareview"></a>
 ## **Update: A Review** ##
 
 1. As an **'Review-Poster'**, browse to **'Members Page'**
@@ -617,24 +705,31 @@ both actions would nevernormally happen at once. You need to become a successful
 
 3. Enter: username/email address/password...
 
-4. Press the blue <'Process'>
+4. Press the blue <'Process'> button
 
     **This will provide a selection of all your reviews**
 
 5. Select Radio Button Option **Update Review(s)**
 
-6. Enter: username/email address/password...
+6. Re-enter: username/email address/password... 
 
-7. Use the drop down and select a review to update
+7. Use the **drop down** and **select a review** to update
 
 8. click on the orange **'<Update Selected>'** button.
 
-    **Member Update Sheet page will open up, you can complete your changes**
+    **The Member Update Sheet page will open, allowing you can complete your review update/changes**
 
-10. Enter: username/email address/password...
+    To do this....
+
+10. Re-enter: username/email address/password... on the update-sheet
 
 11. Complete the Sheet
 
-12. Tick the 'Confirm Changes' check box
+12. Tick the **'Confirm Changes'** check box
 
 13. press the orange **Submit Review** button.
+
+<a id="important"></a>
+**Note:The reason for multiple entries of email cred is to make it harder for an unauthorized user to access the members page and carry out updates. This is not a full authentication site, so sessions are not active.**
+
+> # **FINALLY!!** The file **'defaultdb.py'** is a tool to allow the site administrator to reset the database quickly after site installation and testing of review submissions. It is not intended to remain and is a one-shot tool for this purpose. Therefore it is to be deleted once all is working satisfactorily. Fin!#
