@@ -9,7 +9,12 @@ from os import path
 from bson.objectid import ObjectId
 
 # Load Environment Variables
- 
+
+'''
+Please ensure that the environment variable has
+been set on your local system.
+If on heroku set the app system variables!!!
+''' 
 
 MONGODB_URI = os.environ.get("MONGO_URI")
 DBS_NAME = "rmrdb"
@@ -648,4 +653,6 @@ def updateMyReviews():
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP", "127.0.0.1"), port=int(
-        os.environ.get("PORT", 8000)), debug=False)
+        os.environ.get("PORT", 8000)), debug = True)
+
+

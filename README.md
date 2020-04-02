@@ -395,12 +395,13 @@ I used chrome tools for testing, as that has proved satisfactory historically fo
 
 ># TESTING #
 
+ 
 The site features were tested and the results tabled below
 
 | Feature   |  Action  | Screen | Result | Success|
 |-----------|----------|--------|--------|--------|
-| **Launch site**| Browse to Heroku Site|<img src="support/mock-1.png" width="200">|<img src="support/sshot-11.png" width="200">|Yes|
-| **About the site**| Click on 'About' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-12.png" width="200">|Yes|
+| **Launch site**| Browse to Heroku Site|<img src="support/sc_menu.PNG" width="200">|<img src="support/sc_homepage.PNG" width="200">|Yes|
+| **About the site**| Click on 'About' |<img src="support/sc_menu.PNG" width="200">|<img src="support/sc_about.PNG" width="200">|Yes|
 | **Contact us**| Click on 'Contact' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-15.png" width="200">|Yes|
 | **Contribute a review idea**| Click on 'Contribute' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-14.png" width="200">|Yes|
 | **Register to become a member**| Click on 'Register' |<img src="support/sshot-17.png" width="200">|<img src="support/sshot-16.png" width="200">|Yes|
