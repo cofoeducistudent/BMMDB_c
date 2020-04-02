@@ -1,4 +1,5 @@
 /* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
+ 
 body {
     border: 0px;
     margin: 0px;
@@ -176,7 +177,8 @@ body {
     margin-top: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
-    box-shadow: 2px 2px var(--picture-shadow-color);
+    -webkit-box-shadow: 2px 2px var(--picture-shadow-color);
+            box-shadow: 2px 2px var(--picture-shadow-color);
 }
 .jumbotron p {
     background-color: var(--backplate-background-color);
@@ -188,7 +190,6 @@ body {
 /* Keep text from overspilling out of columns */
 .keep-insideBSol
 {
-    -moz-hyphens:auto;
     -ms-hyphens:auto;
     -webkit-hyphens:auto;
     hyphens:auto;
