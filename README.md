@@ -4,6 +4,16 @@
 
 **WARNING: THIS SITE REQUIRES USER ACCOUNTS WITH THE CORRECT CREDENTIALS, BEFORE POSTING REVIEWS ARE POSSIBLE. THEREFORE PLEASE READ THE USAGE INSTRUCTIONS AT THE BOTTOM...BEFORE USE!**
 
+I have provided a sample 'poster-user' having CRUD capability & affiliate authority  for use:
+
+* Username:fc
+* First name: Full
+* Last Name :Crud
+* Email address:f.crud@gmail.com
+* password:1
+
+> Note:!! You may experience a delay when you launch the site. This is not a site coding issue per-sae, rather Heroku and is a universal experience.  Heroku seems to store, then spin up your site after some time of non-use. Also it may need to reload your app if cleared in the cloud CDN.
+
 [BMMDB Live Site](https://bmmdb.herokuapp.com)
 
 [BMMDB - Github - Site](https://github.com/cofoeducistudent/BMMDB_c)
