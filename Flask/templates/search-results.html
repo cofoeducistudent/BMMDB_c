@@ -5,7 +5,9 @@
     <div class="container">
         {{super()}}
         <div class="row">
-            <div class="col-sm-12 text-justify">
+            <div class="col-sm-12 ">
+
+
                 <div class="panel panel-warning">
                     <div class="panel-body">
                         <p>
@@ -13,17 +15,21 @@
                         </p>
                     </div>
                 </div>
+
+
             </div>
         </div>
+
+
         <!-- Create Results -->
         {% for chunk in rev_results %}
         <div class="container">
             <div class="jumbotron">
 
-                <div class="row">
+                <!-- <div class="row">
 
+                    <div class="col-sm-12 "> -->
 
-                    <div class="col-sm-12 ">
 
                         <h4>{{'Movie Title:'}}</h4>
                         <h1><b>{{ chunk['m-title'] }}</b></h1>
@@ -32,12 +38,16 @@
                         <p>{{ chunk['m-sub-title'] }}</p>
 
                         <a href="{{chunk['m-affiliate-link']}}" target="_blank">
-                        <img src="{{ chunk['m-image-link']}}" class="movie-image" />
+                        <img src="{{ chunk['m-image-link']}}" class="movie-image"/>
                         </a>
+
                         <hr>
+
                         <p>
                             <h5>All images subject to copyright of their respective owners</h5>
                         </p>
+
+
                         <!-- Info -->
                         <h4>{{'Genre:'}}</h4>
                         <p>{{chunk['m-genre']}}</p>
@@ -63,19 +73,24 @@
                         <p>{{chunk['m-so-example' ]}}</p>
                         <h4>{{'Summary:'}}</h4>
                         <p>{{chunk['m-summary' ]}}</p>
-                    </div>
+
+
+
+
+
+                    <!-- </div>
 
                     
-                </div>
+                </div> -->
 
 
                 <div class="row">
-
-
                     <div class="col-sm-12 text-center ">
+                        
                         <a href="{{url_for('search')}}">
                             <h2><span class="fa fa-arrow-circle-left sm-icons" aria-hidden="true"></span></h2>
                         </a>
+
                     </div>
                 </div>
 
@@ -105,5 +120,8 @@
 
         
     </div>
+
+
+
     {% endblock body %}
 </body>
