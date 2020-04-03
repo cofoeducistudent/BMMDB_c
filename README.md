@@ -16,9 +16,7 @@
 
 [Project Brief](#projectbrief)
 
-
 >[1 UX](#ux)
-
 
 [a. Strategy](#strategy)
 
@@ -50,11 +48,7 @@
 
 >[2.FEATURES](#features)
 
-* [a. Existing Features](#existingfeatures)
-* [b. Features Left to Implement](#featureslefttoimplement)
-
 >[3.TECHNOLOGIES USED](#technologiesused)
-
 >[4.TESTING](#testing])
 
 >[5.DEPLOYMENT](#deployment)
@@ -555,22 +549,38 @@ The file **requirements.txt** details the modules installed to allow the install
 
 If you wish to deploy to the Heroku Platform:
 
-* Ensure you have cloned repo from the **BMMDB_c GitHub Site** to a local drive location, you have admin access.
+* Ensure you have cloned the repo from the **BMMDB_c GitHub Site** to a local drive location, you have admin access.
 
-* Ensure these two files are within the same directory as the python executable.. **(run.py)**
+* Ensure these two files are within the same directory as the python executable.. 
 
-* **requirements.txt**  --- This can be generated (inside the folder with python executable.. **(run.py)**) with the command python3 freeze -local > requirements.txt
-* **Procfile** --- This can be generated (inside the folder with python executable.. **(run.py)**) with the command echo "web: python run.py" > Procfile
+* **(run.py)**
 
-* Sign Up to the **Heroku Platform** Follow their instructions
+* **requirements.txt**  
 
-* Create a **Heroku - APP** and note the name [ app-name ]. This will be used to hold the local **BMMDB_c** repo you have cloned
+This can be generated (inside the folder with python executable.. **(run.py)**) with the command python3 freeze -local > requirements.txt
 
-* In the **local terminal window*, within the flask folder( holding the two files requirements.txt and Procfile)**. type Heroku login
+* **Procfile** --- This can be generated (inside the folder with python executable.. **(run.py)**) with the command 
+* **echo "web: python run.py" > Procfile**  ... ensure it is a capital 'P'
 
-    **A webpage will launch inviting you to enter login credentials.** You will now be connected to the Heroku Site
+* Sign Up to the **Heroku Platform** Follow their instructions:
+
+* Install the Heroku CLI
+* Download and install the Heroku CLI.
+* If you haven't already, log in to your Heroku account and follow the prompts to create a new SSH public key.
+* $ heroku login
+* **$ heroku git:clone -a bmmdb**
+* $ cd bmmdb
+
+* Create a **Heroku - APP** and note the name [ app-name ]. This will be used to hold the local **BMMDB** repo you have cloned
+
+* In the **local terminal window*, within the flask folder( holding the two files requirements.txt and Procfile)**. 
+
+type **Heroku login**
+
+* A webpage will launch inviting you to **enter login credentials.** You will now be connected to the Heroku Site
 
 *  Now you must upload the repo using the **Git** tool.
+
 
 1. type git add .
 2. git commit -am "..message..."
@@ -646,7 +656,7 @@ The site operation is simple.
 
 * If you want registration simply to receive our promotional material
 <a id="forexaminer"></a>
-> **FOR EXAMINER:**
+> **NOTES FOR THE EXAMINER:**
 
 **The following feature will be removed or made available for site administrators only via a CMS page of sorts.**
 
