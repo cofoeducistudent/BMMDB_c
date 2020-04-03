@@ -4,8 +4,10 @@ body {
     border: 0px;
     margin: 0px;
     padding: 0px;
-    --main-body-color: #eff0f0;
+    --main-body-color: #FFFFFF;
     --main-background-color: #1F1F1F;
+
+
     background: var(--main-body-color);
     --search-title-color: #e4e5e2;
     --text-entry-color: rgb(250, 243, 234);
@@ -28,7 +30,7 @@ body {
 }
 .footer>h2 {
     padding-top: 10px;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     width: 100%;
     height: 40px;
     background-color: var(--main-background-color);
