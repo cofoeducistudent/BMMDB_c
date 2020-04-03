@@ -27,14 +27,22 @@
             </div>
         </div>
     </div>
+
+    <!-- ID -->
+    <div class="row">
+        <div class="col-sm-12">
+            <label for="r-nme">Reviewer Email:</label><br>
+            <input id="r-nme" type="text" name="r-nme" value="{{ crv_em }}" size="33%" disabled>
+        </div>
+    </div>
     <div class="row">
         <div class="col-sm-12">
             <label for="picked">Review ID:</label><br>
             <input id="picked" type="text" name="picked" value="{{ updaterev }}" size="33%" disabled>
-            <!-- <h2>{{ crv['m_title'] }} : {{ updaterev }}</h2> -->
         </div>
     </div>
     <br>
+
     <!-- Search Button & Form -->
     <div class="row">
         <div class="col-sm-12">
@@ -100,7 +108,7 @@
                     </div>
 
 
-                    
+
                     <!-- Search Synopsis -->
                     <br>
                     <div class="col-sm-12">
@@ -109,15 +117,16 @@
                             rows="10" cols="100%" placeholder="Synopsis:">{{  crv['m_synopsis']  }}</textarea>
                     </div>
 
-                   
+
                     <br>
                     <!-- Reviewer Name -->
                     <div class="col-sm-12">
                         <label for="r-name">Reviewer Name:</label><br>
                         <input id="r-name" name="r-name" type="text" class="form-control t-entry-box"
-                            value="{{  crv['m_reviewer_name']  }}" placeholder="{{ crv['m_reviewer_name'] }}" required=True></input>
+                            value="{{  crv['m_reviewer_name']  }}" placeholder="{{ crv['m_reviewer_name'] }}"
+                            required=True></input>
 
-                            
+
                         <!-- Review Date -->
                         <br>
                         <label for="r-date">Review Date:</label><br>

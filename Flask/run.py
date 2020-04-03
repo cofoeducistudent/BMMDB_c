@@ -586,7 +586,7 @@ def memberOptions():
                     "m_email": x['m-email'],
                     "m_process": 'none',
                 }
-                return render_template('update-sheet.html', page='Member Update Sheet',  fm=siteText["footer-message"], lg=legalFooter["legal-message"],rev_bag=rev_bag,  updaterev=updaterev, crv=crv)
+                return render_template('update-sheet.html', page='Member Update Sheet', crv_em=crv_em, fm=siteText["footer-message"], lg=legalFooter["legal-message"],rev_bag=rev_bag,  updaterev=updaterev, crv=crv)
     
 
 
@@ -595,7 +595,7 @@ def memberOptions():
     if request.method == "POST" and request.form.get('confirm') != "None":
 
         try:
-            m_title = request.form["m-titl"]
+            m_title = request.form["m-title"]
         except:    
             redirect(url_for('memberOptions'))
  
