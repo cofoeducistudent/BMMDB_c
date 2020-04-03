@@ -396,6 +396,14 @@ def memberOptions():
     rev_bag = []
     crv = {}
 
+
+
+ 
+
+
+
+
+
     # GET REVIEWS
     if request.method == "POST" and request.form.get('user-options') == "None":
          
@@ -474,8 +482,12 @@ def memberOptions():
 
                 try:
                     updaterev = request.form['movie-list']
+                     
                 except:    
                     return redirect(url_for('memberOptions'))
+
+
+ 
 
                 deleterev = request.form['movie-list']
                 coll_reviews.delete_one({'_id': ObjectId(deleterev)})
@@ -484,6 +496,34 @@ def memberOptions():
 
                 return render_template('member-options-gr.html', page='Member Maintenance Page!', fm=siteText["footer-message"],lg=legalFooter["legal-message"], rev_bag=rev_bag, unlock=unlock)
    
+ 
+
+    if request.method == "POST" and request.form.get('user-options') == "Delete":
+            movies = coll_reviews.find()  # get movie collection ....@
+            documents = coll_users.find()  # get users collection
+            for u_cred in documents:
+                users = {
+                    "u_my_info": u_cred["my-info"],
+                    "u_username": u_cred['username'],
+                    "u_f_name": u_cred['f-name'],
+                    "u_l_name": u_cred['l-name'],
+                    "u_email": u_cred['e-mail'],
+                    "u_password": u_cred['password'],
+                    "u_role": u_cred['role'],
+                    "u_state": u_cred['a-state'],
+                }
+                unlock = False
+
+                uem=users['u_email']
+                rem=request.form['e-mail']
+                uem=uem.upper()
+                rem=rem.upper()
+                crv_em = request.form['e-mail']
+                if uem == rem and users['u_password'] != request.form['password'] and request.form['user-options'] == 'Delete' and users['u_role'] == 'Admin':
+                    return render_template('member-options.html', page='Member Maintenance Page!', fm=siteText["footer-message"],lg=legalFooter["legal-message"], rev_bag=rev_bag, unlock=unlock)
+        
+
+
 
 
 
@@ -654,5 +694,3 @@ def updateMyReviews():
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP", "127.0.0.1"), port=int(
         os.environ.get("PORT", 8000)), debug = False)
-
-
