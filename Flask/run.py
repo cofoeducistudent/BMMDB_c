@@ -463,7 +463,7 @@ def memberOptions():
                     if mem == crv_em and unlock == True:
                         rev_bag.append(mr)
 
-                return render_template('member-options-gr.html', page='Member Maintenance Page!', fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock,lg=legalFooter["legal-message"])
+                return render_template('member-options-gr.html',crv_em=crv_em, page='Member Maintenance Page!', fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock,lg=legalFooter["legal-message"])
     
             elif  uem == rem and users['u_password'] != request.form['password'] :
 
@@ -538,6 +538,7 @@ def memberOptions():
                 rem=rem.upper()
                 crv_em = request.form['e-mail']
                 if uem == rem and users['u_password'] != request.form['password'] and request.form['user-options'] == 'Delete' and users['u_role'] == 'Admin':
+                    
                     return render_template('member-options.html', page='Member Maintenance Page!', fm=siteText["footer-message"],lg=legalFooter["legal-message"], rev_bag=rev_bag, unlock=unlock)
         
 

@@ -1,6 +1,7 @@
 {% extends 'bootstrap/base.html' %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +21,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
-  
+
   {% endblock styles %}
   {% block scripts %}
   {{super()}}
@@ -28,24 +29,38 @@
   <script type="javascript" src="{{url_for('static', filename='main.js')}}"></script>
   {% endblock scripts %}
 </head>
+
 <body>
   Navbar Main
   {% block body %}
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
+
+
       <div class="navbar-header">
+
+
         <a class="navbar-brand" href="{{url_for('index')}}">Real Movie Reviews Database</a>
+
+
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
       </div>
+
+
       <!-- Navigation -->
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav ">
+
+
           <li class="dropdown">
+
+
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu<span class="caret"></span></a>
+
             <ul class="dropdown-menu">
               <li class="active"><a href="{{url_for('index')}}"> <span class="fa fa-home" aria-hidden="true"></span>
                   Home</a></li>
@@ -63,11 +78,24 @@
               <li><a href="{{url_for('memberOptions')}}"> <span class="fa fa-pencil-square-o"
                     aria-hidden="true"></span>Member - Maintenance</a></li>
             </ul>
+
+
+
+
+
+          </li>
+
+
         </ul>
       </div>
+
+
+
+
+
     </div>
   </nav>
-  
+
   <!-- Social Media Icons -->
   <div class="row">
     <div class="col-sm-12 text-left">
@@ -94,4 +122,5 @@
   <h1 class="page-titles">{{page}}</h1>
   {% endblock body %}
 </body>
+
 </html>
