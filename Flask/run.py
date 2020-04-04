@@ -71,6 +71,18 @@ def checkDup(id):
         if id == stuff['_id']:
             matchid = 1
             return matchid
+
+
+def resetSearch():
+    search_tit = ""
+    search_sub = ""
+    search_rev = ""
+    search_syn = ""
+    search_gen = ""
+    search_stars = ""
+
+
+
 # //###############################################//==================
 ##     M A I N  - VIEWS - S E C T I O N                              ##
 # //###############################################//==================
@@ -131,6 +143,7 @@ def search():
         #TITLE
         '''
         if search_tit != "":
+            resetSearch()
             print(search_tit)
             rev_results = coll_reviews.find(
                 {"$text": {"$search": search_tit}}).limit(10)
@@ -138,6 +151,7 @@ def search():
         #SUB-TITLE
         '''
         if search_sub != "":
+            resetSearch()
             print(search_sub)
             rev_results = coll_reviews.find(
                 {"$text": {"$search": search_sub}}).limit(10)
@@ -145,6 +159,7 @@ def search():
         #SEARCH REVIEWER
         '''
         if search_rev != "":
+            resetSearch()
             print(search_rev)
             rev_results = coll_reviews.find(
                 {"$text": {"$search": search_rev}}).limit(10)
@@ -152,6 +167,7 @@ def search():
         #SEARCH SYNOPSIS
         '''
         if search_syn != "":
+            resetSearch()
             print(search_syn)
             rev_results = coll_reviews.find(
                 {"$text": {"$search": search_syn}}).limit(10)
@@ -159,6 +175,7 @@ def search():
         #SEARCH GENRE
         '''
         if search_gen != "":
+            resetSearch()
             print(search_gen)
             rev_results = coll_reviews.find(
                 {"$text": {"$search": search_gen}}).limit(10)
@@ -166,6 +183,7 @@ def search():
         #SEARCH STARS
         '''
         if search_stars != "":
+            resetSearch()
             print(search_stars)
             rev_results = coll_reviews.find(
                 {"$text": {"$search": search_stars}}).limit(10)
@@ -173,9 +191,9 @@ def search():
         #DEFAULT SEARCH ON BLANK PARAMS
         '''
         if search_tit == "" and search_sub == "" and search_gen == "" and search_rev == "" and search_syn == "" and search_stars == "":
-            search_rev = "Clement"
+            search_stars = "4"
             rev_results = coll_reviews.find(
-                {"$text": {"$search": search_rev}}).limit(10)
+                {"$text": {"$search": search_stars}}).limit(10)
         return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"] )
     return render_template('search.html', page='Search', fm=siteText["footer-message"],lg=legalFooter["legal-message"])
  
