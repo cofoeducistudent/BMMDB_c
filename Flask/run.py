@@ -131,6 +131,10 @@ def search():
     # Start search when
     if request.method == "POST":
         rev_results = []
+
+        limit_value=int(request.form.get('s-count'))
+        
+
         # Search criteria
         search_tit = request.form["s-title"]
         search_sub = request.form["s-sub-title"]
@@ -139,6 +143,7 @@ def search():
         search_gen = request.form["s-genre"]
         search_stars = request.form["s-stars"]
         
+        search_m = "none"
         '''
         #TITLE
         '''
@@ -146,7 +151,7 @@ def search():
             resetSearch()
             print(search_tit)
             rev_results = coll_reviews.find(
-                {"$text": {"$search": search_tit}}).limit(10)
+                {"$text": {"$search": search_tit}}).limit(limit_value)
         '''
         #SUB-TITLE
         '''
@@ -154,7 +159,7 @@ def search():
             resetSearch()
             print(search_sub)
             rev_results = coll_reviews.find(
-                {"$text": {"$search": search_sub}}).limit(10)
+                {"$text": {"$search": search_sub}}).limit(limit_value)
         '''
         #SEARCH REVIEWER
         '''
@@ -162,7 +167,7 @@ def search():
             resetSearch()
             print(search_rev)
             rev_results = coll_reviews.find(
-                {"$text": {"$search": search_rev}}).limit(10)
+                {"$text": {"$search": search_rev}}).limit(limit_value)
         '''
         #SEARCH SYNOPSIS
         '''
@@ -170,7 +175,7 @@ def search():
             resetSearch()
             print(search_syn)
             rev_results = coll_reviews.find(
-                {"$text": {"$search": search_syn}}).limit(10)
+                {"$text": {"$search": search_syn}}).limit(limit_value)
         '''
         #SEARCH GENRE
         '''
@@ -178,7 +183,7 @@ def search():
             resetSearch()
             print(search_gen)
             rev_results = coll_reviews.find(
-                {"$text": {"$search": search_gen}}).limit(10)
+                {"$text": {"$search": search_gen}}).limit(limit_value)
         '''
         #SEARCH STARS
         '''
@@ -186,14 +191,23 @@ def search():
             resetSearch()
             print(search_stars)
             rev_results = coll_reviews.find(
-                {"$text": {"$search": search_stars}}).limit(10)
+                {"$text": {"$search": search_stars}}).limit(limit_value)
         '''
         #DEFAULT SEARCH ON BLANK PARAMS
         '''
+
         if search_tit == "" and search_sub == "" and search_gen == "" and search_rev == "" and search_syn == "" and search_stars == "":
-            search_stars = "4"
-            rev_results = coll_reviews.find(
-                {"$text": {"$search": search_stars}}).limit(10)
+            
+            search_m = "active"
+
+            rev_results = coll_reviews.find({"$text": {"$search": search_m }}).limit(limit_value)
+            
+ 
+
+
+
+
+
         return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"] )
     return render_template('search.html', page='Search', fm=siteText["footer-message"],lg=legalFooter["legal-message"])
  
@@ -350,7 +364,7 @@ def member():
                     "m-summary": request.form["su-review"],
                     "m-affiliate-link": request.form["m-af-link"],
                     "m-email": request.form["e-mail"],
-                    "m-process": "none",
+                    "m-process": "active",
                 }
 
                 eem = entry['e-mail']
@@ -603,7 +617,7 @@ def memberOptions():
                     "m_summary": x['m-summary'],
                     "m_affiliate_link": x['m-affiliate-link'],
                     "m_email": x['m-email'],
-                    "m_process": 'none',
+                    "m_process": 'active',
                 }
                 return render_template('update-sheet.html', page='Member Update Sheet', crv_em=crv_em, fm=siteText["footer-message"], lg=legalFooter["legal-message"],rev_bag=rev_bag,  updaterev=updaterev, crv=crv)
     
@@ -639,7 +653,7 @@ def memberOptions():
         m_summary = request.form["su-review"]
         m_affiliate_link = request.form["m-af-link"]
         m_email = request.form["e-mail"]
-        m_process = "none"
+        m_process = "active"
 
         print(m_title)
         f = open("templates/crvid", "r")

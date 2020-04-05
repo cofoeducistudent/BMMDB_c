@@ -1,10 +1,10 @@
 '''
 WARNING : Please delete this file from the directory before making this site public..
-or make this file hidden and executable by an site addministrator ONLY!!
+or make this file hidden and executable by an site administrator ONLY!!
 
 This file contains review data. It is installed with the repo
 whilst testing and learning the movie-database, you may have placed
-some erronues entries
+some erroneous entries
 This file is executed at the command line by and administrator
 by running the command
 
@@ -21,9 +21,11 @@ from flask import Flask, render_template, url_for, request, redirect, flash
 from flask_bootstrap import Bootstrap
 from os import path
 from bson.objectid import ObjectId
+
 # Load Environment Variables
-if path.exists("env.py"):
-    import env
+# if path.exists("env.py"):
+
+
 MONGODB_URI = os.environ.get("MONGO_URI")
 DBS_NAME = "rmrdb"
 COLLECTION_USER_NAME = "users"
@@ -69,7 +71,7 @@ movie_database = [      {
             "m-summary": "The Attachment is a cheaply made mystery/melodrama. The sort that would be shown at teatime. Like a father brown, or Mrs Marple entertainment. It hits the spot for general family viewing. The movie steers clear of excessive gore and sex or nudity. That said it does deal with some heavy topics, but in such a way that it's not too offensive to younger people. For this reason, it can be watched with parental guidance. But to be sure cheaply made does not mean it’s terrible. and our understanding is that the film was made for around 10k, which is a pittance in film budget comparison.",
             "m-affiliate-link": "https://www.imdb.com/title/tt3234668/",
             "m-email": "cofoedu@gmail.com",
-            "m-process": "none" 
+            "m-process": "active" 
            },
            {
             "m-title": "BATMAN",
@@ -91,7 +93,7 @@ movie_database = [      {
             "m-summary": "The Dark Knight does not disappoint. A film crafted by a professional and expert filmmaker. A film that takes you on all sorts of emotion, yet ultimately leaving you wanting more",
             "m-affiliate-link": "https://www.imdb.com/title/tt0468569/?ref_=fn_al_tt_1",
             "m-email": "m.kermode@gmail.com",
-            "m-process": "none"
+            "m-process": "active"
             },
             {
             "m-title": "STAR WARS",
@@ -113,7 +115,7 @@ movie_database = [      {
             "m-summary": "Star Wars is a film that brought in a new era of film-making. In doing so it also re-envisaged a genre, creating new ways to achieve films. VFX, SFX, Cinematic, thematic scores. Moviegoers the world over have George Lucas to thank for current films, as without him the industry would look very different",
             "m-affiliate-link": "https://www.imdb.com/title/tt0076759/",
             "m-email": "cofoedu@gmail.com",
-            "m-process": "none"
+            "m-process": "active"
             },
             {
             "m-title": "RAIDERS OF THE LOST ARK",
@@ -135,7 +137,7 @@ movie_database = [      {
             "m-summary": "Raiders of the Lost Ark is a top tent-pole movie, that made a huge sum at the box office. It also gave Harrison Ford, his second popular character following the Star wars Han-Solo pilot. A film set during WW2 gave the film. ",
             "m-affiliate-link": "https://en.wikipedia.org/wiki/Raiders_of_the_Lost_Ark",
             "m-email": "cofoedu@gmail.com",
-            "m-process": "none"
+            "m-process": "active"
             },
             {
             "m-title": "CLOSE ENCOUNTERS OF THE THIRD KIND",
@@ -157,7 +159,7 @@ movie_database = [      {
             "m-summary": "A film that fills you with awe and wonder. CE3K is another total masterpiece from Speilberg, which stripping the sci-fi, leaves you with a heartwarming story.",
             "m-affiliate-link": "",
             "m-email": "cofoedu@gmail.com",
-            "m-process": "none"
+            "m-process": "active"
             }
  ]
            
@@ -168,7 +170,10 @@ Drop current database collection and upload from file
 coll_reviews.drop()
 coll_reviews.insert_many(movie_database)
  
-coll_reviews.create_index([("m-title","text"),("m-sub-title","text"),("m-genre","text"),("m-synopsis","text"),("m-reviewer-name","text"),("m-review-date","text"),("m-stars","text"),("m-summary","text")], default_language='english')
+coll_reviews.create_index([("m-title","text"),("m-sub-title","text"),("m-genre","text"),("m-synopsis","text"),("m-reviewer-name","text"),("m-review-date","text"),("m-stars","text"),("m-summary","text"),("m-process:","text")  ], default_language='english')
  
 
 print("Database Successfully Reloaded!...")
+
+
+ 

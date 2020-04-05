@@ -25,23 +25,37 @@
     <form action="#" method="POST" class="form-group">
         <div class="row">
             <div class="col-sm-12">
+
+                <!-- Search Count -->
+                <div class="col-sm-12">
+                        <label for="s-count">Max Items Count:</label><br>
+                        <select name="s-count" id="s-count" type="text" class="form-control" placeholder="">
+                            <option value="2" selected>2</option>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value="1000">1000</option>
+                        </select>   
+                </div>
+
                 <!-- Search Title -->
                 <div class="col-sm-12">
-                    <label for="s-title">Search title:</label><br>
+                    <label for="s-title">Search Title:</label><br>
                     <input name="s-title" id="s-title" type="text" class="form-control" placeholder="">
-                    <!-- <hr> -->
                 </div>
                 <!-- Search Sub-Title -->
                 <div class="col-sm-12">
                     <label for="s-sub-title">Search Sub title:</label><br>
                     <input name="s-sub-title" id="s-sub-title" type="text" class="form-control" placeholder="">
-                    <!-- <hr> -->
+                     
                 </div>
                 <!-- Reviewer Name-->
                 <div class="col-sm-12">
                     <label for="s-reviewer">Search Reviewer:</label><br>
                     <input name="s-reviewer-name" id="s-reviewer" type="text" class="form-control" placeholder="">
-                    <!-- <hr> -->
+                   
                 </div>
                 <!-- Genre -->
                 <div class="col-sm-12">
@@ -55,7 +69,7 @@
                         <option value="RomCom">RomCom</option>
                         <option value="Mystery">Mystery</option>
                     </select>
-                    <!-- <hr> -->
+                    
                 </div>
                 <!-- Stars-->
                 <div class="col-sm-12">
