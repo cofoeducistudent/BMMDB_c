@@ -199,10 +199,8 @@ def search():
         if search_tit == "" and search_sub == "" and search_gen == "" and search_rev == "" and search_syn == "" and search_stars == "":
             
             search_m = "active"
-
-            rev_results = coll_reviews.find({"$text": {"$search": search_m }}).limit(limit_value)
             
- 
+            rev_results=coll_reviews.find({'m-process':search_m}).limit(limit_value) 
 
 
 
