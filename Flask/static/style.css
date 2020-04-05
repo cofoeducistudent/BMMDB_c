@@ -14,7 +14,10 @@ body {
     --text-update-color: rgb(228, 242, 247);
     font-family: 'Montserrat', sans-serif;
     --highlight-text-color: #DAB688;
-    --social-icons-color: rgb(223, 190, 147);
+    
+    --social-icons-color: rgb(218, 186, 145);
+    --social-icons-hover-color: rgb(212, 163, 99);
+
     --social-icons-highlight: #2D6FAE;
     --main-page-text-color: rgb(17, 19, 20);
     --picture-shadow-color: #DAB688;
@@ -149,13 +152,33 @@ body {
     -webkit-box-shadow: 1px 1px grey;
     box-shadow: 1px 1px grey;
 }
+
+
 .sm-icons {
-    font-size: 4rem;
+    font-size: 5rem;
     color: var(--social-icons-color);
+    text-shadow: 2px 3px var(--social-icons-hover-color);
+  
 }
+
+
+.sm-block :hover {
+    font-size: 5.1rem;
+    color: var(--social-icons-hover-color);
+    text-shadow: 1px 2px var(--social-icons-hover-color);
+     
+}
+
+.sm-block{
+
+    margin-top: 50px;
+}
+
+
 .page-title-fmt {
     text-shadow: 2px 2px #DAB688;
 }
+
 .inset-images {
     height: auto;
     width: 33%;
