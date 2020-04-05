@@ -48,7 +48,7 @@ siteText = {
 
 #Legal Message
 legalFooter={
-"legal-message":"Blockbusters McGuffins and Moe’s is a trademarked operation title of BAA holdings.  All rights reserved. Note all views made on this site are the views of their respective reviewers and are not those of the site owners or associated business. Images presented here are purely for demonstration purposes. The site does not condone foul or incendiary language. All our reviewers are mandated to present balanced reviews with citations supporting their review. This site is a demo site for the purpose of a course. You will not receive any emails in response to registration. Registering with the site will not give you access to posting reviews, this ability will be activated manually by those that are responsible for maintain the site. The site owners reserve the right to change the site contents or its availability at any time."
+"legal-message":"Blockbusters McGuffins and Moes is a trademarked operation title of BAA holdings.  All rights reserved. Note all views made on this site are the views of their respective reviewers and are not those of the site owners or associated business. Images presented here are purely for demonstration purposes. The site does not condone foul or incendiary language. All our reviewers are mandated to present balanced reviews with citations supporting their review. This site is a demo site for the purpose of a course. You will not receive any emails in response to registration. Registering with the site will not give you access to posting reviews, this ability will be activated manually by those that are responsible for maintain the site. The site owners reserve the right to change the site contents or its availability at any time."
 
 }
 
@@ -724,4 +724,4 @@ def updateMyReviews():
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP", "127.0.0.1"), port=int(
-        os.environ.get("PORT", 8000)), debug = True)
+        os.environ.get("PORT", 8000)), debug = False)

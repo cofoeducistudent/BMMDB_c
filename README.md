@@ -435,6 +435,8 @@ Feature|What is it?|Employed?|
 
 >** Note: The way MongoSearch works is that its search for a term across all field's with an index applied. Therefore it is possible to enter a search term in one field and have the result found in another field. The solution can be to just have one 'general search' field available, however, I have opted to have each defined for clarity and speed response.
 
+* I added a **'search quantity'** button, during coding as I found that that would be useful if the database grows.
+
 <a id="technologiesused"></a>
 >## TECHNOLOGIES/TOOLS USED ##
 
