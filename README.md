@@ -751,4 +751,9 @@ both actions would never normally happen at once. You need to become a successfu
 
 **Note: The reason for multiple entries of email cred is to make it harder for an unauthorized user to access the member's page and carry out updates. This is not a full authentication site, so sessions are not active.**
 
-> # **FINALLY!!** The file **'defaultdb.py'** is a tool to allow the site administrator to reset the database quickly after site installation and testing of review submissions. It is not intended to remain and is a one-shot tool for this purpose. Therefore it is to be deleted once all is working satisfactorily. Fin!#
+> # *FINALLY!!** The file **'defaultdb.py'** is a tool to allow the site administrator to reset the database quickly after site installation and testing of review submissions. 
+
+* It is not intended to remain and is a one-shot tool for this purpose. Therefore it is to be deleted once all is working satisfactorily.  It can be executed with running "python3 defaultdb.py"
+
+
+Fin!#

@@ -1,23 +1,18 @@
 /* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
- 
 body {
     border: 0px;
     margin: 0px;
     padding: 0px;
     --main-body-color: #FFFFFF;
     --main-background-color: #1F1F1F;
-
-
     background: var(--main-body-color);
     --search-title-color: #e4e5e2;
     --text-entry-color: rgb(250, 243, 234);
     --text-update-color: rgb(228, 242, 247);
     font-family: 'Montserrat', sans-serif;
     --highlight-text-color: #DAB688;
-    
     --social-icons-color: rgb(218, 186, 145);
     --social-icons-hover-color: rgb(212, 163, 99);
-
     --social-icons-highlight: #2D6FAE;
     --main-page-text-color: rgb(17, 19, 20);
     --picture-shadow-color: #DAB688;
@@ -39,13 +34,7 @@ body {
     height: 50px;
     background-color: var(--main-background-color);
     color: var(--main-body-color);
-
 }
-
-
- 
-
-
 .jumbotron h1 {
     font-size: 1.25 rem;
 }
@@ -152,33 +141,22 @@ body {
     -webkit-box-shadow: 1px 1px grey;
     box-shadow: 1px 1px grey;
 }
-
-
 .sm-icons {
     font-size: 5rem;
     color: var(--social-icons-color);
     text-shadow: 2px 3px var(--social-icons-hover-color);
-  
 }
-
-
 .sm-block :hover {
     font-size: 5.1rem;
     color: var(--social-icons-hover-color);
     text-shadow: 1px 2px var(--social-icons-hover-color);
-     
 }
-
 .sm-block{
-
     margin-top: 95px;
 }
-
-
 .page-title-fmt {
     text-shadow: 2px 2px #DAB688;
 }
-
 .inset-images {
     height: auto;
     width: 33%;
@@ -231,17 +209,12 @@ body {
     font-size: 1.5rem;
     background-color: var(--backplate-background-color);
  }
-
  .legal-message, h3{
-    
     text-align: justify;
     background-color: var(--main-body-color);
     color: var(--main-page-text-color);
     font-size: 1rem;
  }
-
  .half-size{
-
     width: 50%;
-
  }

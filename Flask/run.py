@@ -134,6 +134,9 @@ def search():
     if request.method == "POST":
         rev_results = []
 
+        ss=""
+        joiner=" + "
+
         limit_value = int(request.form.get('s-count'))
 
         # Search criteria
@@ -149,50 +152,56 @@ def search():
         #TITLE
         '''
         if search_tit != "":
-            resetSearch()
-            print(search_tit)
-            rev_results = coll_reviews.find(
-                {"$text": {"$search": search_tit}}).limit(limit_value)
+            # resetSearch()
+            # print(search_tit)
+            ss=ss+search_tit+joiner
+            # rev_results = coll_reviews.find({"$text": {"$search": search_tit}}).limit(limit_value)
         '''
         #SUB-TITLE
         '''
         if search_sub != "":
-            resetSearch()
-            print(search_sub)
-            rev_results = coll_reviews.find(
-                {"$text": {"$search": search_sub}}).limit(limit_value)
+            # resetSearch()
+            # print(search_sub)
+            ss=ss+search_sub+joiner
+            # rev_results = coll_reviews.find({"$text": {"$search": search_sub}}).limit(limit_value)
         '''
         #SEARCH REVIEWER
         '''
         if search_rev != "":
-            resetSearch()
-            print(search_rev)
-            rev_results = coll_reviews.find(
-                {"$text": {"$search": search_rev}}).limit(limit_value)
+            # resetSearch()
+            # print(search_rev)
+            ss=ss+search_rev+joiner
+            # rev_results = coll_reviews.find({"$text": {"$search": search_rev}}).limit(limit_value)
         '''
         #SEARCH SYNOPSIS
         '''
         if search_syn != "":
-            resetSearch()
-            print(search_syn)
-            rev_results = coll_reviews.find(
-                {"$text": {"$search": search_syn}}).limit(limit_value)
+            # resetSearch()
+            # print(search_syn)
+            ss=ss+search_syn+joiner
+            # rev_results = coll_reviews.find({"$text": {"$search": search_syn}}).limit(limit_value)
         '''
         #SEARCH GENRE
         '''
         if search_gen != "":
-            resetSearch()
-            print(search_gen)
-            rev_results = coll_reviews.find(
-                {"$text": {"$search": search_gen}}).limit(limit_value)
+            # resetSearch()
+            # print(search_gen)
+            ss=ss+search_gen+joiner
+            # rev_results = coll_reviews.find({"$text": {"$search": search_gen}}).limit(limit_value)
         '''
         #SEARCH STARS
         '''
         if search_stars != "":
-            resetSearch()
-            print(search_stars)
-            rev_results = coll_reviews.find(
-                {"$text": {"$search": search_stars}}).limit(limit_value)
+            # resetSearch()
+            # print(search_stars)
+            ss=ss+search_stars+joiner
+            # rev_results = coll_reviews.find({"$text": {"$search": search_stars}}).limit(limit_value)
+
+        
+    
+        rev_results = coll_reviews.find({"$text": {"$search": ss }}).limit(limit_value)
+
+
         '''
         #DEFAULT SEARCH ON BLANK PARAMS
         '''
@@ -201,8 +210,8 @@ def search():
 
             search_m = "active"
 
-            rev_results = coll_reviews.find(
-                {'m-process': search_m}).limit(limit_value)
+            rev_results = coll_reviews.find({'m-process': search_m}).limit(limit_value)
+
 
         return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"])
     return render_template('search.html', page='Search', fm=siteText["footer-message"], lg=legalFooter["legal-message"])
