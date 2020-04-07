@@ -37,26 +37,48 @@
                             <option value="50">50</option>
                             <option value="100">100</option>
                             <option value="1000">1000</option>
-                        </select>   
+                        </select>  
+                        <br> 
                 </div>
 
                 <!-- Search Title -->
                 <div class="col-sm-12">
-                    <label for="s-title">Search Title:</label><br>
+                    <label for="s-title">Title / Key Word:</label><br>
                     <input name="s-title" id="s-title" type="text" class="form-control" placeholder="">
+                    <hr>
                 </div>
                 <!-- Search Sub-Title -->
                 <div class="col-sm-12">
                     <label for="s-sub-title">Search Sub title:</label><br>
-                    <input name="s-sub-title" id="s-sub-title" type="text" class="form-control" placeholder="">
+                    <input name="s-sub-title" id="s-sub-title" type="text" class="form-control half-size" placeholder="">
                      
                 </div>
+
+
+
                 <!-- Reviewer Name-->
-                <div class="col-sm-12">
+                <br>
+                <br>
+                <div class="col-sm-12 form-group">
+                    <label for="s-reviewer">Reviewer Name:</label>
+                    <select name="s-reviewer-name" id="s-reviewer" class="form-control form-group half-size">
+                
+                        <option value=""></option>
+
+                        {% for au in all_users %}
+                        <option value="{{ au['f-name'] }} {{ au['l-name'] }}">{{ au['f-name'] }} {{ au['l-name'] }}</option>
+                        {%endfor%}
+                    
+                    </select>
+                </div>
+                
+            
+
+                <!-- <div class="col-sm-12">
                     <label for="s-reviewer">Search Reviewer:</label><br>
                     <input name="s-reviewer-name" id="s-reviewer" type="text" class="form-control half-size" placeholder="">
                    
-                </div>
+                </div> -->
                 <!-- Genre -->
                 <div class="col-sm-12">
                     <label for="s-genre">Search Genre:</label><br>

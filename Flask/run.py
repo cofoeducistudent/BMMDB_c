@@ -128,16 +128,26 @@ def contributeS():
     return render_template('contribute-success.html', page='Contribution success!', fm=siteText["footer-message"], lg=legalFooter["legal-message"])
 
 
+
+ 
+
+
 @app.route('/search', methods=["GET", "POST"])
 def search():
+ 
+    all_users=coll_users.find()
+
+
     # Start search when
     if request.method == "POST":
         rev_results = []
 
+        
         ss=""
         joiner=" + "
-
         limit_value = int(request.form.get('s-count'))
+
+
 
         # Search criteria
         search_tit = request.form["s-title"]
@@ -146,60 +156,109 @@ def search():
         search_syn = request.form["s-synopsis"]
         search_gen = request.form["s-genre"]
         search_stars = request.form["s-stars"]
-
         search_m = "none"
+
+
+
+
+
+
         '''
         #TITLE
         '''
         if search_tit != "":
-            # resetSearch()
-            # print(search_tit)
             ss=ss+search_tit+joiner
-            # rev_results = coll_reviews.find({"$text": {"$search": search_tit}}).limit(limit_value)
+            rev_results = coll_reviews.find({"$text": {"$search": search_tit}}).limit(limit_value)
+            return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"])
+
+
+
+
         '''
         #SUB-TITLE
         '''
         if search_sub != "":
-            # resetSearch()
-            # print(search_sub)
-            ss=ss+search_sub+joiner
-            # rev_results = coll_reviews.find({"$text": {"$search": search_sub}}).limit(limit_value)
+            search_tit = ""
+            search_sub = str((search_sub))
+            search_rev = ""
+            search_syn = ""
+            search_gen = ""
+            search_stars = ""
+
+            rev_results = coll_reviews.find({'m-sub-title': search_sub }).limit(limit_value )
+
+            print(search_sub)
+            return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"])
+
+
+
+
         '''
         #SEARCH REVIEWER
         '''
         if search_rev != "":
-            # resetSearch()
-            # print(search_rev)
-            ss=ss+search_rev+joiner
-            # rev_results = coll_reviews.find({"$text": {"$search": search_rev}}).limit(limit_value)
+            search_tit = ""
+            search_sub = ""
+            search_rev = search_rev
+            search_syn = ""
+            search_gen = ""
+            search_stars = ""
+
+            rev_results = coll_reviews.find({"$text": {"$search": search_rev }}).limit(limit_value)
+            return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"])
+
+
+
+
         '''
         #SEARCH SYNOPSIS
         '''
-        if search_syn != "":
-            # resetSearch()
-            # print(search_syn)
-            ss=ss+search_syn+joiner
-            # rev_results = coll_reviews.find({"$text": {"$search": search_syn}}).limit(limit_value)
+        if search_syn !="":
+            search_tit =""
+            search_sub ="" 
+            search_rev =""
+            search_syn =search_syn
+            search_gen =""
+            search_stars =""
+            # ss=ss+search_syn+joiner
+            rev_results = coll_reviews.find({"$text": {"$search": search_syn}}).limit(limit_value)
+            return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"])
+
+
+
+
         '''
         #SEARCH GENRE
         '''
         if search_gen != "":
-            # resetSearch()
-            # print(search_gen)
-            ss=ss+search_gen+joiner
-            # rev_results = coll_reviews.find({"$text": {"$search": search_gen}}).limit(limit_value)
+            search_tit =""
+            search_sub ="" 
+            search_rev =""
+            search_syn =""
+            search_gen =search_gen
+            search_stars =""
+            rev_results = coll_reviews.find({'m-genre': search_gen }).limit(limit_value)
+
+            return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"])
+
+
         '''
         #SEARCH STARS
         '''
         if search_stars != "":
-            # resetSearch()
-            # print(search_stars)
-            ss=ss+search_stars+joiner
-            # rev_results = coll_reviews.find({"$text": {"$search": search_stars}}).limit(limit_value)
+            search_tit =""
+            search_sub ="" 
+            search_rev =""
+            search_syn =""
+            search_gen ="" 
+            search_stars = search_stars
+            rev_results = coll_reviews.find({'m-stars': search_stars }).limit(limit_value)
+
+            return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"])
 
         
     
-        rev_results = coll_reviews.find({"$text": {"$search": ss }}).limit(limit_value)
+        # rev_results = coll_reviews.find({"$text": {"$search": ss }}).limit(limit_value)
 
 
         '''
@@ -207,14 +266,18 @@ def search():
         '''
 
         if search_tit == "" and search_sub == "" and search_gen == "" and search_rev == "" and search_syn == "" and search_stars == "":
-
             search_m = "active"
-
             rev_results = coll_reviews.find({'m-process': search_m}).limit(limit_value)
-
-
         return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"])
-    return render_template('search.html', page='Search', fm=siteText["footer-message"], lg=legalFooter["legal-message"])
+    
+
+
+    return render_template('search.html', page='Search', fm=siteText["footer-message"], lg=legalFooter["legal-message"], all_users=all_users )
+
+
+
+
+
 
 # Search Result
 @app.route('/search-results', methods=["GET", "POST"])
@@ -703,4 +766,4 @@ def updateMyReviews():
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP", "127.0.0.1"), port=int(
-        os.environ.get("PORT", 8000)), debug=True)
+        os.environ.get("PORT", 8000)), debug=False)
