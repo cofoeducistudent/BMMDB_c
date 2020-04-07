@@ -132,6 +132,14 @@ def contributeS():
  
 
 
+
+
+
+
+
+
+
+
 @app.route('/search', methods=["GET", "POST"])
 def search():
  
@@ -174,12 +182,17 @@ def search():
 
 
 
+
+
+
+
+
         '''
         #SUB-TITLE
         '''
         if search_sub != "":
             search_tit = ""
-            search_sub = str((search_sub))
+            search_sub = search_sub
             search_rev = ""
             search_syn = ""
             search_gen = ""
@@ -189,6 +202,7 @@ def search():
 
             print(search_sub)
             return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"])
+
 
 
 
@@ -220,7 +234,7 @@ def search():
             search_syn =search_syn
             search_gen =""
             search_stars =""
-            # ss=ss+search_syn+joiner
+         
             rev_results = coll_reviews.find({"$text": {"$search": search_syn}}).limit(limit_value)
             return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"])
 
@@ -258,6 +272,7 @@ def search():
 
         
     
+
         # rev_results = coll_reviews.find({"$text": {"$search": ss }}).limit(limit_value)
 
 
@@ -273,6 +288,15 @@ def search():
 
 
     return render_template('search.html', page='Search', fm=siteText["footer-message"], lg=legalFooter["legal-message"], all_users=all_users )
+
+
+
+
+
+
+
+
+
 
 
 
