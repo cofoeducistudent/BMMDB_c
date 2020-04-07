@@ -25,57 +25,51 @@
     <form action="#" method="POST" class="form-group">
         <div class="row">
             <div class="col-sm-12">
-
                 <!-- Search Count -->
                 <div class="col-sm-12">
-                        <label for="s-count">Max Items Count:</label><br>
-                        <select name="s-count" id="s-count" type="text" class="form-control half-size" placeholder="">
-                            <option value="2">2</option>
-                            <option value="5">5</option>
-                            <option value="10">10</option>
-                            <option value="25" selected>25</option>
-                            <option value="50">50</option>
-                            <option value="100">100</option>
-                            <option value="1000">1000</option>
-                        </select>  
-                        <br> 
+                    <label for="s-count">Max Items Count:</label><br>
+                    <select name="s-count" id="s-count" type="text" class="form-control half-size" placeholder="">
+                        <option value="2">2</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="25" selected>25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                    </select>
+                    <br>
                 </div>
-
                 <!-- Search Title -->
                 <div class="col-sm-12">
                     <label for="s-title">Title / Key Word:</label><br>
-                    <input name="s-title" id="s-title" type="text" class="form-control" placeholder="">
+                    <input name="s-title" id="s-title" type="text" class="form-control half-size" placeholder="">
+                    <br>
+                </div>
+                <div class="col-sm-12">
+                    <button type="submit" class="form-group btn btn-primary">Search / Browse Reviews</button>
                     <hr>
                 </div>
-
+                <hr>
                 <!-- Search Sub-Title -->
-              
                 <div class="col-sm-12">
                     <label for="s-sub-title">Search Sub title:</label><br>
-                    <input name="s-sub-title" id="s-sub-title" type="text" class="form-control half-size" placeholder="">
-                    <br> 
+                    <input name="s-sub-title" id="s-sub-title" type="text" class="form-control half-size"
+                        placeholder="">
+                    <br>
                 </div>
-
-
-
                 <!-- Reviewer Name-->
                 <br>
                 <br>
                 <div class="col-sm-12 form-group">
                     <label for="s-reviewer">Reviewer Name:</label>
                     <select name="s-reviewer-name" id="s-reviewer" class="form-control form-group half-size">
-                
                         <option value=""></option>
-
                         {% for au in all_users %}
-                        <option value="{{ au['f-name'] }} {{ au['l-name'] }}">{{ au['f-name'] }} {{ au['l-name'] }}</option>
+                        <option value="{{ au['f-name'] }} {{ au['l-name'] }}">{{ au['f-name'] }} {{ au['l-name'] }}
+                        </option>
                         {%endfor%}
-                    
                     </select>
                 </div>
-                
-            
- 
                 <!-- Genre -->
                 <div class="col-sm-12">
                     <label for="s-genre">Search Genre:</label><br>
@@ -88,7 +82,6 @@
                         <option value="RomCom">RomCom</option>
                         <option value="Mystery">Mystery</option>
                     </select>
-                    
                 </div>
                 <!-- Stars-->
                 <div class="col-sm-12">
@@ -107,8 +100,8 @@
                 <!-- Search synopsis -->
                 <div class="col-sm-12">
                     <label for="s-synopsis">Search Synopsis:</label><br>
-                    <textarea class="form-control" name="s-synopsis" id="s-synopsis" type="text" rows="10" cols="90%"
-                        placeholder=""></textarea>
+                    <textarea class="form-control form-group" name="s-synopsis" id="s-synopsis" type="text" rows="10"
+                        cols="90%" placeholder=""></textarea>
                     <hr>
                 </div>
                 <!-- Search Button -->
@@ -118,7 +111,6 @@
             </div>
         </div>
     </form>
-
     <!-- Legal -->
     <div class="col-sm-12 text-center  w-100"></div>
     <div class="legal-message">
@@ -126,19 +118,14 @@
             <h3>{{lg}}</h3>
         </p>
     </div>
-    
-<!-- Footer -->
-<div class="row">
+    <!-- Footer -->
+    <div class="row">
         <div class="col-sm-12 text-center  w-100">
             <div class="footer">
                 <h2>{{fm}}</h2>
             </div>
         </div>
     </div>
-    
-
 </div>
-
-
 </div>
 {% endblock body%}

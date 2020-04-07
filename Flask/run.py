@@ -177,6 +177,7 @@ def search():
         if search_tit != "":
             ss=ss+search_tit+joiner
             rev_results = coll_reviews.find({"$text": {"$search": search_tit}}).limit(limit_value)
+
             return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"])
 
 
@@ -201,6 +202,7 @@ def search():
             rev_results = coll_reviews.find({'m-sub-title': search_sub }).limit(limit_value )
 
             print(search_sub)
+
             return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"])
 
 
@@ -219,6 +221,7 @@ def search():
             search_stars = ""
 
             rev_results = coll_reviews.find({"$text": {"$search": search_rev }}).limit(limit_value)
+
             return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"])
 
 
@@ -236,6 +239,7 @@ def search():
             search_stars =""
          
             rev_results = coll_reviews.find({"$text": {"$search": search_syn}}).limit(limit_value)
+
             return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"])
 
 
@@ -272,7 +276,7 @@ def search():
 
         
     
-
+    
         # rev_results = coll_reviews.find({"$text": {"$search": ss }}).limit(limit_value)
 
 
@@ -283,6 +287,7 @@ def search():
         if search_tit == "" and search_sub == "" and search_gen == "" and search_rev == "" and search_syn == "" and search_stars == "":
             search_m = "active"
             rev_results = coll_reviews.find({'m-process': search_m}).limit(limit_value)
+
         return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"])
     
 
@@ -790,4 +795,4 @@ def updateMyReviews():
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP", "127.0.0.1"), port=int(
-        os.environ.get("PORT", 8000)), debug=False)
+        os.environ.get("PORT", 8000)), debug=True)
