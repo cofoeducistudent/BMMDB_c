@@ -50,13 +50,32 @@
                     <hr>
                 </div>
                 <hr>
+
+
+
+
                 <!-- Search Sub-Title -->
                 <div class="col-sm-12">
-                    <label for="s-sub-title">Release Date:</label><br>
+
+                        <label for="s-sub-title">Release Date:</label><br>
+                        <select name="s-sub-title" id="s-sub-title" class="form-control form-group half-size">
+                                <option value=""></option>
+                                {% for reld in dates %}
+                                <option value="{{ reld }}">{{ reld }}</option>
+                                {%endfor%}
+                        </select>
+
+
+
+                    <!-- <label for="s-sub-title">Release Date:</label><br>
                     <input name="s-sub-title" id="s-sub-title" type="text" class="form-control half-size"
                         placeholder="">
-                    <br>
+                    <br> -->
                 </div>
+
+
+
+
                 <!-- Reviewer Name-->
                 <br>
                 <br>

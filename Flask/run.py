@@ -145,10 +145,24 @@ def search():
  
     all_users=coll_users.find()
 
+    datefound=[]
+    dates=[]
+    all_reviews=coll_reviews.find()
+    for each in all_reviews:
+        if each['m-sub-title'] !="":
+            dt=each['m-sub-title']
+            if  not(dt in datefound):
+
+                dates.append(dt)
+                datefound.append(dt)
+            
+
+
 
     # Start search when
     if request.method == "POST":
         rev_results = []
+
 
         
         ss=""
@@ -168,9 +182,6 @@ def search():
 
 
 
-
-
-
         '''
         #TITLE
         '''
@@ -179,10 +190,6 @@ def search():
             rev_results = coll_reviews.find({"$text": {"$search": search_tit}}).limit(limit_value)
 
             return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"])
-
-
-
-
 
 
 
@@ -292,7 +299,7 @@ def search():
     
 
 
-    return render_template('search.html', page='Search', fm=siteText["footer-message"], lg=legalFooter["legal-message"], all_users=all_users )
+    return render_template('search.html', dates=dates, page='Search', fm=siteText["footer-message"], lg=legalFooter["legal-message"], all_users=all_users )
 
 
 
@@ -795,4 +802,4 @@ def updateMyReviews():
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP", "127.0.0.1"), port=int(
-        os.environ.get("PORT", 8000)), debug=True)
+        os.environ.get("PORT", 8000)), debug=False)
