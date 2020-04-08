@@ -53,7 +53,7 @@ Bootstrap(app)
 
 movie_database = [      { 
             "m-title": "THE ATTACHMENT",
-            "m-sub-title": "-",
+            "m-sub-title": "2016",
             "m-genre": "Mystery",
             "m-image-link": "https://m.media-amazon.com/images/M/MV5BNTM0OTMzNDUwOF5BMl5BanBnXkFtZTgwOTAyMTg5OTE@._V1_SY1000_SX675_AL_.jpg",
             "m-synopsis": "An innocent girl's world is turned upside-down when an ancient evil begins to stalk her family. An attempt by a religious sect to rid the evil from the family results in catastrophic results that will have far-reaching consequences.",
@@ -74,8 +74,8 @@ movie_database = [      {
             "m-process": "active" 
            },
            {
-            "m-title": "BATMAN",
-            "m-sub-title": "THE DARK KNIGHT",
+            "m-title": "BATMAN (THE DARK KNIGHT)",
+            "m-sub-title": "2008",
             "m-genre": "Action",
             "m-image-link": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SY1000_CR0,0,675,1000_AL_.jpg",
             "m-synopsis": "The Joker wreaks havoc in Gotham City, causing batman to rise to the challenge, resulting in an action-packed, intellectual game of cat and mouse. This cause a critical change in the Dark Knight as he learns that not all people are logical. Indeed for this foe, he comes to the realization that some of me can not be bought or reasoned with. Some men can't be bargained and want to watch the world burn.",
@@ -97,7 +97,7 @@ movie_database = [      {
             },
             {
             "m-title": "STAR WARS",
-            "m-sub-title": "A New Hope",
+            "m-sub-title": "1977",
             "m-genre": "SciFi",
             "m-image-link": "https://m.media-amazon.com/images/M/MV5BNzVlY2MwMjktM2E4OS00Y2Y3LWE3ZjctYzhkZGM3YzA1ZWM2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_CR0,0,643,1000_AL_.jpg",
             "m-synopsis": "Luke Skywalker is a young farm boy on a desert planet, who soon becomes swept up in an adventure, that will see him ultimately become part of a rebel alliance, fighting against an almighty domineering empire. The galaxy stands at a knife-edge of total servitude or freedom from oppression.",
@@ -119,7 +119,7 @@ movie_database = [      {
             },
             {
             "m-title": "RAIDERS OF THE LOST ARK",
-            "m-sub-title": "-",
+            "m-sub-title": "1981",
             "m-genre": "Action",
             "m-image-link": "https://upload.wikimedia.org/wikipedia/en/4/4c/Raiders_of_the_Lost_Ark.jpg",
             "m-synopsis": "Harrison Ford is cast as Indiana Jones an Archeologist professor/Adventurer. Set during WWII, the story follows Indiana as he races to find the long lost Ark of the Covenant, whilst avoiding the Nazi Third Reich, who was also after it. They believed whatever army held the ark, held the ultimate weapon.",
@@ -141,7 +141,7 @@ movie_database = [      {
             },
             {
             "m-title": "CLOSE ENCOUNTERS OF THE THIRD KIND",
-            "m-sub-title": "-",
+            "m-sub-title": "1977",
             "m-genre": "SciFi",
             "m-image-link": "https://upload.wikimedia.org/wikipedia/en/b/ba/Close_Encounters_of_the_Third_Kind_%281977%29_theatrical_poster.jpg",
             "m-synopsis": "When strange things begin happening in Indianapolis, it soon escalates statewide. From the air force missing planes,  to the small individual family, it soon becomes clear that we are being visited by strangers from another world.",
@@ -571,7 +571,8 @@ Drop current database collection and upload from file
 coll_reviews.drop()
 coll_reviews.insert_many(movie_database)
  
-coll_reviews.create_index([("m-title","text"),("m-sub-title","text"),("m-genre","text"),("m-synopsis","text"),("m-reviewer-name","text"),("m-review-date","text"),("m-stars","text"),("m-summary","text"),("m-process:","text")  ], default_language='english')
+
+coll_reviews.create_index([("m-title","text"),("m-genre","text"),("m-synopsis","text"),("m-reviewer-name","text"),("m-review-date","text"),("m-stars","text"),("m-summary","text"),("m-process:","text")  ], default_language='english')
  
 
 print("Database Successfully Reloaded!...")
