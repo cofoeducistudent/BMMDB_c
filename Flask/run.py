@@ -157,14 +157,18 @@ def search():
                 datefound.append(dt)
             
 
+    
 
+
+
+
+
+    
 
     # Start search when
     if request.method == "POST":
         rev_results = []
-
-
-        
+ 
         ss=""
         joiner=" + "
         limit_value = int(request.form.get('s-count'))
@@ -192,11 +196,8 @@ def search():
             return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"])
 
 
-
-
-
         '''
-        #SUB-TITLE
+        #RELEASE DATE
         '''
         if search_sub != "":
             search_tit = ""
@@ -208,9 +209,24 @@ def search():
 
             rev_results = coll_reviews.find({'m-sub-title': search_sub }).limit(limit_value )
 
-            print(search_sub)
-
             return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -227,6 +243,7 @@ def search():
             search_gen = ""
             search_stars = ""
 
+ 
             rev_results = coll_reviews.find({"$text": {"$search": search_rev }}).limit(limit_value)
 
             return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"])
@@ -245,6 +262,7 @@ def search():
             search_gen =""
             search_stars =""
          
+          
             rev_results = coll_reviews.find({"$text": {"$search": search_syn}}).limit(limit_value)
 
             return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"])
@@ -262,6 +280,7 @@ def search():
             search_syn =""
             search_gen =search_gen
             search_stars =""
+ 
             rev_results = coll_reviews.find({'m-genre': search_gen }).limit(limit_value)
 
             return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"])
@@ -277,6 +296,7 @@ def search():
             search_syn =""
             search_gen ="" 
             search_stars = search_stars
+ 
             rev_results = coll_reviews.find({'m-stars': search_stars }).limit(limit_value)
 
             return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"])
@@ -290,11 +310,9 @@ def search():
         '''
         #DEFAULT SEARCH ON BLANK PARAMS
         '''
-
         if search_tit == "" and search_sub == "" and search_gen == "" and search_rev == "" and search_syn == "" and search_stars == "":
             search_m = "active"
             rev_results = coll_reviews.find({'m-process': search_m}).limit(limit_value)
-
         return render_template('search-results.html', rev_results=rev_results, fm=siteText["footer-message"], page='Search Result Page..', lg=legalFooter["legal-message"])
     
 
