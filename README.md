@@ -335,7 +335,7 @@ This collection holds the reviews created by all the registered/Authorized poste
 |----------|-----------|-------|--------|------|
 |rmrdb|reviews|_id|auto|index|
 |rmrdb|reviews|m-title|string|movie title|
-|rmrdb|reviews|(m-sub-title)|string|movie sub-title **|
+|rmrdb|reviews|(**m-sub-title**)|string|movie sub-title **|
 |rmrdb|reviews|m-genre|text|movie genre classification|
 |rmrdb|reviews|m-image-link|string|image hosting address|
 |rmrdb|reviews|m-synopsis|string|movie synopsis|
@@ -356,7 +356,7 @@ This collection holds the reviews created by all the registered/Authorized poste
 |rmrdb|reviews|m-process|string|left for future feature of bulk delete etc |
 
 * *  Note this date is never updated. To generate a new date a completely new review must be created *
-* ** This data field was later converted to **release date**, without index text search  attached. I felt it was more beneficial
+* ** This data field was later converted to **release date**, without index text search  attached. I felt it was more beneficial. I left it here as was, rather than change it, to show the changes I made in strategy.
 
 <a id="skeleton"></a>
 >## SKELETON ##

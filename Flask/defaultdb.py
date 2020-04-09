@@ -481,7 +481,7 @@ movie_database = [{
     "m-genre": "RomCom",
     "m-image-link": "https://upload.wikimedia.org/wikipedia/en/9/98/Grease_2_%28movie_poster%29.jpg",
     "m-synopsis": "",
-    "m-reviewer-name": "Clement Ofoedu",
+    "m-reviewer-name": "Mark Kermode",
     "m-review-date": "",
     "m-stars": "3",
     "m-sc-review": "",
@@ -494,7 +494,7 @@ movie_database = [{
     "m-so-example": "",
     "m-summary": "",
     "m-affiliate-link": "https://en.wikipedia.org/wiki/Grease_2",
-    "m-email": "cofoedu@gmail.com",
+    "m-email": "m.kermode@gmail.com",
     "m-process": "active"
 },
     {
@@ -547,7 +547,7 @@ movie_database = [{
     "m-genre": "RomCom",
     "m-image-link": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Singin%27_in_the_Rain_%281952_poster%29.jpg/800px-Singin%27_in_the_Rain_%281952_poster%29.jpg",
     "m-synopsis": "",
-    "m-reviewer-name": "Clement Ofoedu",
+    "m-reviewer-name": "Full Crud",
     "m-review-date": "",
     "m-stars": "4",
     "m-sc-review": "",
@@ -560,7 +560,7 @@ movie_database = [{
     "m-so-example": "",
     "m-summary": "",
     "m-affiliate-link": "https://en.wikipedia.org/wiki/Singin%27_in_the_Rain",
-    "m-email": "cofoedu@gmail.com",
+    "m-email": "f.crud@gmail.com",
     "m-process": "active"
 },
     {
@@ -569,7 +569,7 @@ movie_database = [{
     "m-genre": "Horror",
     "m-image-link": "https://upload.wikimedia.org/wikipedia/en/d/d3/Villageofthedamned1960.jpg",
     "m-synopsis": "",
-    "m-reviewer-name": "Clement Ofoedu",
+    "m-reviewer-name": "Mark Kermode",
     "m-review-date": "",
     "m-stars": "3",
     "m-sc-review": "",
@@ -582,7 +582,7 @@ movie_database = [{
     "m-so-example": "",
     "m-summary": "",
     "m-affiliate-link": "https://en.wikipedia.org/wiki/Village_of_the_Damned_(1960_film)",
-    "m-email": "cofoedu@gmail.com",
+    "m-email": "m.kermode@gmail.com",
     "m-process": "active"
 },
     {
@@ -679,7 +679,7 @@ movie_database = [{
     "m-genre": "SciFi",
     "m-image-link": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Plan_9_Alternative_poster.jpg/800px-Plan_9_Alternative_poster.jpg",
     "m-synopsis": "Ed Wood",
-    "m-reviewer-name": "Clement Ofoedu",
+    "m-reviewer-name": "Full Crud",
     "m-review-date": "",
     "m-stars": "1",
     "m-sc-review": "",
@@ -692,7 +692,7 @@ movie_database = [{
     "m-so-example": "",
     "m-summary": "",
     "m-affiliate-link": "https://en.wikipedia.org/wiki/Plan_9_from_Outer_Space",
-    "m-email": "cofoedu@gmail.com",
+    "m-email": "f.crud@gmail.com",
     "m-process": "active"
 },
     {

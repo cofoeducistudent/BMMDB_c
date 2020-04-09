@@ -67,13 +67,8 @@
                     <label for="s-reviewer">Reviewer Name:</label>
                     <select name="s-reviewer-name" id="s-reviewer" class="form-control form-group half-size">
                         <option value=""></option>
-                        
                         {% for au in all_users %}
-
-                    
                         <option value="{{ au['f-name'] }} {{ au['l-name'] }}">{{ au['f-name'].upper() }} {{ au['l-name'].upper() }}</option>
-
-
                         {%endfor%}
                     </select>
                 </div>
