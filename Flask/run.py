@@ -443,6 +443,10 @@ def memberOptions():
                 print("DELETED REVIEW!!")
                 print(deleterev)
                 return render_template('member-options-gr.html', page='Member Maintenance Page!', fm=siteText["footer-message"], lg=legalFooter["legal-message"], rev_bag=rev_bag, unlock=unlock)
+            if uem == rem and users['u_password'] != request.form['password'] and request.form['user-options'] == 'Delete' and users['u_role'] == 'Admin':
+                return redirect(url_for('index'))
+
+
     if request.method == "POST" and request.form.get('user-options') == "Delete":
         movies = coll_reviews.find()  # get movie collection ....@
         documents = coll_users.find()  # get users collection

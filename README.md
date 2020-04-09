@@ -757,5 +757,7 @@ both actions would never normally happen at once. You need to become a successfu
 
 * It is not intended to remain and is a one-shot tool for this purpose. Therefore it is to be deleted once all is working satisfactorily.  It can be executed with running "python3 defaultdb.py"
 
+* Note: I made a creative choice to provide  a user login attempt with icorrect credentials no confirmation info, rather to send them back to index. This is to frustrate them and also not give a clue as to if it was the username or password that was a failure. It can be improved, but as we were asked not to worry about authentication anyway, I have left it basic.
+
 
 Fin!#
