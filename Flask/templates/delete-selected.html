@@ -2,7 +2,6 @@
 {% block body %}
 <div class="container-fluid">
     {{super()}}
-
     <!-- Image -->
     <div class="row">
         <div class="col-sm-12">
@@ -13,53 +12,35 @@
     <p>
         <h6>Photo Pixabay License </h6>
     </p>
-
-
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-    
             </div>
         </div>
     </div>
-
-
-
     <br>
     <!-- Search Button & Form -->
     <div class="row">
         <div class="col-sm-12">
-
             <form action="#" method="POST" class="form-group">
-   
                 <!-- Grab Button -->
                 <button type="submit" class="btn btn-primary">Get My Review(s)</button>
                 <hr>
             </form>
-
             <!-- // -->
-
             <form action="" method="GET" class="form-group">
                 <div class="row">
                     <div class="col-sm-12">
-
                         <label for="review-item">Movie Review:</label>
                         <select name="movie-list" id="review-item" class="form-control">
-
                             {% for m in rev_bag %}
-
                             <option value="{{ m['_id'] }}"> {{m['m-title'] }} : {{ m['_id'] }} </option>
-
                             {%endfor%}
-
                         </select>
-
                     </div>
                 </div>
-
                 <hr>
-
                 <!-- Submit Button -->
                 <button href="#" class="btn btn-warning">Delete Review</button>
             </form>
