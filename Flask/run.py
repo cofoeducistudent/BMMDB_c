@@ -328,6 +328,10 @@ def promoteUserS():
 
 
 
+
+
+
+
 @app.route('/member', methods=["GET", "POST"])
 def member():
     #INSERTION OF NEW MOVIE REVIEW VIEW PAGE!
@@ -356,36 +360,47 @@ def member():
                 "m-process": "active",
             }
 
-        tuser = coll_users.find()  # Grab User Database
+        total_users = coll_users.find()  # Grab User Database
+        for auser in total_users:
 
-        for auser in tuser:
-            user_db_email = (auser['e-mail']).upper()
-            rev_user = (request.form.get('e-mail')).upper()
 
-            user_db_pwd = auser['password']
-            user_fm_pwd = request.form.get('password')
 
-            if user_db_email == rev_user and user_db_pwd == user_fm_pwd and auser['a-state'] == "Yes":
+            user_database_email = (auser['e-mail']).upper() #...net user in database profiles
+            users_database_password = auser['password'] #...next user password in database profiles
+
+            review_user = (request.form.get('e-mail')).upper() #... email entered in form
+            user_form_password = request.form.get('password') #... password entered on form
+
+
+
+            if user_database_email == review_user and users_database_password != user_form_password:
+                return redirect(url_for('loginFailure')) # FAILURE!!!!
+ 
+
+
+            if user_database_email == review_user and users_database_password == user_form_password and auser['role'] == "Admin":
                 print("")
 
-         
+                #INC AFF-LINK
+                if auser['a-state'] =='Yes':
+                    coll_reviews.insert_one(reviews)
+                    return render_template(url_for('memberSubmitOk'), page='Member Review Submission OK!', fm=siteText["footer-message"])
 
-            if user_db_email == rev_user and user_db_pwd != user_fm_pwd:
-
-                return redirect(url_for('loginFailure'))
- 
-        
-            if auser['a-state'] =='Yes':
-                coll_reviews.insert_one(reviews)
-                return render_template(url_for('memberSubmitOk'), page='Member Review Submission OK!', fm=siteText["footer-message"])
-
-            if auser['a-state'] =='No':
-                reviews["m-affiliate-link"] = "#"
-                coll_reviews.insert_one(reviews)
-                return render_template(url_for('memberSubmitOk'), page='Member Review Submission OK!', fm=siteText["footer-message"])
+                # REMOVE AFF-LINK
+                if auser['a-state'] =='No':
+                    reviews["m-affiliate-link"] = "#"
+                    coll_reviews.insert_one(reviews)
+                    return render_template(url_for('memberSubmitOk'), page='Member Review Submission OK!', fm=siteText["footer-message"])
 
  
     return render_template('member.html', page='Member Add Review - Page', methods=["GET", "POST"], fm=siteText["footer-message"], lg=legalFooter["legal-message"])
+
+
+
+
+
+
+
 
 
 
@@ -476,13 +491,19 @@ def memberOptions():
                 "u_state": u_cred['a-state'],
             }
             unlock = False
-            uem = users['u_email']
-            rem = request.form['e-mail']
-            uem = uem.upper()
-            rem = rem.upper()
+            uem = (users['u_email']).upper()
+            rem = (request.form['e-mail']).upper()
+            # uem = uem.upper()
+            # rem = rem.upper()
             crv_em = request.form['e-mail']
+
+          
             if uem == rem and users['u_password'] == request.form['password'] and request.form['user-options'] == 'Delete' and users['u_role'] == 'Admin':
                 unlock = True
+
+
+
+
                 try:
                     updaterev = request.form['movie-list']
                 except:
@@ -492,8 +513,11 @@ def memberOptions():
                 print("DELETED REVIEW!!")
                 print(deleterev)
                 return render_template('member-options-gr.html', page='Member Maintenance Page!', fm=siteText["footer-message"], lg=legalFooter["legal-message"], rev_bag=rev_bag, unlock=unlock)
+            
             if uem == rem and users['u_password'] != request.form['password'] and request.form['user-options'] == 'Delete' and users['u_role'] == 'Admin':
                 return redirect(url_for('loginFailure'))
+
+
 
 
     if request.method == "POST" and request.form.get('user-options') == "Delete":
@@ -516,13 +540,19 @@ def memberOptions():
             uem = uem.upper()
             rem = rem.upper()
             crv_em = request.form['e-mail']
+
             if uem == rem and users['u_password'] != request.form['password'] and request.form['user-options'] == 'Delete' and users['u_role'] == 'Admin':
                 return render_template('member-options.html', page='Member Maintenance Page!', fm=siteText["footer-message"], lg=legalFooter["legal-message"], rev_bag=rev_bag, unlock=unlock)
-    
+ 
+
+
+
+
     # UPDATE REVIEWS
     if request.method == "POST" and request.form.get('user-options') == "Update":
         movies = coll_reviews.find()  # get movie collection
         documents = coll_users.find()  # get users collection
+
         for u_cred in documents:
             users = {
                 "u_my_info": u_cred["my-info"],
@@ -536,6 +566,13 @@ def memberOptions():
             }
             unlock = False
             crv_em = request.form['e-mail']
+
+
+            if (users['u_email']).upper() == (request.form.get('e-mail')).upper()  and users['u_password'] != request.form['password'] and request.form['user-options'] == 'Update' and users['u_role'] == 'Admin':
+                return redirect(url_for('loginFailure'))
+
+
+
             if users['u_role'] == 'Admin' and request.form['user-options'] == "Update":
                 unlock = True
                 movies = coll_reviews.find()
