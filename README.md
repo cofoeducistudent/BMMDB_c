@@ -54,11 +54,13 @@ I have provided a sample 'poster-user' having CRUD capability & affiliate author
 [e. Surface](#surface)
 
 * [Color scheme](#colorscheme)
+
 * [Font Family](#fontfamily)
 
 >[2.FEATURES](#features)
 
 >[3.TECHNOLOGIES USED](#technologiesused)
+
 >[4.TESTING](#testing])
 
 >[5.DEPLOYMENT](#deployment)
@@ -95,11 +97,13 @@ I have provided a sample 'poster-user' having CRUD capability & affiliate author
 
 >
 <a id="overview"></a>
+
 > ## Overview ##
 
 > With the many film review sites on the internet, I found it frustrating that the reviews frequently had an agenda. Indeed, I have found that I could not trust them. There are reasons for this. Primarily it’s that most reviews come from one source or publisher, and the others from the general public, who mainly are not professional film reviewers, rather individuals voicing an opinion. However, in both situations a bias agenda exits, nonetheless. I wanted to balance this out somewhat. Therefore, I decided to take the best from both sides of the reviewer types and see what I could come up with. I decided to make a film review website, that can be controlled to eliminate the bias as much as possible. Therefore, I set the following brief to attain a site suited to something I would like to see.
 
 <a id="projectbrief"></a>
+
 > ## Project Brief ##
 
 * My scenario was to create a **MOVIE REVIEW WEBSITE** to promote movies past and present, in a professionally critiqued manner. The sites 'usp' will be the sourcing of reviews from curated public film reviewers. I don't wish to have clickbait/slanderous soundbite reviews, concerning our reviews, but calmly considered critique. In effect, I wish to distance the site from the predominant types of reviewers on the web. The first, a homogenous company having the hidden agenda of reviews favouring particular movie production companies via a nepotist backchannel. The other is the many millennial ‘woke’ childish reviews targeting films that do not conform to their partisan view of what a film should be, simply for slander for gaining self-promotion.
@@ -136,9 +140,11 @@ Each review will be supported with:
 * The public will be able to search for a particular title, or browse through existing reviews
 
 <a id="ux"></a>
+
 ## UX ##
 
 <a id="strategy"></a>
+
 ## STRATEGY ##
 
 The website is to be created and hosted on Heroku. **GitHub cannot be used in this instance as the site requires technologies that make it dynamic. GitHub does not allow non-static sites.**
@@ -159,6 +165,7 @@ I intend to use the following technologies:
 To clarify the objective for the site, it's worth reminding ourselves of the user requirements.
 
 <a id="externalusergoals"></a>
+
 > **External User Goal** (Mainly the general public)
 
 * Users will be able to search and browse existing reviews
@@ -167,6 +174,7 @@ To clarify the objective for the site, it's worth reminding ourselves of the use
 * Authorized valued users will in addition to posting privileges, have the ability to create an affiliate link to an ec-commerce site of their choosing within the sites terms & rules
 
 <a id="siteownergoals"></a>
+
 > **Site Owner Goal**
 
 * The site owner will be able to publish a “self-user-moderated site”, presenting reviews for movies past and present.
@@ -175,11 +183,13 @@ To clarify the objective for the site, it's worth reminding ourselves of the use
 * Site owners or designated site Admins will be able to delete the entire database, promote users to 'posters'
 
 <a id="scope"></a>
+
 ## SCOPE ##
 
 Endless features are possible for a site such as this, however, we will limit our scope.
 
 <a id="inscope"></a>
+
 **In scope:**
 
 * Database design & connectivity
@@ -193,11 +203,13 @@ In addition there will be :
 * Affiliate site link ability for authorized 'posters' ( Allows them to link to a e-commerce site)
 
 <a id="outsidescope"></a>
+
 **Outside Scope:**
 
 * **Mass deletion or reviews for admin purposes can be added**, and I have included a field in the reviews data structure for that purpose(m-process). However, as I do not think that is critical for this release it has been de-scoped.
 
 <a id="crudfeatures"></a>
+
 **CRUD features for clarity mean:**
 
 * Creation of a movie review (Create).
@@ -206,6 +218,7 @@ In addition there will be :
 * Deletion of an existing review (Delete)
 
 <a id="userstories"></a>
+
 > ## User Stories ##
 
 I have identified 4 main users or stakeholders for this site
@@ -235,6 +248,7 @@ I have identified 4 main users or stakeholders for this site
 |13|Registered User|I wish for my movie reviews management page|So that I can (Post/Update/Delete) my reviews|
 
 <a id="structure"></a>
+
 >## Structure ##
 
 The site will be dynamic, involving a few technologies
@@ -250,6 +264,7 @@ The site will be dynamic, involving a few technologies
 I will implement the site using the following folder/file structure.
 
 <a id="folderstructures"></a>
+
 >##Folder/Directory Structures
 
 ![folder structure](/support/2-folder-structure1.png)
@@ -291,6 +306,7 @@ Ultimately in a fully costed production, these features will and should be imple
 * The system will allow them to post an AFFILIATE LINK, that can go to a site of their choosing. This is to incentivize reviewers to post many quality reviews and benefit by allowing that link to go to a site of their choosing. From here they can have a central affiliate link to many products to make monetary gains.
 
 <a id="databasestructure"></a>
+
 > ### DATABASE STRUCTURE ###
 
 **MongoDB version Atlas is used.**
@@ -359,6 +375,7 @@ This collection holds the reviews created by all the registered/Authorized poste
 * ** This data field was later converted to **release date**, without index text search  attached. I felt it was more beneficial. I left it here as was, rather than change it, to show the changes I made in strategy.
 
 <a id="skeleton"></a>
+
 >## SKELETON ##
 
 For design of the site I used Balsamiq 3.x prototype software  to create the mockups
@@ -378,12 +395,15 @@ Below are the intended pages
 |Make-Admin Page|<img src="support/mock-10.png" width="200">|Yes|
 
 <a id="surface"></a>
+
 >## Surface ##
 
 The design of the site is sparse and not clustered. This was intentional as my site is trying to attract serious film reviewers and fans. No javascript pop-ups in the site. I wish more written content than images, as this is the only way I can consider a film justifiably reviewed. With the same mind, I chose light colours to make it look clean.
 
 <a id="colorscheme"></a>
+
 > ## Colour Scheme ##
+
 I used the **'Just pick'** colour tool to grab and alter colours
 
 Additionally, I used **'Colormind website'** to give me colour ideas
@@ -399,6 +419,7 @@ I did not stick strictly to these options of course, but varied slightly and fel
 The colour was gained by analysis of the curtain image
 
 <a id="fontfamily"></a>
+
 > ## Font Family ##
 
 **Google Fonts CDN**  was used to pull in the font style
@@ -406,6 +427,7 @@ The colour was gained by analysis of the curtain image
 **Styling was carried out with CSS** as usual. I decided to add curves to the back panel and the images resulting from the searches.
 
 <a id="features"></a>
+
 >## Features ##
 
 Apart from the general page features stipulated in the previous section, let's look at the search page to view the search feature elements.
@@ -425,6 +447,7 @@ Feature|What is it?|Employed?|
 |Mass Review Deletion/Modification|Allows users to alter review posts en-masse|No|
 
 ## Search page content ##
+
 <a id="searchpage"></a>
 
 * **Title**
@@ -439,6 +462,7 @@ Feature|What is it?|Employed?|
 * Note:**I added a **'search quantity'** button feature, during coding as I found that that would be useful if the database grows.**
 
 <a id="technologiesused"></a>
+
 >## TECHNOLOGIES/TOOLS USED ##
 
 * **HTML5-**
@@ -469,6 +493,7 @@ I used chrome tools for testing, as that has proved satisfactory historically fo
 * **Google Fonts** I used google fonts for the page font work
 
 <a id="testing"></a>
+
 >## TESTING ##
 
 The site features were tested and the results tabled below
@@ -496,6 +521,7 @@ The site features were tested and the results tabled below
 >## DEPLOYMENT ##
 
 <a id="mongoatlasconfiguration"></a>
+
 >## **MONGO ATLAS DATABASE CONFIGURATION:** ##
 
 **I have already carried out the Mongo Atlas Database setup as part of the task of this project.** However, if you wish to create/use your own Mongo DB Atlas instance, you need to set up and configure it
@@ -518,6 +544,7 @@ The site features were tested and the results tabled below
 **N/A - The site will not function on a published Github platform as the site is dynamic. You can, however, review the readme (This page).**
 
 <a id="localdeployment"></a>
+
 > ## **LOCAL DEPLOYMENT:** ##
 
 * Prereq: [**Download Git**](https://git-scm.com/) and install on your local computer if you have not already done so.
@@ -539,6 +566,7 @@ The site features were tested and the results tabled below
 4. Type the following command "git clone **[paste the link]**; where the link should be on your clipboard from clicking and copying the link in git-hub button in the image
 
 <a id="setupenvironmentvariables"></a>
+
 **SETUP ENVIRONMENT VARIABLES:**
 
 during development on the local machine and operations, an environment variable is required to allow the database to connect
@@ -558,13 +586,14 @@ The file **requirements.txt** details the modules installed to allow the install
 *The environment variable is already configured in the Heroku app system setting.*
 
 <a id="herokudeployment"></a>
+
 >## **HEROKU DEPLOYMENT:** ##
 
 If you wish to deploy to the Heroku Platform:
 
 * Ensure you have cloned the repo from the **BMMDB_c GitHub Site** to a local drive location, you have admin access.
 
-* Ensure these two files are within the same directory as the python executable.. 
+* Ensure these two files are within the same directory as the python executable..
 
 * **(run.py)**
 
@@ -572,7 +601,7 @@ If you wish to deploy to the Heroku Platform:
 
 This can be generated (inside the folder with python executable.. **(run.py)**) with the command python3 freeze -local > requirements.txt
 
-* **Procfile** --- This can be generated (inside the folder with python executable.. **(run.py)**) with the command 
+* **Procfile** --- This can be generated (inside the folder with python executable.. **(run.py)**) with the command
 * **echo "web: python run.py" > Procfile**  ... ensure it is a capital 'P'
 
 * Sign Up to the **Heroku Platform** Follow their instructions:
@@ -586,14 +615,13 @@ This can be generated (inside the folder with python executable.. **(run.py)**) 
 
 * Create a **Heroku - APP** and note the name [ app-name ]. This will be used to hold the local **BMMDB** repo you have cloned
 
-* In the **local terminal window*, within the flask folder( holding the two files requirements.txt and Procfile)**. 
+* In the **local terminal window*, within the flask folder( holding the two files requirements.txt and Procfile)**.
 
 type **Heroku login**
 
 * A webpage will launch inviting you to **enter login credentials.** You will now be connected to the Heroku Site
 
 *  Now you must upload the repo using the **Git** tool.
-
 
 1. type git add .
 2. git commit -am "..message..."
@@ -602,6 +630,7 @@ type **Heroku login**
     **Git will upload the repo**
 
 <a id="herokuenvironmentconfiguration"></a>
+
 ## **Setup Environment Variables for the Heroku App** ##
 
 The 'Heroku-App' will not operate unless its environmental settings are completed
@@ -622,6 +651,7 @@ The 'Heroku-App' will not operate unless its environmental settings are complete
     **https://appname.herokuapp.com/**
 
 <a id="credits"></a>
+
 >## CREDITS ##
 
 Inspiration was provided on the StackOverflow website. Below are some
@@ -633,11 +663,13 @@ key coders that provided solutions to some of my trickier issues.
 * user3375448 - Stack Overflow *
 
 <a href="content"></a>
+
 >## CONTENT ##
 
 The coding was entirely mine. No code snippet was directly used, apart from standard templates code in Bootstrap 3.x and w3schools.
 
 <a id="media"></a>
+
 >## MEDIA ##
 
 Pictures were taken from pixabay & pexels site.
@@ -648,16 +680,18 @@ All images are royalty-free and allowed for use. Below are the credits for the c
 * Image by Peggy und Marco Lachmann-Anke from Pixabay *
 * Photo Raphaelsilva Pixabay License *
 * Photo Gordon Johnson Pixabay License *
-* Photo Luis Quintero Pexels ** 
+* Photo Luis Quintero Pexels **
 
 **Note: movie cover images - remain the copyright of that of their respective companies.**
 
 <a id="acknowledgements"></a>
+
 >## ACKNOWLEDGEMENTS ##
 
 Thanks to Mentor **Prudence ljedge**, **Aaron Sinnott** I for review of the site.
 
 <a id="useageinstructions"></a>
+
 >## USEAGE INSTRUCTIONS ##
 
 The site operation is simple.
@@ -670,6 +704,7 @@ The site operation is simple.
 
 * If you want registration simply to receive our promotional material
 <a id="forexaminer"></a>
+
 > **NOTES FOR THE EXAMINER:**
 
 **The following feature will be removed or made available for site administrators only via a CMS page of sorts.**
@@ -685,6 +720,7 @@ the promote user tool but selecting the affiliate link.
 both actions would never normally happen at once. You need to become a successful poster before you are given affiliate access**
 
 <a id="postareview"></a>
+
 ## **Post: A Review** ##
 
 1. As a **'Review-Poster'**, browse to **'Members - Add Review Page'**
@@ -696,6 +732,7 @@ both actions would never normally happen at once. You need to become a successfu
 4. Press blue <Submit Review> button.
 
 <a id="deleteareview"></a>
+
 ## **Delete: A Review** ##
 
 1. As a **'Review-Poster'**, browse to **'Members Maintenance Page'**
@@ -717,6 +754,7 @@ both actions would never normally happen at once. You need to become a successfu
 5. Click on orange **'<Action Selected Process>'**
 
 <a id="updateareview"></a>
+
 ## **Update: A Review** ##
 
 1. As a **'Review-Poster'**, browse to **'Members Page'**
@@ -731,7 +769,7 @@ both actions would never normally happen at once. You need to become a successfu
 
 5. Select Radio Button Option **Update Review(s)**
 
-6. Re-enter: username/email address/password... 
+6. Re-enter: username/email address/password...
 
 7. Use the **drop-down** and **select a review** to update
 
@@ -753,11 +791,10 @@ both actions would never normally happen at once. You need to become a successfu
 
 **Note: The reason for multiple entries of email cred is to make it harder for an unauthorized user to access the member's page and carry out updates. This is not a full authentication site, so sessions are not active.**
 
-> # *FINALLY!!** The file **'defaultdb.py'** is a tool to allow the site administrator to reset the database quickly after site installation and testing of review submissions. 
+> ## *FINALLY!!** The file **'defaultdb.py'** is a tool to allow the site administrator to reset the database quickly after site installation and testing of review submissions##
 
 * It is not intended to remain and is a one-shot tool for this purpose. Therefore it is to be deleted once all is working satisfactorily.  It can be executed with running "python3 defaultdb.py"
 
 * Note: I made a creative choice to provide  a user login attempt with icorrect credentials no confirmation info, rather to send them back to index. This is to frustrate them and also not give a clue as to if it was the username or password that was a failure. It can be improved, but as we were asked not to worry about authentication anyway, I have left it basic.
 
-
-Fin!#
+End

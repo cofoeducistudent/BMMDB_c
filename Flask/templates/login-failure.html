@@ -1,0 +1,31 @@
+{% extends 'default.html' %}
+{% block body %}
+<div class="container-fluid">
+    {{super()}}
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-danger">
+                <div class="panel-body">
+                    <p>Login Failure / Unauthorized Access</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Legal -->
+    <div class="col-sm-12 text-center  w-100"></div>
+    <div class="legal-message">
+        <p>
+            <h3>{{lg}}</h3>
+        </p>
+    </div>
+    <!-- Footer -->
+    <div class="row">
+        <div class="col-sm-12 text-center  w-100">
+            <div class="footer">
+                <h2>{{fm}}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock body %}
