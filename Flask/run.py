@@ -365,11 +365,16 @@ def member():
             user_db_pwd = auser['password']
             user_fm_pwd = request.form.get('password')
 
+            if user_db_email == rev_user and user_db_pwd == user_fm_pwd and auser['a-state'] == "Yes":
+                print("")
+
+         
 
             if user_db_email == rev_user and user_db_pwd != user_fm_pwd:
 
                 return redirect(url_for('loginFailure'))
-  
+ 
+        
             if auser['a-state'] =='Yes':
                 coll_reviews.insert_one(reviews)
                 return render_template(url_for('memberSubmitOk'), page='Member Review Submission OK!', fm=siteText["footer-message"])
@@ -378,6 +383,7 @@ def member():
                 reviews["m-affiliate-link"] = "#"
                 coll_reviews.insert_one(reviews)
                 return render_template(url_for('memberSubmitOk'), page='Member Review Submission OK!', fm=siteText["footer-message"])
+
  
     return render_template('member.html', page='Member Add Review - Page', methods=["GET", "POST"], fm=siteText["footer-message"], lg=legalFooter["legal-message"])
 
@@ -667,4 +673,4 @@ def updateMyReviews():
     return render_template('update-sheet.html', page='Update Reviews', fm=siteText["footer-message"], lg=legalFooter["legal-message"])
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP", "127.0.0.1"), port=int(
-        os.environ.get("PORT", 8000)), debug=True)
+        os.environ.get("PORT", 8000)), debug=False)
