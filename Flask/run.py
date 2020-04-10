@@ -232,10 +232,17 @@ def register():
         documents = coll_users.find()
         found = 0
         for entry in documents:
-            if entry["e-mail"] == request.form["e-mail"]:
+            if (entry["e-mail"]).upper() == (request.form["e-mail"]).upper():
                 found = 1
                 print("Email Already Exists")
                 return redirect(url_for('dupEmail'))
+
+            if ("," in request.form['e-mail']):
+                return redirect(url_for('dupEmail'))
+
+
+
+
         for entry in documents:
             if entry['e-mail'] == request.form['e-mail'] and entry['password'] == request.form['password']:
                 unlock = True
@@ -246,18 +253,24 @@ def register():
             return redirect(url_for('loginSuccess'))
         elif found == True:
             return redirect(url_for('errorem'))
+
         elif entry['e-mail'] != request.form['e-mail']:
             coll_users.insert_one(post)
             return redirect(url_for('index'))
+
+
     return render_template('register.html', page='Member Registration Request', fm=siteText["footer-message"], users=users, lg=legalFooter["legal-message"])
 
-@app.route('/dup-email')
+
+
+
+@app.route('/duplicate-email')
 def dupEmail():
     '''
     # Duplicate Email Address Found
     Email address has already been used in the database record
     '''
-    return render_template('dup-email.html', page='Error - Duplicate Email!', methods=["GET", "POST"], fm=siteText["footer-message"], lg=legalFooter["legal-message"])
+    return render_template('duplicate-email.html', page='Error - Duplicate Email!', methods=["GET", "POST"], fm=siteText["footer-message"], lg=legalFooter["legal-message"])
 
 
 @app.route('/promoteuser', methods=["GET", "POST"])
@@ -334,6 +347,9 @@ def promoteUserS():
 
 @app.route('/member', methods=["GET", "POST"])
 def member():
+
+
+
     #INSERTION OF NEW MOVIE REVIEW VIEW PAGE!
     if request.method == "POST":
 
@@ -382,37 +398,22 @@ def member():
                 print("")
 
                 #INC AFF-LINK
-                if auser['a-state'] =='Yes':
+                if (auser['a-state']).upper() =='YES':
                     coll_reviews.insert_one(reviews)
                     return render_template(url_for('memberSubmitOk'), page='Member Review Submission OK!', fm=siteText["footer-message"])
 
                 # REMOVE AFF-LINK
-                if auser['a-state'] =='No':
+                if (auser['a-state']).upper() =='NO':
                     reviews["m-affiliate-link"] = "#"
                     coll_reviews.insert_one(reviews)
                     return render_template(url_for('memberSubmitOk'), page='Member Review Submission OK!', fm=siteText["footer-message"])
 
- 
+  
     return render_template('member.html', page='Member Add Review - Page', methods=["GET", "POST"], fm=siteText["footer-message"], lg=legalFooter["legal-message"])
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 @app.route('/member_d', methods=["GET", "POST"])
@@ -570,7 +571,6 @@ def memberOptions():
 
             if (users['u_email']).upper() == (request.form.get('e-mail')).upper()  and users['u_password'] != request.form['password'] and request.form['user-options'] == 'Update' and users['u_role'] == 'Admin':
                 return redirect(url_for('loginFailure'))
-
 
 
             if users['u_role'] == 'Admin' and request.form['user-options'] == "Update":
