@@ -331,18 +331,7 @@ def promoteUserS():
     return render_template('promoteuser-success.html', page="Promote User - Success", Methods=["GET", "POST"], fm=siteText["footer-message"], lg=legalFooter["legal-message"])
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 @app.route('/member', methods=["GET", "POST"])
@@ -465,6 +454,10 @@ def memberOptions():
             rem = request.form['e-mail']
             uem = uem.upper()
             rem = rem.upper()
+
+
+  
+
             if uem == rem and users['u_password'] == request.form['password'] and request.form['user-options'] == 'None' and users['u_role'] == 'Admin':
                 unlock = True
                 try:
@@ -477,10 +470,15 @@ def memberOptions():
                     crv_em = crv_em.upper()
                     if mem == crv_em and unlock == True:
                         rev_bag.append(mr)
+
                 return render_template('member-options-gr.html', crv_em=crv_em, page='Member Maintenance Page!', fm=siteText["footer-message"], rev_bag=rev_bag, unlock=unlock, lg=legalFooter["legal-message"])
+            
             elif uem == rem and users['u_password'] != request.form['password']:
                 return redirect(url_for('loginFailure'))
     
+
+
+
     # DELETE REVIEWS
     if request.method == "POST" and request.form.get('user-options') == "Delete":
         movies = coll_reviews.find()  # get movie collection
@@ -571,10 +569,21 @@ def memberOptions():
                 return redirect(url_for('loginFailure'))
 
 
+
             if users['u_role'] == 'Admin' and request.form['user-options'] == "Update":
                 unlock = True
                 movies = coll_reviews.find()
+
+
+                userdb=coll_users.find()
+                trip=0
+                for user in userdb:
+                    if (user['e-mail']).upper() == (request.form.get('e-mail')).upper():
+                        trip=1    
+                if trip==0:
+                    return redirect(url_for('loginFailure'))
                 
+
                 try:
                     updaterev = request.form['movie-list']
                 except:
@@ -583,9 +592,10 @@ def memberOptions():
                 
                 for mr in movies:
                     updaterev = request.form['movie-list']
-                    f = open("templates/crvid", "w")
-                    f.write(updaterev)
-                    f.close()
+              
+                    with open("templates/crvid","w") as f:
+                        f.write(updaterev)
+
 
                 x = coll_reviews.find_one({"_id": ObjectId(updaterev)})
                 # Grab What is in Database
@@ -615,11 +625,24 @@ def memberOptions():
     
 
     # UPDATE INSERT
+
     if request.method == "POST" and request.form.get('confirm') != "None":
+
+        userdb=coll_users.find()
+        trip=0
+        for user in userdb:
+            if (user['e-mail']).upper() == (request.form.get('e-mail')).upper():
+                trip=1    
+        if trip==0:
+            return redirect(url_for('loginFailure'))
+        
+
+        
         try:
-            m_title = request.form["m-title"]
+            m_title = request.form.get('m-title')
         except:
-            redirect(url_for('memberOptions'))
+            redirect(url_for('loginFailure'))
+
         m_title = request.form["m-title"]
         m_sub_title = request.form["m-sub-title"]
         m_genre = request.form["m-genre"]
@@ -640,10 +663,11 @@ def memberOptions():
         m_affiliate_link = request.form["m-af-link"]
         m_email = request.form["e-mail"]
         m_process = "active"
-        print(m_title)
-        f = open("templates/crvid", "r")
-        crev_id = f.read()
-        f.close()
+
+      
+        with open("templates/crvid", "r") as f:
+            crev_id = f.read()
+         
 
         x = coll_reviews.find_one({"_id": ObjectId(crev_id)})
         newvalues = {

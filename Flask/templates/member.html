@@ -106,7 +106,8 @@
                     <br>
                     <div class="col-sm-12">
                         <label for="r-name">Reviewer Name:</label><br>
-                        <select name="r-name" id="r-name">
+                        <select name="r-name" id="r-name" required>
+                            <option></option>
                             {% for names in usersdb  %}
                             <option>{{ (names['f-name']).upper() }} {{ (names['l-name']).upper() }}</option>
                             {% endfor %}
