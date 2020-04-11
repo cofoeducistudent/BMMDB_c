@@ -348,10 +348,12 @@ def promoteUserS():
 @app.route('/member', methods=["GET", "POST"])
 def member():
 
-
+    usersdb = coll_users.find()
 
     #INSERTION OF NEW MOVIE REVIEW VIEW PAGE!
     if request.method == "POST":
+
+        
 
         reviews = {
                 "m-title": request.form["m-title"].upper(),
@@ -375,6 +377,9 @@ def member():
                 "m-email": request.form["e-mail"],
                 "m-process": "active",
             }
+
+
+       
 
         total_users = coll_users.find()  # Grab User Database
         for auser in total_users:
@@ -409,7 +414,7 @@ def member():
                     return render_template(url_for('memberSubmitOk'), page='Member Review Submission OK!', fm=siteText["footer-message"])
 
   
-    return render_template('member.html', page='Member Add Review - Page', methods=["GET", "POST"], fm=siteText["footer-message"], lg=legalFooter["legal-message"])
+    return render_template('member.html', page='Member Add Review - Page', methods=["GET", "POST"], fm=siteText["footer-message"], lg=legalFooter["legal-message"], usersdb=usersdb )
 
 
 
@@ -503,8 +508,6 @@ def memberOptions():
                 unlock = True
 
 
-
-
                 try:
                     updaterev = request.form['movie-list']
                 except:
@@ -517,8 +520,6 @@ def memberOptions():
             
             if uem == rem and users['u_password'] != request.form['password'] and request.form['user-options'] == 'Delete' and users['u_role'] == 'Admin':
                 return redirect(url_for('loginFailure'))
-
-
 
 
     if request.method == "POST" and request.form.get('user-options') == "Delete":
@@ -545,9 +546,6 @@ def memberOptions():
             if uem == rem and users['u_password'] != request.form['password'] and request.form['user-options'] == 'Delete' and users['u_role'] == 'Admin':
                 return render_template('member-options.html', page='Member Maintenance Page!', fm=siteText["footer-message"], lg=legalFooter["legal-message"], rev_bag=rev_bag, unlock=unlock)
  
-
-
-
 
     # UPDATE REVIEWS
     if request.method == "POST" and request.form.get('user-options') == "Update":
@@ -576,15 +574,19 @@ def memberOptions():
             if users['u_role'] == 'Admin' and request.form['user-options'] == "Update":
                 unlock = True
                 movies = coll_reviews.find()
+                
                 try:
                     updaterev = request.form['movie-list']
                 except:
                     return redirect(url_for('memberOptions'))
+                
+                
                 for mr in movies:
                     updaterev = request.form['movie-list']
                     f = open("templates/crvid", "w")
                     f.write(updaterev)
                     f.close()
+
                 x = coll_reviews.find_one({"_id": ObjectId(updaterev)})
                 # Grab What is in Database
                 crv = {
@@ -609,8 +611,9 @@ def memberOptions():
                     "m_email": x['m-email'],
                     "m_process": 'active',
                 }
-                return render_template('update-sheet.html', page='Member Update Sheet', crv_em=crv_em, fm=siteText["footer-message"], lg=legalFooter["legal-message"], rev_bag=rev_bag,  updaterev=updaterev, crv=crv)
+                return render_template('update-sheet.html', page='Member Update Sheet', crv_em=crv_em, fm=siteText["footer-message"], lg=legalFooter["legal-message"], rev_bag=rev_bag,  updaterev=updaterev, crv=crv, documents=documents )
     
+
     # UPDATE INSERT
     if request.method == "POST" and request.form.get('confirm') != "None":
         try:
@@ -641,6 +644,7 @@ def memberOptions():
         f = open("templates/crvid", "r")
         crev_id = f.read()
         f.close()
+
         x = coll_reviews.find_one({"_id": ObjectId(crev_id)})
         newvalues = {
             "$set": {
@@ -669,6 +673,7 @@ def memberOptions():
         coll_reviews.update_one(x, newvalues)
         return render_template('update-success.html', page='Member Update Sheet', fm=siteText["footer-message"],  crv=crv, lg=legalFooter["legal-message"], unlock=unlock)
     
+
     return render_template('member-options.html', page='Member Maintenance Page!', fm=siteText["footer-message"], rev_bag=rev_bag, crv=crv, lg=legalFooter["legal-message"], unlock=unlock)
 
 
@@ -710,4 +715,4 @@ def updateMyReviews():
     return render_template('update-sheet.html', page='Update Reviews', fm=siteText["footer-message"], lg=legalFooter["legal-message"])
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP", "127.0.0.1"), port=int(
-        os.environ.get("PORT", 8000)), debug=False)
+        os.environ.get("PORT", 8000)), debug=True)

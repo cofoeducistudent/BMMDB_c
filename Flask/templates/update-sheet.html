@@ -112,18 +112,28 @@
                             rows="10" cols="100%" placeholder="Synopsis:">{{  crv['m_synopsis']  }}</textarea>
                     </div>
                     <br>
+
+
                     <!-- Reviewer Name -->
                     <div class="col-sm-12">
+
                         <label for="r-name">Reviewer Name:</label><br>
                         <input id="r-name" name="r-name" type="text" class="form-control t-entry-box"
+
                             value="{{  crv['m_reviewer_name']  }}" placeholder="{{ crv['m_reviewer_name'] }}"
-                            required=True></input>
+                            required=True>
+                        
+                        </input>
+
                         <!-- Review Date -->
                         <br>
                         <label for="r-date">Review Date:</label><br>
                         <input id="r-date" name="r-date" type="date" class="form-control t-entry-box"
                             value="{{  crv['m_review_date']  }}" placeholder="Review Date:"></input>
                     </div>
+
+
+
                     <!-- Stars -->
                     <div class="col-sm-12">
                         <label for="m-stars">Movie Stars:</label><br>

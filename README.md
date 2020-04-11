@@ -729,6 +729,11 @@ both actions would never normally happen at once. You need to become a successfu
 
 3. scroll down the page, completing the section.
 
+* Warning: The **"image-link"** field is expected to hold a link of an image that is hosted on another site. There are free hosting sites all over the internet.
+However I have used a lot of wikipedia just to show the example.**
+
+* The **"Affiliate-Link"** holds a link to the reviewers e-commerce ideals. THis is only activated amd viable when the site owner promotes the reviewer as detailed already.
+
 4. Press blue <Submit Review> button.
 
 <a id="deleteareview"></a>
