@@ -218,3 +218,6 @@ body {
  .half-size{
     width: 50%;
  }
+ .search-icon :hover {
+    color:var(--social-icons-hover-color);
+ }
