@@ -1,6 +1,6 @@
-# //###############################################//==================
+
 #    Imports
-# //###############################################//==================
+ 
 import os
 import pymongo
 from flask import Flask, render_template, url_for, request, redirect, flash
@@ -31,9 +31,9 @@ coll_users = conn[DBS_NAME][COLLECTION_USER_NAME]
 coll_reviews = conn[DBS_NAME][COLLECTION_REVIEWS]
 app = Flask(__name__)
 Bootstrap(app)
-# //###############################################//==================
+ 
 #     G L O B A L - V A R S - S E C T I O N                          
-# //###############################################//==================
+ 
 users = {}
 # Footer Message
 siteText = {
@@ -61,9 +61,9 @@ crv_em = ""  # current reviewer email
 updaterev = ""
 ul=0
 
-# //###############################################//==================
+ 
 #     M A I N  - C O D E - S E C T I O N                             
-# //###############################################//==================
+ 
 '''
 CHECK FOR DUPLICATE OBJECT ID
 '''
@@ -74,9 +74,9 @@ def checkDup(id):
         if id == stuff['_id']:
             matchid = 1
             return matchid
-# //###############################################//==================
+ 
 #     M A I N  - VIEWS - S E C T I O N                              
-# //###############################################//==================
+ 
 @app.route('/')
 def index():
     return render_template('index.html',\
@@ -314,8 +314,6 @@ def register():
                 users=users, lg=legalFooter["legal-message"])
 
 
-
-
 @app.route('/duplicate-email')
 def dupEmail():
     '''
@@ -468,7 +466,6 @@ def member():
         lg=legalFooter["legal-message"], usersdb=usersdb )
 
 
-
 @app.route('/member_d', methods=["GET", "POST"])
 def member_d():
     return render_template('member_d.html', page='Member - Delete Page',\
@@ -524,8 +521,6 @@ def memberOptions():
             rem = rem.upper()
 
 
-  
-
             if uem == rem and users['u_password'] == request.form['password']\
                 and request.form['user-options'] == 'None' and users['u_role']\
                 == 'Admin':
@@ -550,8 +545,6 @@ def memberOptions():
                 != request.form['password']:
                 return redirect(url_for('loginFailure'))
     
-
-
 
     # DELETE REVIEWS
     if request.method == "POST"\
@@ -665,7 +658,6 @@ def memberOptions():
                 return redirect(url_for('loginFailure'))
 
 
-
             if users['u_role'] == 'Admin' and\
                 request.form['user-options'] == "Update":
                 unlock = True
@@ -738,7 +730,6 @@ def memberOptions():
             return redirect(url_for('loginFailure'))
         
 
-        
         try:
             m_title = request.form.get('m-title')
         except:
@@ -825,7 +816,6 @@ def memberOptionsGr():
 def deleteSuccessOk():
     return render_template('delete-success.html', page='Delete Success OK!',\
     fm=siteText["footer-message"], lg=legalFooter["legal-message"])
-
 
 
 @app.route('/login-failure', methods=["GET", "POST"])

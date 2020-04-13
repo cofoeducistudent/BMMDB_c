@@ -372,7 +372,7 @@ This collection holds the reviews created by all the registered/Authorized poste
 |rmrdb|reviews|m-process|string|left for future feature of bulk delete etc |
 
 * *  Note this date is never updated. To generate a new date a completely new review must be created *
-* ** This data field was later converted to **release date**, without index text search  attached. I felt it was more beneficial. I left it here as was, rather than change it, to show the changes I made in strategy.
+* ** This data field was later converted to **release date**, without index text search  attached. I felt it was more beneficial. I left it here as-is, rather than change it, to show the changes I made in my strategy.
 
 <a id="skeleton"></a>
 
@@ -482,7 +482,7 @@ Flask using the Jinja2 engine will be my choice of framework, to speed up design
 Although minor elements of jQuery and JavaScript maybe be utilized within support modules bootstrap and other elements
 Python version 3.x shall be used as the underpinning project logic control within the flask views.
 * **E-mail-**
-Omitted from the site will be the background extended infrastructure that models the business behaviour. I refer to things such as system admin monitoring and email response eco-system. From the front-end perspective, there will be email options, however, the forms will remain un-hooked.
+Omitted from the site will be the background extended infrastructure that models the business behavior. I refer to things such as system admin monitoring and email response eco-system. From the front-end perspective, there will be email options, however, the forms will remain un-hooked.
 * **Testing-**
 I used chrome tools for testing, as that has proved satisfactory historically for me. I will test on the main browsers including, Chrome, Firefox, Opera, Navigator etc. also I will use the CSS cross-platform tool.
 * **Git-** I used for version control
@@ -688,7 +688,7 @@ All images are royalty-free and allowed for use. Below are the credits for the c
 
 >## ACKNOWLEDGEMENTS ##
 
-Thanks to Mentor **Prudence ljedge**, **Aaron Sinnott** I for review of the site.
+Thanks to Mentor **Precious Ijedge**, **Aaron Sinnott** I for review of the site.
 
 <a id="useageinstructions"></a>
 
